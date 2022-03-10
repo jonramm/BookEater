@@ -7,6 +7,11 @@ const express = require('express');
 const app = express();
 const path = require('path');
 
+const retrieve = require('./routes/retrieve')
+const create = require('./routes/create')
+const destroy = require('./routes/destroy')
+const update = require('./routes/update')
+
 db.connect((err) => {
     if (err) throw err;
     console.log('Connected to MySQL server!')
@@ -15,6 +20,11 @@ db.connect((err) => {
 app.use(express.urlencoded({
     extended: true
   }));
+
+app.use('/retrieve', retrieve)
+app.use('/create', create)
+app.use('/destroy', destroy)
+app.use('/update', update)
 
 app.use(express.json())
 
