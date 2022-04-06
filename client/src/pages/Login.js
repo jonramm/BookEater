@@ -1,4 +1,4 @@
-import React, {useState} from "react";
+import React, { useState } from "react";
 import Form from "react-bootstrap/Form";
 import Button from "react-bootstrap/Button";
 
@@ -15,30 +15,25 @@ function Login() {
         event.preventDefault()
     }
 
-    return(
+    return (
         <>
-            <Form onSubmit={handleSubmit}>
-                <Form.Group size="lg" controlId="email">
-                    <Form.Label>Email</Form.Label>
-                    <Form.Control 
-                        autoFocus
-                        type="email"
-                        value={email}
-                        onChange={(e) => setEmail(e.target.value)}
-                    />
-                </Form.Group>
-                <Form.Group size="lg" controlId="password">
-                    <Form.Label>Password</Form.Label>
-                    <Form.Control 
-                        type="password"
-                        value={password}
-                        onChange={(e) => setPassword(e.target.value)}
-                    />
-                </Form.Group>
-                <Button type="submit" disabled={!validateLogin()}>
-                    Login
-                </Button>
-            </Form>
+            <form>
+                <label for="email">Email</label>
+                <input
+                    type="text"
+                    id="email"
+                    value={email}
+                    onChange={(e) => setEmail(e.target.value)} />
+                <label for="password">Password</label>
+                <input 
+                    type="text"
+                    id="password"
+                    value={password}
+                    onChange={(e) => setPassword(e.target.value)} />
+                <div>
+                    <button type="submit">Login</button>
+                </div>
+            </form>
         </>
     )
 }
