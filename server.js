@@ -12,10 +12,10 @@ const create = require('./routes/create')
 const destroy = require('./routes/destroy')
 const update = require('./routes/update')
 
-db.connect((err) => {
-    if (err) throw err;
-    console.log('Connected to MySQL server!')
-  })
+// db.connect((err) => {
+//     if (err) throw err;
+//     console.log('Connected to MySQL server!')
+//   })
  
 app.use(express.urlencoded({
     extended: true
@@ -29,6 +29,12 @@ app.use('/update', update)
 app.use(express.json())
 
 app.use(express.static(path.join(__dirname, 'build')));
+
+app.use('/login', (req, res) => {
+  res.send({
+    token: 'test1234'
+  })
+})
 
 app.get('*', function (req, res) {
   res.sendFile(path.join(__dirname, 'build', 'index.html'));
