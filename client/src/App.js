@@ -1,5 +1,4 @@
 import './App.css';
-import './Signin.css'
 import { Route, Routes } from 'react-router-dom';
 import React, {useState} from 'react';
 
@@ -31,7 +30,7 @@ function App() {
       <Header />
       <main>
         <Routes>
-          <Route path='/home' element={ <HomePage /> } />
+          <Route path='/' element={ <HomePage /> } />
           <Route path='/preferences' element={ <Preferences /> }></Route>
         </Routes>
       </main>

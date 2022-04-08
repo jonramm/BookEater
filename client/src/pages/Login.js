@@ -1,9 +1,10 @@
 import React, { useState } from "react";
 import PropTypes from 'prop-types'
+import '../Signin.css'
 import Form from "react-bootstrap/Form";
 import Button from "react-bootstrap/Button";
 
-function Login({ setToken }) {
+export default function Login({ setToken }) {
 
     const [email, setEmail] = useState("")
     const [password, setPassword] = useState("")
@@ -18,6 +19,7 @@ function Login({ setToken }) {
             email,
             password
         })
+        console.log(token)
         setToken(token)
     } 
 
@@ -26,7 +28,7 @@ function Login({ setToken }) {
         return fetch('http://localhost:4000/login', {
             method: 'POST',
             headers: {
-                'Content-Type': 'application/json'
+                'Content-Type': 'application/json',
             },
             body: JSON.stringify(credentials)
         })
@@ -48,7 +50,7 @@ function Login({ setToken }) {
                 <label class="sr-only" for="password">Password</label>
                 <input 
                     class="form-control"
-                    type="text"
+                    type="password"
                     id="password"
                     value={password}
                     onChange={(e) => setPassword(e.target.value)} />
@@ -64,5 +66,3 @@ function Login({ setToken }) {
 Login.propTypes = {
     setToken: PropTypes.func.isRequired
 }
-
-export default Login;

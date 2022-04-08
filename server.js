@@ -6,6 +6,8 @@ const PORT = process.env.PORT || 4000;
 const express = require('express');
 const app = express();
 const path = require('path');
+const cors = require('cors')
+
 
 const retrieve = require('./routes/retrieve')
 const create = require('./routes/create')
@@ -27,10 +29,13 @@ app.use('/destroy', destroy)
 app.use('/update', update)
 
 app.use(express.json())
+app.use(cors())
 
 app.use(express.static(path.join(__dirname, 'build')));
 
 app.use('/login', (req, res) => {
+  console.log(req.body)
+  res.header("Access-Control-Allow-Origin", "*");
   res.send({
     token: 'test1234'
   })
