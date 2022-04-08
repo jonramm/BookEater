@@ -14,13 +14,16 @@ export default function Login({ setToken }) {
     }
 
     const handleSubmit = async e => {
-        e.preventDefault()
-        const token = await loginUser({
-            email,
-            password
-        })
-        console.log(token)
-        setToken(token)
+        if (validateLogin()) {
+            e.preventDefault()
+            const token = await loginUser({
+                email,
+                password
+            })
+            setToken(token)
+        } else {
+            alert("Please enter email and password")
+        }
     } 
 
 

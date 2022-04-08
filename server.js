@@ -33,9 +33,7 @@ app.use(cors())
 
 app.use(express.static(path.join(__dirname, 'build')));
 
-app.use('/login', (req, res) => {
-  console.log(req.body)
-  res.header("Access-Control-Allow-Origin", "*");
+app.post('/login', (req, res) => {
   res.send({
     token: 'test1234'
   })
