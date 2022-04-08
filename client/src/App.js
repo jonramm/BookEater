@@ -5,13 +5,16 @@ import React, {useState} from 'react';
 import HomePage from './pages/HomePage';
 import Login from './pages/Login';
 import Preferences from './pages/Preferences';
+import useToken from './useToken';
 
 import Header from './components/Header';
 import Footer from './components/Footer';
 
+
+
 function App() {
 
-  const [token, setToken] = useState()
+  const { token, setToken } = useToken()
 
   if (!token) {
     return (
