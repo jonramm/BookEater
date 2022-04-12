@@ -21,11 +21,12 @@ function App() {
   if (!token) {
     return (
       <>
-        <Header />
-          <main>
-            <Login setToken={setToken}/>
-          </main>
-        <Footer />
+        <main>
+          <Routes>
+            <Route path='/' element={ <Login setToken={setToken} /> } />
+            <Route path='/create-user' element={ <CreateUser /> } />
+          </Routes>
+        </main>
       </>
     )
   }
@@ -36,7 +37,6 @@ function App() {
       <main>
         <Routes>
           <Route path='/' element={ <HomePage /> } />
-          <Route path='/create-user' element={ <CreateUser /> } />
           <Route path='/preferences' element={ <Preferences /> }></Route>
         </Routes>
       </main>

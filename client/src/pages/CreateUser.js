@@ -11,13 +11,14 @@ export default function CreateUser() {
         return email.length > 0 && password.length > 0 && firstName.length > 0 && lastName.length > 0
     }
 
-    async function createUser(credentials) {
-        return fetch('/create/user', {
+    async function createUser() {
+        const newUser = { firstName, lastName, email, password }
+        return fetch('/api/create/user', {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',
             },
-            body: JSON.stringify(credentials)
+            body: JSON.stringify(newUser)
         })
             .then(data => data.json())
     }
@@ -25,12 +26,7 @@ export default function CreateUser() {
     const handleSubmit = async e => {
         if (validateCreate()) {
             e.preventDefault()
-            const response = await createUser({
-                email,
-                password,
-                firstName,
-                lastName
-            })
+            const response = await createUser()
             if (response.status === 200) {
                 alert("Successfully created user!")
             } else {
@@ -75,7 +71,7 @@ export default function CreateUser() {
                     value={password}
                     onChange={(e) => setPassword(e.target.value)} />
                 <div>
-                    <button class="btn btn-lg btn-primary btn-block" type="submit">Login</button>
+                    <button class="btn btn-lg btn-primary btn-block" type="submit">Create User</button>
                 </div>
             </form>
             </div>     

@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import PropTypes from 'prop-types'
 import '../Signin.css'
+import { Link } from "react-router-dom";
 import Form from "react-bootstrap/Form";
 import Button from "react-bootstrap/Button";
 
@@ -59,6 +60,11 @@ export default function Login({ setToken }) {
                     onChange={(e) => setPassword(e.target.value)} />
                 <div>
                     <button class="btn btn-lg btn-primary btn-block" type="submit">Login</button>
+                </div>
+                <div>                 
+                    <Link to="create-user">
+                        <button class="btn btn-lg btn-primary btn-block" type="button">New User</button>
+                    </Link>                   
                 </div>
             </form>
             </div>        
