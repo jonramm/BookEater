@@ -5,7 +5,9 @@ import React, {useState} from 'react';
 import HomePage from './pages/HomePage';
 import Login from './pages/Login';
 import CreateUser from './pages/CreateUser';
-import Preferences from './pages/Preferences';
+import Profile from './pages/Profile';
+import BookReports from './pages/BookReports';
+import Bookshelf from './pages/Bookshelf';
 
 import useToken from './useToken';
 
@@ -37,7 +39,9 @@ function App() {
       <main>
         <Routes>
           <Route path='/' element={ <HomePage /> } />
-          <Route path='/preferences' element={ <Preferences /> }></Route>
+          <Route path='/profile' element={ <Profile /> }></Route>
+          <Route path='/bookshelf' element={ <Bookshelf /> } />
+          <Route path='/bookreports' element={ <BookReports /> } />
         </Routes>
       </main>
       <Footer />

@@ -1,6 +1,6 @@
 import React from "react";
 
-function Preferences() {
+function Profile() {
 
     return (
         <>
@@ -9,4 +9,4 @@ function Preferences() {
     )
 }
 
-export default Preferences;
+export default Profile;
