@@ -24,13 +24,15 @@ app.use(express.urlencoded({
     extended: true
   }));
 
+app.use(express.json())
+app.use(cors())
+
 app.use('/retrieve', retrieve)
 app.use('/api/create', create)
 app.use('/destroy', destroy)
 app.use('/update', update)
 
-app.use(express.json())
-app.use(cors())
+
 
 // app.use(express.static(path.join(__dirname, 'build')));
 
