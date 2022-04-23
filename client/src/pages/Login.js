@@ -4,6 +4,7 @@ import '../Signin.css'
 import { Link } from "react-router-dom";
 import Form from "react-bootstrap/Form";
 import Button from "react-bootstrap/Button";
+import axios from 'axios';
 
 export default function Login({ setToken }) {
 
@@ -44,14 +45,14 @@ export default function Login({ setToken }) {
             <div class="text-center">
             <form class="form-signin" onSubmit={handleSubmit}>
                 <h1 class="h3 mb-3 font-weight-normal">Please sign in</h1>
-                <label class="sr-only" for="email">Email</label>
+                <label class="" htmlFor="email">Email</label>
                 <input
                     class="form-control"
                     type="text"
                     id="email"
                     value={email}
                     onChange={(e) => setEmail(e.target.value)} />
-                <label class="sr-only" for="password">Password</label>
+                <label class="" for="password">Password</label>
                 <input 
                     class="form-control"
                     type="password"
