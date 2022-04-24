@@ -64,7 +64,6 @@ export default function CreateUser() {
                     withCredentials: true
                 }
             );
-            console.log(response.data)
             setSuccess(true)
             // clear input fields
         } catch(err) {
