@@ -1,78 +1,113 @@
-import React, { useState } from "react";
-import PropTypes from 'prop-types'
-import '../Signin.css'
+import React, { useState, useRef, useEffect, useContext } from "react";
 import { Link } from "react-router-dom";
-import Form from "react-bootstrap/Form";
-import Button from "react-bootstrap/Button";
-import axios from 'axios';
+import AuthContext from '../context/AuthProvider'
+import axios from '../api/axios'
 
-export default function Login({ setToken }) {
+const LOGIN_URL = '/auth'
 
-    const [email, setEmail] = useState("")
-    const [password, setPassword] = useState("")
+function Login() {
 
-    function validateLogin() {
-        return email.length > 0 && password.length > 0
-    }
+    const { setAuth } = useContext(AuthContext)
 
-    const handleSubmit = async e => {
-        if (validateLogin()) {
-            e.preventDefault()
-            const token = await loginUser({
-                email,
-                password
-            })
-            setToken(token)
-        } else {
-            alert("Please enter email and password")
+    const emailRef = useRef()
+    const errRef = useRef()
+
+    const [email, setEmail] = useState('')
+    const [password, setPassword] = useState('')
+    const [errMsg, setErrMsg] = useState('')
+    const [success, setSuccess] = useState(false)
+
+    useEffect(() => {
+        emailRef.current.focus()
+    }, [])
+
+    useEffect(() => {
+        setErrMsg('')
+    }, [email, password])
+
+
+    const login = async (e) => {
+        e.preventDefault()
+        
+        try {
+            const response = await axios.post(LOGIN_URL,
+                JSON.stringify({email, password}),
+                {
+                    headers: { 'Content-Type': 'application/json' },
+                    withCredentials: true
+                })
+            console.log(JSON.stringify(response?.data)) 
+            const accessToken = response?.data?.accessToken
+            setAuth({ email, password, accessToken })
+            setEmail('')
+            setPassword('')
+            setSuccess(true)
+        } catch(err) {
+            if (!err?.response) {
+                setErrMsg('No Server Response')
+            } else if (err.response?.status === 400) {
+                setErrMsg('Missing email or password')
+            } else if (err.response?.status === 401) {
+                setErrMsg('Unauthorized')
+            } else {
+                setErrMsg('Login failed')
+            }
+            errRef.current.focus()
         }
-    } 
-
-
-    async function loginUser(credentials) {
-        return fetch('http://localhost:4000/login', {
-            method: 'POST',
-            headers: {
-                'Content-Type': 'application/json',
-            },
-            body: JSON.stringify(credentials)
-        })
-            .then(data => data.json())
     }
 
     return (
         <>
-            <div class="text-center">
-            <form class="form-signin" onSubmit={handleSubmit}>
-                <h1 class="h3 mb-3 font-weight-normal">Please sign in</h1>
-                <label class="" htmlFor="email">Email</label>
-                <input
-                    class="form-control"
-                    type="text"
-                    id="email"
-                    value={email}
-                    onChange={(e) => setEmail(e.target.value)} />
-                <label class="" for="password">Password</label>
-                <input 
-                    class="form-control"
-                    type="password"
-                    id="password"
-                    value={password}
-                    onChange={(e) => setPassword(e.target.value)} />
-                <div>
-                    <button class="btn btn-lg btn-primary btn-block" type="submit">Login</button>
-                </div>
-                <div>                 
-                    <Link to="create-user">
-                        <button class="btn btn-lg btn-primary btn-block" type="button">New User</button>
-                    </Link>                   
-                </div>
-            </form>
-            </div>        
+            {success ? (
+                <>
+                    <h1>You're logged in!</h1>
+                    <p>
+                        <Link to='/home'>Home Page</Link>
+                    </p>
+                </>
+            ) : (
+                <>
+                    <div className="App">
+                        <p
+                            ref={errRef}
+                            className={errMsg ? "errmsg" : "offscreen"} aria-live="assertive">
+                            {errMsg}
+                        </p>
+                        <div className="login">
+                            <h1>Login</h1>
+                            <form onSubmit={login}>
+                                <label htmlFor="email">Email:</label>
+                                <input
+                                    type="text"
+                                    id="email"
+                                    ref={emailRef}
+                                    autoComplete='off'
+                                    placeholder="Email..."
+                                    onChange={(e) => { setEmail(e.target.value) }}
+                                    value={email}
+                                    required
+                                />
+                                <label htmlFor="password">Password:</label>
+                                <input
+                                    type="password"
+                                    id="password"
+                                    autoComplete="off"
+                                    placeholder="Password..."
+                                    onChange={(e) => { setPassword(e.target.value) }}
+                                    value={password}
+                                    required
+                                />
+                                <button>Login</button>
+                            </form>
+                        </div>
+                        <p>
+                            Need to create an account?
+                            <Link to="/register">Sign Up</Link>
+                        </p>
+                    </div>
+                </>)}
         </>
     )
 }
 
-Login.propTypes = {
-    setToken: PropTypes.func.isRequired
-}
+export default Login;
