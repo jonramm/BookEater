@@ -9,7 +9,7 @@ const handleRefreshToken = async (req, res) => {
     const refreshToken = cookies.jwt
 
     inserts = [refreshToken];
-	sql_refresh_user = "SELECT * FROM users WHERE jwtToken = ?;";
+	  sql_refresh_user = "SELECT * FROM users WHERE jwtToken = ?;";
 
     const getUser = async () => {
       return new Promise((resolve, reject) => {

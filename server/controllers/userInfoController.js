@@ -1,8 +1,8 @@
 const db = require('../dbcon')
 
 const getUserInfo = async (req, res) => {
-    token = req.body.token
-    db.query(`SELECT email FROM users WHERE jwtToken = ${token};`, (err, result) => {
+    email = req.body.email
+    db.query(`SELECT email FROM users WHERE email = '${email}';`, (err, result) => {
         if (err) {
             console.log(err)
         }
@@ -10,6 +10,4 @@ const getUserInfo = async (req, res) => {
     })
 }
 
-module.exports = {
-    getUserInfo
-}
+module.exports = { getUserInfo }

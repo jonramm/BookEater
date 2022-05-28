@@ -1,7 +1,7 @@
 const db = require('./dbcon')
 
-const getUser = async (userName, password) => {
-    db.query(`SELECT * FROM users WHERE userName = "${userName}" AND password = "${password}";`, (err, result) => {
+const getUser = async (auth) => {
+    db.query(`SELECT * FROM users WHERE userName = "${auth.email}";`, (err, result) => {
         if (err) {
             console.log(err)
         }

@@ -35,33 +35,15 @@ app.use('/register', require('./routes/register'))
 app.use('/refresh', require('./routes/refresh'))
 app.use('/logout', require('./routes/logout'))
 
-app.use(verifyJWT)
 app.use('/users', require('./routes/api/users'));
+
+app.use(verifyJWT)
 app.use('/user-info', require('./routes/api/userInfo'))
 
 app.get("/", (req, res) => {
   res.json({ message: "Hello!" });
-});
+}); 
 
-// const { check } = require("express-validator");
-// const { validateInput } = require("../middleware/validate-input");
-// const { login } = require("./controllers/auth");
-
-// app.use(express.static(path.join(__dirname, 'build')));
-
-app.post('/login', (req, res) => {
-  res.send({
-    token: 'test1234'
-  })
-})
-
-// app.post('/api/create/user', (req, res) => {
-//   console.log('made it to test endpoint')
-// })
-
-// app.get('*', function (req, res) {
-//   res.sendFile(path.join(__dirname, 'build', 'index.html'));
-// });
 
 app.listen(PORT, () => {
     console.log(`Server listening on port ${PORT}...`)

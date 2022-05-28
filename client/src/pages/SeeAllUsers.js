@@ -2,16 +2,15 @@ import React, { useState, useRef, useEffect, useContext } from "react";
 import AuthContext from '../context/AuthProvider'
 import axios from '../api/axios'
 
-const USER_INFO_URL = '/user-info'
+const USER_INFO_URL = '/users'
 
-function HomePage() {
+function SeeAllUsers() {
 
-    const [email, setEmail] = useState('')
+    const [users, setUsers] = useState([])
     const { auth, setAuth } = useContext(AuthContext)
 
-    const getUserInfo = async () => {  
+    const getAllUsers = async () => {  
         try {
-            console.log("Authorization data: ", auth)
             const response = await axios.post(USER_INFO_URL,
                 JSON.stringify(auth),
                 {
@@ -19,22 +18,24 @@ function HomePage() {
                     withCredentials: true
                 })
             console.log(JSON.stringify(response?.data)) 
-            setEmail(response?.data[0].email)
+            setUsers(response?.data[0])
         } catch(err) {
             console.log(err)
         }
     }
 
-    useEffect(() => {
-        getUserInfo()
-    }, [])
+    // useEffect(() => {
+    //     getAllUsers()
+    // }, [])
+
+    setUsers(["one", "two", "three"])
+    console.log(users)
 
     return (
-        <>
-            <h1>BookEater</h1>
-            <h1>{email}</h1>
+        <>  
+            {users.map((user, i) => (<h1>{user}</h1>))}
         </>
     )
 }
 
-export default HomePage;
+export default SeeAllUsers;
