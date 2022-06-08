@@ -22,14 +22,14 @@ function SeeAllUsers() {
         } catch(err) {
             console.log(err)
         }
+        // setUsers(["one", "two", "three"])
+        console.log(users)
     }
 
-    // useEffect(() => {
-    //     getAllUsers()
-    // }, [])
+    useEffect(() => {
+        getAllUsers()
+    }, [])
 
-    setUsers(["one", "two", "three"])
-    console.log(users)
 
     return (
         <>  
