@@ -69,11 +69,12 @@ function Login() {
                     className={errMsg ? "errmsg" : "offscreen"} aria-live="assertive">
                     {errMsg}
                 </p>
-                <div className="login">
-                    <h1>Login</h1>
-                    <form onSubmit={login}>
+                <div className="text-center">
+                    <h1 className="h3 mb-3 font-weight-normal">Login</h1>
+                    <form className="form-signin" onSubmit={login}>
                         <label htmlFor="email">Email:</label>
                         <input
+                            class="form-control"
                             type="text"
                             id="email"
                             ref={emailRef}
@@ -85,6 +86,7 @@ function Login() {
                         />
                         <label htmlFor="password">Password:</label>
                         <input
+                            class="form-control"
                             type="password"
                             id="password"
                             autoComplete="off"
@@ -93,7 +95,7 @@ function Login() {
                             value={password}
                             required
                         />
-                        <button>Login</button>
+                        <button class="btn btn-lg btn-primary btn-block">Login</button>
                     </form>
                 </div>
                 <p>

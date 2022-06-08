@@ -79,7 +79,7 @@ const Register = () => {
     }
 
     const createRole = async () => {
-        const role = 1
+        const role = 3
         const newRole = {"user": email, "role": role}
         const roleResponse = await axios.post('/add-role',
             JSON.stringify(newRole),
