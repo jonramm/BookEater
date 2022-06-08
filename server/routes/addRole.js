@@ -2,6 +2,7 @@ const express = require('express');
 const router = express.Router();
 const usersController = require('../controllers/usersController');
 
-router.post('/', usersController.addUserRole);
+router.route('/') 
+    .post(usersController.addUserRole);
 
 module.exports = router;

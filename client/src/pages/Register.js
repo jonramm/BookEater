@@ -64,8 +64,8 @@ const Register = () => {
                     withCredentials: true
                 }
             );
+            createRole()
             setSuccess(true)
-
         } catch (err) {
             if (!err?.response) {
                 setErrMsg("No server response")
@@ -76,6 +76,18 @@ const Register = () => {
             }
             errRef.current.focus()
         }
+    }
+
+    const createRole = async () => {
+        const role = 1
+        const newRole = {"user": email, "role": role}
+        const roleResponse = await axios.post('/add-role',
+            JSON.stringify(newRole),
+            {
+                headers: { 'Content-Type': 'application/json' },
+                withCredentials: true
+            }
+        )
     }
 
     return (

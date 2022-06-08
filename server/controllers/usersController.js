@@ -25,16 +25,16 @@ const createNewUser = (fName, lName, email, hashPassword) => {
       })
 }
 
-const addUserRole = (email, role) => {
-    inserts = [email, role]
+const addUserRole = async (req, res) => {
+    inserts = [req.body.user, req.body.role]
     sql_insert_user_role = "INSERT INTO user_roles (user, role) VALUES (?,?);"
     db.query(sql_insert_user_role, inserts, (err, res) => {
         if(err) {
             console.log(err)
             res.status(406).json({'error': 'role assignment failed'})
           } else {
-              db.query(`INSERT INTO user_roles (user, role) VALUES ("${email}", 1);`)
-              res.status(201).json({'success': `New user ${email} created!`})
+            //   db.query(`INSERT INTO user_roles (user, role) VALUES ("${email}", 1);`)
+            //   res.status(201).json({'success': `New user ${email} created!`})
           }
     })
 }
