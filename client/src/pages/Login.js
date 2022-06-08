@@ -41,8 +41,8 @@ function Login() {
                 })
             console.log("Login response: ", JSON.stringify(response?.data))
             const accessToken = response?.data?.accessToken
-            const role = response?.data?.role;
-            setAuth({ email, password, role, accessToken })
+            const roles = response?.data?.roles;
+            setAuth({ email, password, roles, accessToken })
             setEmail('')
             setPassword('')
             navigate(from, { replace: true })

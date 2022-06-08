@@ -17,8 +17,8 @@ function SeeAllUsers() {
                     headers: { 'Content-Type': 'application/json', 'Authorization': `Bearer ${auth.accessToken}` },
                     withCredentials: true
                 })
-            console.log(JSON.stringify(response?.data)) 
-            setUsers(response?.data[0])
+            console.log("Users response: ", response.data) 
+            setUsers(response?.data)
         } catch(err) {
             console.log(err)
         }
@@ -33,7 +33,7 @@ function SeeAllUsers() {
 
     return (
         <>  
-            {users.map((user, i) => (<h1>{user}</h1>))}
+            {users.map((user, i) => (<h1>{user.email}</h1>))}
         </>
     )
 }

@@ -8,7 +8,7 @@ const handleLogin = async (req, res) => {
     if (!email || !password) return res.status(400).json({ 'message': 'Email and password are required.' });
 
     inserts = [email];
-	  sql_auth_user = "SELECT email, password, jwtToken, ur.role FROM users JOIN user_roles ur ON email = ur.user WHERE email = ?;";
+	  sql_auth_user = "SELECT email, password, jwtToken, group_concat(ur.role) as roles FROM users JOIN user_roles ur ON email = ur.user WHERE email = ?;";
 
     const getUser = async () => {
       return new Promise((resolve, reject) => {
@@ -27,12 +27,13 @@ const handleLogin = async (req, res) => {
     // evaluate password 
     const match = await bcrypt.compare(password, foundUser.password);
     if (match) {
-        const role = foundUser.role
+        const rolesRaw = foundUser.roles 
+        const roles = rolesRaw.split(',').map(str => {return Number(str)})
         const accessToken = jwt.sign(
           {
             "UserInfo":
             { "email": foundUser.email,
-              "role": foundUser.role}
+              "roles": roles}
             },
             process.env.ACCESS_TOKEN_SECRET,
             { expiresIn: '5m' }
@@ -53,7 +54,7 @@ const handleLogin = async (req, res) => {
               // Creates Secure Cookie with refresh token
               res.cookie('jwt', refreshToken, { httpOnly: true, sameSite: 'None', secure: true, maxAge: 24 * 60 * 60 * 1000 });
               // Send authorization roles and access token to user
-              res.json({ role, accessToken });
+              res.json({ roles, accessToken });
             }
           })
     } else {

@@ -1,6 +1,8 @@
 import React, { useState, useRef, useEffect, useContext } from "react";
 import AuthContext from '../context/AuthProvider'
 import axios from '../api/axios'
+import { Link } from "react-router-dom";
+import useLogout from "../hooks/useLogout";
 
 const USER_INFO_URL = '/user-info'
 
@@ -8,6 +10,8 @@ function HomePage() {
 
     const [email, setEmail] = useState('')
     const { auth, setAuth } = useContext(AuthContext)
+
+    const logout = useLogout()
 
     const getUserInfo = async () => {  
         try {
@@ -33,6 +37,9 @@ function HomePage() {
         <>
             <h1>BookEater</h1>
             <h1>{email}</h1>
+            <Link to='/users'>Users</Link>
+            <br/>
+            <button onClick={logout}>Sign Out</button>
         </>
     )
 }
