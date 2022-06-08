@@ -17,23 +17,23 @@ function SeeAllUsers() {
                     headers: { 'Content-Type': 'application/json', 'Authorization': `Bearer ${auth.accessToken}` },
                     withCredentials: true
                 })
-            console.log(JSON.stringify(response?.data)) 
-            setUsers(response?.data[0])
+            console.log("Users response: ", response.data) 
+            setUsers(response?.data)
         } catch(err) {
             console.log(err)
         }
+        // setUsers(["one", "two", "three"])
+        console.log(users)
     }
 
-    // useEffect(() => {
-    //     getAllUsers()
-    // }, [])
+    useEffect(() => {
+        getAllUsers()
+    }, [])
 
-    setUsers(["one", "two", "three"])
-    console.log(users)
 
     return (
         <>  
-            {users.map((user, i) => (<h1>{user}</h1>))}
+            {users.map((user, key) => (<h1 key={key}>{user.email}</h1>))}
         </>
     )
 }

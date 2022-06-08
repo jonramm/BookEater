@@ -34,6 +34,7 @@ app.use('/auth', require('./routes/auth'));
 app.use('/register', require('./routes/register'))
 app.use('/refresh', require('./routes/refresh'))
 app.use('/logout', require('./routes/logout'))
+app.use('/add-role', require('./routes/addRole'))
 
 app.use('/users', require('./routes/api/users'));
 

@@ -9,7 +9,7 @@ const handleLogout = async (req, res) => {
     const refreshToken = cookies.jwt
     console.log("Refresh token: ", refreshToken)
     inserts = [refreshToken];
-	sql_refresh_user = "SELECT * FROM users WHERE jwtToken = ?;";
+	  sql_refresh_user = "SELECT * FROM users WHERE jwtToken = ?;";
 
     const getUser = async () => {
       return new Promise((resolve, reject) => {
@@ -30,11 +30,12 @@ const handleLogout = async (req, res) => {
     // Delete refresh token in db
     inserts = [foundUser.email];
     console.log(foundUser.email)
-	sql_delete_token = "UPDATE users SET jwtToken = null WHERE email = ?;";
+	  sql_delete_token = "UPDATE users SET jwtToken = '' WHERE email = ?;";
     db.query(sql_delete_token, inserts, (err, result) => {
         if (err) {
             console.log(err)
         } else {
+            console.log("Clearing token in db...")
             res.clearCookie('jwt', { httpOnly: true, sameSite: 'None', secure: true })
             res.sendStatus(204)
         }

@@ -15,8 +15,8 @@ const Register = () => {
     const [validEmail, setValidEmail] = useState(false)
     const [emailFocus, setEmailFocus] = useState(false)
 
-    const [fName, setFirstName] = useState("")
-    const [lName, setLastName] = useState("")
+    const [fName, setFName] = useState("")
+    const [lName, setLName] = useState("")
 
     const [password, setPassword] = useState("")
     const [validPassword, setValidPassword] = useState(false)
@@ -37,8 +37,6 @@ const Register = () => {
 
     useEffect(() => {
         const result = EMAIL_REGEX.test(email)
-        console.log(result)
-        console.log(email)
         setValidEmail(result)
     }, [email])
 
@@ -58,7 +56,7 @@ const Register = () => {
     async function createUser(e) {
         e.preventDefault()
         try {
-            const newUser = { email, password }
+            const newUser = { email, password, fName, lName }
             const response = await axios.post(CREATE_URL,
                 JSON.stringify(newUser),
                 {
@@ -66,8 +64,8 @@ const Register = () => {
                     withCredentials: true
                 }
             );
+            createRole()
             setSuccess(true)
-            // clear input fields
         } catch (err) {
             if (!err?.response) {
                 setErrMsg("No server response")
@@ -78,6 +76,18 @@ const Register = () => {
             }
             errRef.current.focus()
         }
+    }
+
+    const createRole = async () => {
+        const role = 3
+        const newRole = {"user": email, "role": role}
+        const roleResponse = await axios.post('/add-role',
+            JSON.stringify(newRole),
+            {
+                headers: { 'Content-Type': 'application/json' },
+                withCredentials: true
+            }
+        )
     }
 
     return (
@@ -102,6 +112,22 @@ const Register = () => {
                         <p ref={errRef} className={errMsg ? "errmsg" : "offscreen"} aria-live="assertive">{errMsg}</p>
                         <h1 className="h3 mb-3 font-weight-normal">Register</h1>
                         <form class="form-signin">
+                            <label className="" for="fName">First Name:</label>
+                            <input 
+                                class="form-control"
+                                type="text"
+                                id="fName"
+                                value={fName}
+                                onChange={(e) => setFName(e.target.value)}
+                            />
+                            <label className="" for="lName">Last Name:</label>
+                            <input 
+                                class="form-control"
+                                type="text"
+                                id="lName"
+                                value={lName}
+                                onChange={(e) => setLName(e.target.value)}
+                            />
                             <label className="" for="email">
                                 Email:
                                 <span className={validEmail ? "valid" : "hide"}>
