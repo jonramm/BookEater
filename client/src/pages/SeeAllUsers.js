@@ -33,7 +33,7 @@ function SeeAllUsers() {
 
     return (
         <>  
-            {users.map((user, i) => (<h1>{user.email}</h1>))}
+            {users.map((user, key) => (<h1 key={key}>{user.email}</h1>))}
         </>
     )
 }

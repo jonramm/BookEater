@@ -4,6 +4,7 @@ const db = require('../dbcon')
 require('dotenv').config()
 
 const handleLogin = async (req, res) => {
+    console.log("Logging in...")
     const { email, password } = req.body;
     if (!email || !password) return res.status(400).json({ 'message': 'Email and password are required.' });
 
