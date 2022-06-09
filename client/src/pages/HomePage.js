@@ -30,9 +30,9 @@ function HomePage() {
             setEmail(response?.data[0].email)
             setFName(response?.data[0].fName)
             setLName(response?.data[0].lName)
-            setHeaderProps({'email': email,
-                            'fName': fName,
-                            'lName': lName})
+            setHeaderProps({'email': response?.data[0].email,
+                            'fName': response?.data[0].fName,
+                            'lName': response?.data[0].lName})
 
         } catch(err) {
             console.log(err)
@@ -46,9 +46,6 @@ function HomePage() {
     return (
         <div className="home-page">
             <Header headerProps={headerProps}/>
-            <Link to='/users'>Users</Link>
-            <br/>
-            <button onClick={logout}>Sign Out</button>
         </div>
     )
 }

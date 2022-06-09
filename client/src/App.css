@@ -134,9 +134,16 @@ body {
 /* Navbar                                  */
 /*******************************************/
 
+.navbar {
+  display: flex;
+  justify-content: space-evenly;
+  flex-direction: row;
+  background-color: rgb(255, 205, 118);
+}
+
 .nav-logo {
   display: flex;
-  width: 100%;
+  width: 40%;
   height: auto;
 }
 
@@ -145,24 +152,41 @@ body {
   flex-direction: column;
   align-items: center;
   width: 20%;
-  margin-left: 3%;
-  margin-right: 6%;
+  /* margin-left: 3%;
+  margin-right: 6%; */
 }
 
 .nav-greeting {
   display: flex;
-  width: 20%;
+}
+
+.nav-right {
+  display: flex;
+  flex-direction: column;
+  width: 5%;
+  float: right;
+}
+
+.nav-signout {
+  display: flex;
+  margin-top: 20%;
 }
 
 .nav-title {
-  width: 30%;
+  width: 100%;
   height: auto;
-  margin-top: 2%;;
+  /* margin-top: 2%; */
 }
 
 .user-info {
-  width: 100%;
-  margin-right: 6%;
+  display: flex;
+  flex-direction: column;
+  width: 50%;
+  /* margin-right: 6%; */
+}
+
+.users-link {
+  text-align: center;
 }
 
 /*******************************************/
