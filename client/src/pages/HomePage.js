@@ -3,6 +3,7 @@ import AuthContext from '../context/AuthProvider'
 import axios from '../api/axios'
 import { Link } from "react-router-dom";
 import useLogout from "../hooks/useLogout";
+import Header from "../components/Header";
 
 const USER_INFO_URL = '/user-info'
 
@@ -38,13 +39,12 @@ function HomePage() {
     }, [])
 
     return (
-        <>
-            <h1>BookEater</h1>
-            <h1>Hello, {fName} {lName}!</h1>
+        <div className="home-page">
+            <Header />
             <Link to='/users'>Users</Link>
             <br/>
             <button onClick={logout}>Sign Out</button>
-        </>
+        </div>
     )
 }
 

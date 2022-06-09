@@ -63,7 +63,7 @@ function Login() {
 
     return (
         <>
-            <div className="App">
+            <div className="">
                 <p
                     ref={errRef}
                     className={errMsg ? "errmsg" : "offscreen"} aria-live="assertive">

@@ -11,6 +11,7 @@ import Layout from './components/Layout';
 import Missing from './pages/Missing';
 import Unauthorized from './pages/Unauthorized';
 import TestLinks from './pages/TestLinks';
+import Header from './components/Header';
 
 const ROLES = {
   'admin': 1,

@@ -101,14 +101,14 @@ const Register = () => {
                     </p>
                 </>
             ) : (
-                <>
+                <div className=''>
                     <p
                         ref={errRef}
                         className={errMsg ? "errmsg" : "offscreen"} aria-live="assertive">
                         {errMsg}
                     </p>
 
-                    <div class="text-center">
+                    <div class="registration-container">
                         <p ref={errRef} className={errMsg ? "errmsg" : "offscreen"} aria-live="assertive">{errMsg}</p>
                         <h1 className="h3 mb-3 font-weight-normal">Register</h1>
                         <form class="form-signin">
@@ -151,6 +151,7 @@ const Register = () => {
                                 onFocus={() => setEmailFocus(true)}
                                 onBlur={() => setEmailFocus(false)}
                             />
+                            
                             <p
                                 id="uidnote"
                                 className={emailFocus && email && !validEmail ? "instructions" : "offscreen"}>
@@ -223,7 +224,7 @@ const Register = () => {
                             <Link to="/" >Login</Link>
                         </p>
                     </div>
-                </>)}
+                </div>)}
         </>
     )
 }

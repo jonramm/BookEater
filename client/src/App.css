@@ -6,6 +6,11 @@
 
 .App {
   text-align: center;
+  width: 100%;
+}
+
+#root {
+  width: 100%;
 }
 
 input {
@@ -13,14 +18,16 @@ input {
 
 html,
 body {
+  display: flex;
   height: 100%;
+  width: 100%;
   background-color: #6eb09e;
 }
 
 body {
   display: -ms-flexbox;
   display: -webkit-box;
-  display: flex;
+  /* display: flex; */
   -ms-flex-align: center;
   -ms-flex-pack: center;
   -webkit-box-align: center;
@@ -124,6 +131,14 @@ body {
 /***********************************************************************************************************/
 
 /*******************************************/
+/* Navbar                                  */
+/*******************************************/
+
+.navbar-container {
+  width: 100%;
+}
+
+/*******************************************/
 /* Login                                   */
 /*******************************************/
 
@@ -135,15 +150,16 @@ body {
 }
 
 .login-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
   text-align: center;
-  width: 100%;
-  margin: auto;
-  position: relative;
-  top: -100px;
+  margin-top: 5%;
 }
 
 .main-logo {
-  width: 25%;
+  width: 18%;
   height: auto;
   margin: auto;
   /* padding: 10px; */
@@ -152,11 +168,13 @@ body {
 /*******************************************/
 /* Registration                            */
 /*******************************************/
-
-.registration {
+  
+.registration-container {
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
+  margin-top: 5%;
 }
+
 
