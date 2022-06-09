@@ -2,7 +2,6 @@ import React, { useState, useRef, useEffect, useContext } from "react";
 import AuthContext from '../context/AuthProvider'
 import axios from '../api/axios'
 import { Link } from "react-router-dom";
-import useLogout from "../hooks/useLogout";
 import Header from "../components/Header";
 
 const USER_INFO_URL = '/user-info'
@@ -14,8 +13,6 @@ function HomePage() {
     const [lName, setLName] = useState('')
     const [headerProps, setHeaderProps] =useState({}) 
     const { auth, setAuth } = useContext(AuthContext)
-
-    const logout = useLogout()
 
     const getUserInfo = async () => {  
         try {
@@ -46,6 +43,15 @@ function HomePage() {
     return (
         <div className="home-page">
             <Header headerProps={headerProps}/>
+            <section>
+                <div className='library-image'>
+
+                </div>
+                <div className="home-btn-row">
+                    <button className='btn btn-sm btn-primary btn-block home-btn'>Add Book</button>
+                    <button className='btn btn-sm btn-primary btn-block home-btn'>Full Library</button>
+                </div>
+            </section>
         </div>
     )
 }

@@ -220,4 +220,27 @@ body {
   margin-top: 5%;
 }
 
+/*******************************************/
+/* Home Page                               */
+/*******************************************/
+
+.home-page {
+  width: 100%;
+  align-items: center;
+}
+
+.home-btn-row {
+  display: flex;
+  justify-content: space-evenly;
+}
+
+.home-btn {
+  display: flex;
+}
+
+.library-image {
+  height: 500px;
+}
+
+
 

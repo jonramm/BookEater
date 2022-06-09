@@ -1,13 +1,15 @@
-import React from "react";
+import React, { useContext } from "react";
 import mainLogo from '../assets/Official-Logo-And-GIF.png'
 import titleImg from '../assets/BookEater-Logo.png'
 import menuLogo from '../assets/menu-logo.png'
 import useLogout from "../hooks/useLogout";
 import { Link } from "react-router-dom";
+import AuthContext from '../context/AuthProvider'
 
 const Header = (props) => {
     
     const logout = useLogout()
+    const { auth, setAuth } = useContext(AuthContext)
 
     return (
         <div className="">
@@ -31,7 +33,10 @@ const Header = (props) => {
                 <div className='nav-item nav-right'>
                     <img className='nav-title' src={menuLogo} alt='BookEater Title' />
                     <button className='btn btn-sm btn-primary btn-block nav-signout' onClick={logout}>Sign Out</button>
-                    <Link className='users-link' to='/users'>Users</Link>
+                    {auth.roles.includes(1) 
+                        ? <Link className='users-link' to='/users'>Users</Link>
+                        : null
+                    }
                 </div>
             </nav>
         </div>
