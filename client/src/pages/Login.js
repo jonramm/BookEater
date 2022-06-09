@@ -72,7 +72,6 @@ function Login() {
                 <div className="login-container">
                     <img className='main-logo' src={mainLogo} alt='BookEater Logo' />
                     <form className="form-signin" onSubmit={login}>
-                        {/* <label htmlFor="email">Email:</label> */}
                         <input
                             class="form-control"
                             type="text"
@@ -84,7 +83,6 @@ function Login() {
                             value={email}
                             required
                         />
-                        {/* <label htmlFor="password">Password:</label> */}
                         <input
                             class="form-control"
                             type="password"
