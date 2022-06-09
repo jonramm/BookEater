@@ -11,7 +11,8 @@ function HomePage() {
 
     const [email, setEmail] = useState('')
     const [fName, setFName] = useState('')
-    const [lName, setLName] = useState('') 
+    const [lName, setLName] = useState('')
+    const [headerProps, setHeaderProps] =useState({}) 
     const { auth, setAuth } = useContext(AuthContext)
 
     const logout = useLogout()
@@ -29,6 +30,10 @@ function HomePage() {
             setEmail(response?.data[0].email)
             setFName(response?.data[0].fName)
             setLName(response?.data[0].lName)
+            setHeaderProps({'email': email,
+                            'fName': fName,
+                            'lName': lName})
+
         } catch(err) {
             console.log(err)
         }
@@ -40,7 +45,7 @@ function HomePage() {
 
     return (
         <div className="home-page">
-            <Header />
+            <Header headerProps={headerProps}/>
             <Link to='/users'>Users</Link>
             <br/>
             <button onClick={logout}>Sign Out</button>

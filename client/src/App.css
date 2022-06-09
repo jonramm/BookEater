@@ -5,7 +5,7 @@
 /***********************************************************************************************************/
 
 .App {
-  text-align: center;
+  /* text-align: center; */
   width: 100%;
 }
 
@@ -134,20 +134,40 @@ body {
 /* Navbar                                  */
 /*******************************************/
 
-.navbar-container {
+.nav-logo {
+  display: flex;
   width: 100%;
+  height: auto;
+}
+
+.nav-left {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 20%;
+  margin-left: 3%;
+  margin-right: 6%;
+}
+
+.nav-greeting {
+  display: flex;
+  width: 20%;
+}
+
+.nav-title {
+  width: 30%;
+  height: auto;
+  margin-top: 2%;;
+}
+
+.user-info {
+  width: 100%;
+  margin-right: 6%;
 }
 
 /*******************************************/
 /* Login                                   */
 /*******************************************/
-
-.login {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-}
 
 .login-container {
   display: flex;
@@ -162,7 +182,6 @@ body {
   width: 18%;
   height: auto;
   margin: auto;
-  /* padding: 10px; */
 }
 
 /*******************************************/
