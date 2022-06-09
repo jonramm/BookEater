@@ -5,6 +5,7 @@ import { Link } from "react-router-dom";
 import Header from "../components/Header";
 import Popup from 'reactjs-popup';
 import 'reactjs-popup/dist/index.css';
+import BookAutocomplete from "../components/BookAutocomplete";
 
 const USER_INFO_URL = '/user-info'
 
@@ -53,19 +54,7 @@ function HomePage() {
                 </div>
                 <div className="home-btn-row">
                     <Popup trigger={<button className='btn btn-sm btn-primary btn-block home-btn'>Add Book</button>} modal>    
-                        <div className='login-container'>
-                            <form className='form-signin'>
-                            <input
-                            class="form-control"
-                            type="text"
-                            id="book"
-                            autoComplete='off'
-                            placeholder="Enter the name of a book..."
-                            required
-                        />
-                        <button class="btn btn-lg btn-primary btn-block">Select Book</button>
-                            </form>
-                        </div> 
+                        <BookAutocomplete />
                     </Popup>
                     <button className='btn btn-sm btn-primary btn-block home-btn'>Full Library</button>
                 </div>

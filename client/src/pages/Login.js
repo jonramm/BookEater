@@ -40,7 +40,7 @@ function Login() {
                     headers: { 'Content-Type': 'application/json' },
                     withCredentials: true
                 })
-            console.log("Login response: ", JSON.stringify(response?.data))
+            // console.log("Login response: ", JSON.stringify(response?.data))
             const accessToken = response?.data?.accessToken
             const roles = response?.data?.roles;
             setAuth({ email, password, roles, accessToken })
