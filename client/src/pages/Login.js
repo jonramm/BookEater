@@ -2,6 +2,7 @@ import React, { useState, useRef, useEffect } from "react";
 import { Link, useNavigate, useLocation } from "react-router-dom";
 import axios from '../api/axios'
 import useAuth from "../hooks/useAuth";
+import mainLogo from '../assets/Official-Logo-And-GIF.png'
 
 const LOGIN_URL = '/auth'
 
@@ -61,7 +62,6 @@ function Login() {
     }
 
     return (
-
         <>
             <div className="App">
                 <p
@@ -69,10 +69,10 @@ function Login() {
                     className={errMsg ? "errmsg" : "offscreen"} aria-live="assertive">
                     {errMsg}
                 </p>
-                <div className="text-center">
-                    <h1 className="h3 mb-3 font-weight-normal">Login</h1>
+                <div className="login-container">
+                    <img className='main-logo' src={mainLogo} alt='BookEater Logo' />
                     <form className="form-signin" onSubmit={login}>
-                        <label htmlFor="email">Email:</label>
+                        {/* <label htmlFor="email">Email:</label> */}
                         <input
                             class="form-control"
                             type="text"
@@ -84,7 +84,7 @@ function Login() {
                             value={email}
                             required
                         />
-                        <label htmlFor="password">Password:</label>
+                        {/* <label htmlFor="password">Password:</label> */}
                         <input
                             class="form-control"
                             type="password"
@@ -97,11 +97,12 @@ function Login() {
                         />
                         <button class="btn btn-lg btn-primary btn-block">Login</button>
                     </form>
+                    <p>
+                        Need to create an account?
+                        <br />
+                        <Link to="/register">Sign Up</Link>
+                    </p>
                 </div>
-                <p>
-                    Need to create an account?
-                    <Link to="/register">Sign Up</Link>
-                </p>
             </div>
         </>
     )
