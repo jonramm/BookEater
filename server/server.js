@@ -36,10 +36,10 @@ app.use('/refresh', require('./routes/refresh'))
 app.use('/logout', require('./routes/logout'))
 app.use('/add-role', require('./routes/addRole'))
 
-app.use('/users', require('./routes/api/users'));
-
 app.use(verifyJWT)
 app.use('/user-info', require('./routes/api/userInfo'))
+app.use('/users', require('./routes/api/users'));
+app.use('/add-book', require('./routes/addBook'))
 
 app.get("/", (req, res) => {
   res.json({ message: "Hello!" });
