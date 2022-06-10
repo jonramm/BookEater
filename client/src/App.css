@@ -239,12 +239,26 @@ body {
 }
 
 .library-image {
-  height: 500px;
+  height: 300px;
+}
+
+/*******************************************/
+/* Search Table                            */
+/*******************************************/
+
+.book-search-table {
+  
 }
 
 /*******************************************/
 /* Modal                                   */
 /*******************************************/
+
+.modalWrapper > div > div  {
+  width: 484px !important;
+  padding: 24px !important;
+  border-radius: 10px;
+}
 
 .modal {
   font-size: 12px;
@@ -256,7 +270,7 @@ body {
   text-align: center;
   padding: 5px;
 }
-.modal > .content {
+.modal > .search-modal-content {
   width: 100%;
   padding: 10px 5px;
 }

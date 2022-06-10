@@ -2,8 +2,8 @@ import React from "react";
 
 const BookSuggestions = ({ books }) => {
     return (
-        <>
-            <table>
+        <div class=''>
+            <table className='book-search-table'>
                 <thead>
                     <tr>
                         <th>Title</th>
@@ -13,7 +13,7 @@ const BookSuggestions = ({ books }) => {
                     {books.map((book, i) => (<tr><td>{book}</td></tr>))}
                 </tbody>
             </table>
-        </>
+        </div>
     )
 }
 

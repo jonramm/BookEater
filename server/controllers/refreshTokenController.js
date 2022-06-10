@@ -9,7 +9,7 @@ const handleRefreshToken = async (req, res) => {
     const refreshToken = cookies.jwt
 
     inserts = [refreshToken];
-	  sql_refresh_user = "SELECT email, password, jwtToken, group_concat(ur.role) as roles FROM users JOIN user_roles ur ON email = ur.user WHERE jwtToken = ?;";
+	  sql_refresh_user = "SELECT email, password, jwtToken, group_concat(ur.role) as roles FROM users JOIN user_roles ur ON email = ur.user WHERE jwtToken = ? GROUP BY email;";
 
     const getUser = async () => {
       return new Promise((resolve, reject) => {

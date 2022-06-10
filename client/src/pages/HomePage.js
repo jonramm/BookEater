@@ -5,7 +5,8 @@ import { Link } from "react-router-dom";
 import Header from "../components/Header";
 import Popup from 'reactjs-popup';
 import 'reactjs-popup/dist/index.css';
-import BookAutocomplete from "../components/BookAutocomplete";
+import BookSearch from "../components/BookSearch";
+import BookAdd from "../components/BookAdd";
 
 const USER_INFO_URL = '/user-info'
 
@@ -53,8 +54,11 @@ function HomePage() {
 
                 </div>
                 <div className="home-btn-row">
-                    <Popup trigger={<button className='btn btn-sm btn-primary btn-block home-btn'>Add Book</button>} modal>    
-                        <BookAutocomplete />
+                    <Popup 
+                        trigger={<button className='btn btn-sm btn-primary btn-block home-btn'
+                        nested
+                    >Add Book</button>} modal>    
+                        <BookAdd/>
                     </Popup>
                     <button className='btn btn-sm btn-primary btn-block home-btn'>Full Library</button>
                 </div>
