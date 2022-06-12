@@ -1,4 +1,6 @@
 const db = require('../dbcon')
+const sequelize = require('../sequelizeDbConn')
+const { User } = require('../models/userModel')
 
 const getAllUsers = async (req, res) => {
     db.query("SELECT email FROM users;", (err, result) => {
@@ -39,8 +41,14 @@ const addUserRole = async (req, res) => {
     })
 }
 
+const usersList = async () => {
+  const users = await User.findAll();
+  console.log("All users:", JSON.stringify(users, null, 2));
+}
+
 module.exports = {
     getAllUsers,
     createNewUser,
-    addUserRole
+    addUserRole,
+    usersList
 }
