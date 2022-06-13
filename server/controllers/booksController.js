@@ -23,9 +23,5 @@ const addBook = async (req, res) => {
     )
 }
 
-const booksList = async () => {
-  const books = await Book.findAll();
-  console.log("All books:", JSON.stringify(books, null, 2));
-}
 
-module.exports = { addBook, booksList }
+module.exports = { addBook }

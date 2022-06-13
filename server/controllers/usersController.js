@@ -41,14 +41,8 @@ const addUserRole = async (req, res) => {
     })
 }
 
-const usersList = async () => {
-  const users = await User.findAll();
-  console.log("All users:", JSON.stringify(users, null, 2));
-}
-
 module.exports = {
     getAllUsers,
     createNewUser,
     addUserRole,
-    usersList
 }

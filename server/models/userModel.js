@@ -30,4 +30,22 @@ const User = sequelize.define('User', {
     }
 )
 
-module.exports = { User }
+const addUser = async (email, fName, lName, password, jwtToken) => {
+    newUser = await User.create({email: email, fName: fName, lName: lName, password: password, jwtToken: jwtToken})
+    console.log(`Adding ${newUser.email}...`)
+}
+
+const usersList = async () => {
+    const users = await User.findAll();
+    console.log("All users:", JSON.stringify(users, null, 2));
+  }
+
+const deleteUser = async (email) => {
+    await User.destroy({
+        where: {
+            email: email
+        }
+    })
+}
+
+module.exports = { usersList, addUser, deleteUser }

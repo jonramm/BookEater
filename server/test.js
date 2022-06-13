@@ -1,9 +1,8 @@
 require('dotenv').config();
 const { Sequelize, DataTypes } = require('sequelize');
-const { User } = require('./models/userModel')
-const { usersList } = require('./controllers/usersController')
-const { booksList } = require('./controllers/booksController')
-
+const { usersList, addUser, deleteUser } = require('./models/userModel')
+const { addBook, deleteBook, booksList } = require('./models/bookModel')
+ 
 const sequelize = require('./sequelizeDbConn')
 
 // const sequelize = new Sequelize(process.env.MYSQL_DB, process.env.MYSQL_USER, process.env.MYSQL_PASSWORD, {
@@ -39,8 +38,6 @@ const sequelize = require('./sequelizeDbConn')
 //     }
 // )
 
-console.log(User === sequelize.models.User);
-
 // User.sync().then(()=> {
 //     console.log('sync complete')
 // }).catch((err) => {
@@ -62,5 +59,19 @@ console.log(User === sequelize.models.User);
 //     console.log("All users:", JSON.stringify(users, null, 2));
 // }
 
-// usersList()
-booksList()
+// addUser('jdoe@gmail.com', 'John', 'Doe', 'test').then(() => {
+//     usersList()
+// })
+
+// deleteUser('jdoe@gmail.com').then(() => {
+//     usersList()
+// })
+
+deleteBook(6).then(() => {
+    booksList()
+}).catch((err) => {
+    console.log(err)
+})
+
+// addBook('The Snow Leopard', 'Peter Matthiessen')
+// booksList()
