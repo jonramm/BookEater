@@ -30,8 +30,8 @@ const User = sequelize.define('User', {
     }
 )
 
-const addUser = async (email, fName, lName, password, jwtToken) => {
-    newUser = await User.create({email: email, fName: fName, lName: lName, password: password, jwtToken: jwtToken})
+const addUser = async (email, fName, lName, password) => {
+    newUser = await User.create({email: email, fName: fName, lName: lName, password: password})
     console.log(`Adding ${newUser.email}...`)
 }
 
