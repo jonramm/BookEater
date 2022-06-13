@@ -2,6 +2,7 @@ import React, { useState, useEffect, useContext } from "react";
 import AuthContext from '../context/AuthProvider'
 import axios from "../api/axios";
 import Header from "../components/Header";
+import LibraryTable from "../components/LibraryTable";
 
 const USER_INFO_URL = '/user-info'
 const BOOKS_URL = '/get-books'
@@ -11,6 +12,7 @@ function Library() {
     const [email, setEmail] = useState('')
     const [fName, setFName] = useState('')
     const [lName, setLName] = useState('')
+    const [books, setBooks] = useState([])
     const [headerProps, setHeaderProps] = useState({})
     const { auth, setAuth } = useContext(AuthContext)
 
@@ -39,14 +41,15 @@ function Library() {
 
     const getBooks = async () => {
         try {
-            console.log("Authorization data: ", auth)
+            console.log("getting books...")
             const response = await axios.post(BOOKS_URL,
                 JSON.stringify(auth),
                 {
                     headers: { 'Content-Type': 'application/json', 'Authorization': `Bearer ${auth.accessToken}` },
                     withCredentials: true
                 })
-                console.log(JSON.stringify('Response: ', response?.data))
+            console.log('response books: ', response.data)
+            setBooks(response.data)
         } catch(err) {
             console.log(err)
         }
@@ -60,12 +63,14 @@ function Library() {
         getBooks()
     }, [])
 
+    console.log(books)
+
     return (
 
         <div className="library-page">
             <Header headerProps={headerProps} />
             <section className='library-content'>
-
+                <LibraryTable books={books} />
             </section>
         </div>
     )

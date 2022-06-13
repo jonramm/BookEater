@@ -46,12 +46,17 @@ const booksList = async () => {
 }
 
 const getBooks = async (email) => {
-    const books = await UserBook.findAll({
+    const [results, metadata] = await sequelize.query(`select b.title from user_books ub join books b on ub.bookId = b.id where ub.user = '${email}';`)
+    return JSON.stringify(results)
+}
+
+const getBookById = async (id) => {
+    const book = await Book.findOne({
         where: {
-            user: email
+            id: id
         }
     })
-    return books
+    return book
 }
 
 module.exports = { 
@@ -59,5 +64,6 @@ module.exports = {
     createBook, 
     deleteBook, 
     booksList,
-    getBooks
+    getBooks,
+    getBookById
   }

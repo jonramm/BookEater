@@ -1,7 +1,7 @@
 const db = require('../dbcon')
 require('dotenv').config()
 const sequelize = require('../sequelizeDbConn')
-const { createBook, getBooks } = require('../models/bookModel')
+const { createBook, getBooks, getBookById } = require('../models/bookModel')
 const { addUserBook } = require('../models/userBookModel')
 const { getUserByToken } = require('../models/userModel')
 
@@ -44,10 +44,9 @@ const fetchBooks = async (req, res) => {
       if (!cookies?.jwt) return res.sendStatus(401)
       const refreshToken = cookies.jwt
       getUserByToken(refreshToken).then((user) => {
-        const books = getBooks(user.email).then((books) => {
-          console.log('Books: ', books)
-          const booksArray = books.map(obj => obj.dataValues.bookId)
-          res.send(booksArray)          
+        getBooks(user.email).then((books) => {
+          console.log(books)
+          res.send(books)      
         })
       })
     } catch(err) {
