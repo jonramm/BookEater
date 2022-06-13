@@ -9,6 +9,7 @@ function LibraryTable({ books }) {
                 <tr>
                     <th>Title</th>
                     <th>Author</th>
+                    <th>Report</th>
                 </tr>
             </thead>
             <tbody>

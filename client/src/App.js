@@ -11,8 +11,8 @@ import Layout from './components/Layout';
 import Missing from './pages/Missing';
 import Unauthorized from './pages/Unauthorized';
 import TestLinks from './pages/TestLinks';
-import Header from './components/Header';
 import Library from './pages/Library';
+import AddReport from './pages/AddReport';
 
 const ROLES = {
   'admin': 1,
@@ -37,6 +37,7 @@ function App() {
           <Route element={<RequireAuth allowedRoles={[ROLES.admin, ROLES.editor, ROLES.user]} />}>
             <Route path='/' element={<HomePage />} />
             <Route path='/library' element={<Library />} />
+            <Route path='add-report' element={<AddReport />} />
           </Route>
           <Route element={<RequireAuth allowedRoles={[ROLES.admin, ROLES.editor]} />}>
             <Route path='users' element={<SeeAllUsers />} />

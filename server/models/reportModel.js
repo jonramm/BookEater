@@ -43,8 +43,19 @@ const reportsList = async () => {
     console.log("All reports:", JSON.stringify(reports, null, 2));
 }
 
+const getReportByUserAndBookId = async (email, id) => {
+    const report = await Report.findOne({
+        where: {
+            user: email,
+            bookId: id
+        }
+    })
+    return report
+}
+
 module.exports = {
     addReport,
     Report,
-    reportsList
+    reportsList,
+    getReportByUserAndBookId
 }
