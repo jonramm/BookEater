@@ -35,6 +35,12 @@ const userBooksList = async () => {
     console.log("All user books:", JSON.stringify(userBooks, null, 2));
 }
 
+const addUserBook = async (user, bookId) => {
+    const newUserBook = await UserBook.create({user: user, bookId: bookId})
+    console.log(`Adding ${newUserBook.user} to book ${newUserBook.bookId}...`)
+}
+
 module.exports = {
-    userBooksList
+    userBooksList,
+    addUserBook
 }
