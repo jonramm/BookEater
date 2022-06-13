@@ -1,6 +1,12 @@
 require('dotenv').config();
 const { Sequelize, DataTypes } = require('sequelize');
-const { usersList, addUser, deleteUser, updateUserInfo, updateUserToken } = require('./models/userModel')
+const { usersList, 
+        addUser, 
+        deleteUser, 
+        updateUserInfo, 
+        updateUserToken, 
+        getUser 
+    } = require('./models/userModel')
 const { addBook, deleteBook, booksList } = require('./models/bookModel')
 const { addReport, reportsList } = require('./models/reportModel')
 const { userRolesList, addUserRole } = require('./models/userRoleModel')
@@ -109,8 +115,14 @@ const sequelize = require('./sequelizeDbConn')
 //     console.log(err)
 // })
 
-updateUserToken('user@gmail.com', 'new_token_123').then(() => {
-    usersList()
+// updateUserToken('user@gmail.com', 'new_token_123').then(() => {
+//     usersList()
+// }).catch((err) => {
+//     console.log(err)
+// })
+
+getUser('jrgbone@gmail.com').then((user) => {
+    console.log(user)
 }).catch((err) => {
     console.log(err)
 })

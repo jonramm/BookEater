@@ -69,11 +69,17 @@ const updateUserToken = async (email, token) => {
     })
 }
 
+const getUser = async (email) => {
+    const [results, metadata] = await sequelize.query(`SELECT email, password, jwtToken, group_concat(ur.role) as roles FROM users JOIN user_roles ur ON email = ur.user WHERE email = '${email}';`)
+    return results
+}
+
 module.exports = { 
     User,
     usersList, 
     addUser, 
     deleteUser,
-    updateUserInfo ,
-    updateUserToken
+    updateUserInfo,
+    updateUserToken,
+    getUser
 }
