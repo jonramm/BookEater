@@ -3,7 +3,8 @@ const { Sequelize, DataTypes } = require('sequelize');
 const { usersList, addUser, deleteUser } = require('./models/userModel')
 const { addBook, deleteBook, booksList } = require('./models/bookModel')
 const { addReport, reportsList } = require('./models/reportModel')
-const { userRolesList } = require('./models/userRoleModel')
+const { userRolesList, addUserRole } = require('./models/userRoleModel')
+const { userBooksList } = require('./models/userBookModel')
  
 const sequelize = require('./sequelizeDbConn')
 
@@ -82,6 +83,16 @@ const sequelize = require('./sequelizeDbConn')
 //     reportsList()
 // })
 
-userRolesList().catch((err) => {
+// userRolesList().catch((err) => {
+//     console.log(err)
+// })
+
+// userBooksList().catch((err) => {
+//     console.log(err)
+// })
+
+addUserRole('samanthajanemullen@gmail.com', 3).then(() => {
+    userRolesList()
+}).catch((err) => {
     console.log(err)
 })

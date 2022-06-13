@@ -27,14 +27,20 @@ const UserRole = sequelize.define('UserRole', {
     }
 )
 
-User.belongsToMany(Role, { through: {model: UserRole, unique: false }})
-Role.belongsToMany(User, { through: {model: User, unique: false }})
+/* remove automatic sequelize 'id' field */
+UserRole.removeAttribute('id')
 
 const userRolesList = async () => {
     const userRoles = await UserRole.findAll();
     console.log("All user roles:", JSON.stringify(userRoles, null, 2));
 }
 
+const addUserRole = async (user, role) => {
+    const newUserRole = await UserRole.create({user: user, role: role})
+    console.log(`Adding ${newUserRole.user} to role ${newUserRole.role}...`)
+}
+
 module.exports = {
-    userRolesList
+    userRolesList,
+    addUserRole
 }
