@@ -25,17 +25,18 @@ const Book = sequelize.define('Book', {
 
 // Book.belongsToMany(Report)
 
-const addBook = async (title, author) => {
+const createBook = async (title, author) => {
     newBook = await Book.create({title: title, author: author})
     console.log(`Adding ${newBook.title}...`)
+    return newBook.id
   }
 
-  const deleteBook = async (id) => {
-    await Book.destroy({
-        where: {
-            id: id
-        }
-    })
+const deleteBook = async (id) => {
+await Book.destroy({
+    where: {
+        id: id
+    }
+})
 }
   
 const booksList = async () => {
@@ -43,4 +44,4 @@ const booksList = async () => {
     console.log("All books:", JSON.stringify(books, null, 2));
 }
 
-module.exports = { addBook, deleteBook, booksList, Book }
+module.exports = { createBook, deleteBook, booksList, Book }

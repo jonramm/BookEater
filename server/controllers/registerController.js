@@ -22,22 +22,6 @@ const handleNewUser = async (req, res) => {
       }
       res.status(500).json({"message": err.message}) 
     })
-
-
-    // inserts = [fName, lName, email, hashPassword]
-    // sql_insert_user = "INSERT INTO users (fName, lName, email, password) VALUES (?,?,?,?);"
-    // db.query(sql_insert_user, inserts, (err, result) => {
-    //     if(err) {
-    //       console.log(err)
-    //       if (err.code === 'ER_DUP_ENTRY') {
-    //         res.sendStatus(409)
-    //       }
-    //       res.status(500).json({"message": err.message}) 
-    //     } else {
-    //       res.status(201).json({'success': `New user ${email} created!`})
-    //     }
-    //   })
-
 }
 
 module.exports = { handleNewUser }

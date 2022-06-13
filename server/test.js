@@ -7,7 +7,7 @@ const { usersList,
         updateUserToken, 
         getUser 
     } = require('./models/userModel')
-const { addBook, deleteBook, booksList } = require('./models/bookModel')
+const { createBook, deleteBook, booksList } = require('./models/bookModel')
 const { addReport, reportsList } = require('./models/reportModel')
 const { userRolesList, addUserRole } = require('./models/userRoleModel')
 const { userBooksList, addUserBook } = require('./models/userBookModel')
@@ -82,8 +82,9 @@ const sequelize = require('./sequelizeDbConn')
 //     console.log(err)
 // })
 
-// addBook('The Snow Leopard', 'Peter Matthiessen')
-// booksList()
+createBook('The Tipping Point', 'Malcolm Gladwell').then((newId) => {
+    console.log(newId)
+})
 
 // addReport('samanthajanemullen@gmail.com', 'This is my report.', '2022-06-13', 2).then(() => {
 //     reportsList()
@@ -121,8 +122,8 @@ const sequelize = require('./sequelizeDbConn')
 //     console.log(err)
 // })
 
-getUser('jrgbone@gmail.com').then((user) => {
-    console.log(user)
-}).catch((err) => {
-    console.log(err)
-})
+// getUser('jrgbone@gmail.com').then((user) => {
+//     console.log(user)
+// }).catch((err) => {
+//     console.log(err)
+// })

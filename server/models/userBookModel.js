@@ -35,8 +35,13 @@ const userBooksList = async () => {
     console.log("All user books:", JSON.stringify(userBooks, null, 2));
 }
 
-const addUserBook = async (user, bookId) => {
-    const newUserBook = await UserBook.create({user: user, bookId: bookId})
+const addUserBook = async (jwtToken, bookId) => {
+    const user = await User.findOne({
+        where: {
+            jwtToken: jwtToken
+        }
+    })
+    const newUserBook = await UserBook.create({user: user.email, bookId: bookId})
     console.log(`Adding ${newUserBook.user} to book ${newUserBook.bookId}...`)
 }
 
