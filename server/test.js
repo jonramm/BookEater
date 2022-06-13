@@ -2,6 +2,8 @@ require('dotenv').config();
 const { Sequelize, DataTypes } = require('sequelize');
 const { usersList, addUser, deleteUser } = require('./models/userModel')
 const { addBook, deleteBook, booksList } = require('./models/bookModel')
+const { addReport, reportsList } = require('./models/reportModel')
+const { userRolesList } = require('./models/userRoleModel')
  
 const sequelize = require('./sequelizeDbConn')
 
@@ -67,11 +69,19 @@ const sequelize = require('./sequelizeDbConn')
 //     usersList()
 // })
 
-deleteBook(6).then(() => {
-    booksList()
-}).catch((err) => {
-    console.log(err)
-})
+// deleteBook(6).then(() => {
+//     booksList()
+// }).catch((err) => {
+//     console.log(err)
+// })
 
 // addBook('The Snow Leopard', 'Peter Matthiessen')
 // booksList()
+
+// addReport('samanthajanemullen@gmail.com', 'This is my report.', '2022-06-13', 2).then(() => {
+//     reportsList()
+// })
+
+userRolesList().catch((err) => {
+    console.log(err)
+})

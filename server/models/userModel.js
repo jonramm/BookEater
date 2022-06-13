@@ -48,4 +48,8 @@ const deleteUser = async (email) => {
     })
 }
 
-module.exports = { usersList, addUser, deleteUser }
+module.exports = { 
+    User,
+    usersList, 
+    addUser, 
+    deleteUser }
