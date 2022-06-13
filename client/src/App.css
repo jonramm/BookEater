@@ -136,9 +136,11 @@ body {
 
 .navbar {
   display: flex;
-  justify-content: space-evenly;
+  /* justify-content: space-evenly; */
   flex-direction: row;
   background-color: rgb(255, 205, 118);
+  padding-left: 3%;
+  padding-right: 3%;
 }
 
 .nav-logo {
@@ -151,20 +153,21 @@ body {
   display: flex;
   flex-direction: column;
   align-items: center;
-  width: 20%;
+  width: 12%;
   /* margin-left: 3%;
   margin-right: 6%; */
 }
 
 .nav-greeting {
   display: flex;
+  margin-bottom: 0;
 }
 
 .nav-right {
   display: flex;
   flex-direction: column;
   width: 5%;
-  float: right;
+  margin-left: auto;
 }
 
 .nav-signout {
@@ -181,8 +184,13 @@ body {
 .user-info {
   display: flex;
   flex-direction: column;
-  width: 50%;
+  width: 25%;
+  font-size: .75em;
   /* margin-right: 6%; */
+}
+
+.user-info-line {
+  margin-bottom: 0;
 }
 
 .users-link {
@@ -236,10 +244,46 @@ body {
 
 .home-btn {
   display: flex;
+  font-size: 1em;
+  border: none;
+  cursor: pointer;
+  border-radius: 20px;
 }
 
-.library-image {
-  height: 300px;
+.home-img {
+  width: 120%;
+  height: auto;
+  position: relative;
+  left: -9%;
+}
+
+.home-content {
+  /*https://stackoverflow.com/questions/600743/how-to-get-div-height-to-auto-adjust-to-background-size*/
+  /* height: 300px;
+  background-image: url(./assets/Background-For-Home-Page-4k.png);
+  background-size: contain;
+  background-repeat: no-repeat;
+  width: 100%;
+  height: 0;
+  padding-top: 41.85%; */
+
+  position: relative;
+  width: 100%;
+}
+
+.home-content .home-btn-row {
+  position: absolute;
+  top: 90%;
+  /* left: 50%; */
+  /* transform: translate(0%, -20%); */
+  /* -ms-transform: translate(-50%, -50%); */
+  right: 1%;
+  left: 0;
+  width: 70%;
+  margin-right: auto;
+  margin-left: auto;
+  font-size: 16px;
+  padding: 12px 24px;
 }
 
 /*******************************************/

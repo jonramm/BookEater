@@ -7,6 +7,7 @@ import Popup from 'reactjs-popup';
 import 'reactjs-popup/dist/index.css';
 import BookSearch from "../components/BookSearch";
 import BookAdd from "../components/BookAdd";
+import homeImg from '../assets/Background-For-Home-Page-4k.png'
 
 const USER_INFO_URL = '/user-info'
 
@@ -49,18 +50,18 @@ function HomePage() {
     return (
         <div className="home-page">
             <Header headerProps={headerProps} />
-            <section>
+            <section className='home-content'>
                 <div className='library-image'>
-
+                    <img className='home-img' src={homeImg} alt='BookEater Library' />
                 </div>
                 <div className="home-btn-row">
                     <Popup 
-                        trigger={<button className='btn btn-sm btn-primary btn-block home-btn'
+                        trigger={<button className='btn btn-sm btn-light btn-block home-btn add-book-btn'
                         nested
                     >Add Book</button>} modal>    
                         <BookAdd/>
                     </Popup>
-                    <button className='btn btn-sm btn-primary btn-block home-btn'>Full Library</button>
+                    <button className='btn btn-sm btn-light btn-block home-btn full-lib-btn'>Full Library</button>
                 </div>
             </section>
         </div>
