@@ -48,8 +48,21 @@ const deleteUser = async (email) => {
     })
 }
 
+const updateUserInfo = async (email, fName, lName) => {
+    await User.update({
+        fName: fName,
+        lName: lName
+    }, {
+        where: {
+            email: email
+        }
+    })
+}
+
 module.exports = { 
     User,
     usersList, 
     addUser, 
-    deleteUser }
+    deleteUser,
+    updateUserInfo 
+}
