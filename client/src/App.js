@@ -12,6 +12,7 @@ import Missing from './pages/Missing';
 import Unauthorized from './pages/Unauthorized';
 import TestLinks from './pages/TestLinks';
 import Header from './components/Header';
+import Library from './pages/Library';
 
 const ROLES = {
   'admin': 1,
@@ -35,6 +36,7 @@ function App() {
         <Route element={<PersistLogin />}>
           <Route element={<RequireAuth allowedRoles={[ROLES.admin, ROLES.editor, ROLES.user]} />}>
             <Route path='/' element={<HomePage />} />
+            <Route path='/library' element={<Library />} />
           </Route>
           <Route element={<RequireAuth allowedRoles={[ROLES.admin, ROLES.editor]} />}>
             <Route path='users' element={<SeeAllUsers />} />

@@ -46,6 +46,7 @@ const addUserBook = async (jwtToken, bookId) => {
 }
 
 module.exports = {
+    UserBook,
     userBooksList,
     addUserBook
 }

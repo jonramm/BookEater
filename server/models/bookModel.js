@@ -1,6 +1,7 @@
 const { Sequelize, DataTypes } = require('sequelize');
 const sequelize = require('../sequelizeDbConn')
 const { Report } = require('./reportModel')
+const { UserBook } = require('./userBookModel')
 
 const Book = sequelize.define('Book', {
     id: {
@@ -44,4 +45,19 @@ const booksList = async () => {
     console.log("All books:", JSON.stringify(books, null, 2));
 }
 
-module.exports = { createBook, deleteBook, booksList, Book }
+const getBooks = async (email) => {
+    const books = await UserBook.findAll({
+        where: {
+            user: email
+        }
+    })
+    return books
+}
+
+module.exports = { 
+    Book,
+    createBook, 
+    deleteBook, 
+    booksList,
+    getBooks
+  }

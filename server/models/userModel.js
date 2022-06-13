@@ -74,6 +74,19 @@ const getUser = async (email) => {
     return JSON.stringify(results)
 }
 
+const getUserByToken = async (token) => {
+    try {
+        const user = await User.findOne({
+            where: {
+                jwtToken: token
+            }
+        })
+        return user
+    } catch(err) {
+        console.log(err)
+    }
+  }
+
 module.exports = { 
     User,
     usersList, 
@@ -81,5 +94,6 @@ module.exports = {
     deleteUser,
     updateUserInfo,
     updateUserToken,
-    getUser
+    getUser,
+    getUserByToken
 }
