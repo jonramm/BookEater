@@ -59,10 +59,21 @@ const updateUserInfo = async (email, fName, lName) => {
     })
 }
 
+const updateUserToken = async (email, token) => {
+    await User.update({
+        jwtToken: token
+    }, {
+        where: {
+            email: email
+        }
+    })
+}
+
 module.exports = { 
     User,
     usersList, 
     addUser, 
     deleteUser,
-    updateUserInfo 
+    updateUserInfo ,
+    updateUserToken
 }
