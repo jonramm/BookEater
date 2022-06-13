@@ -2,6 +2,7 @@ require('dotenv').config();
 const { Sequelize, DataTypes } = require('sequelize');
 const { User } = require('./models/userModel')
 const { usersList } = require('./controllers/usersController')
+const { booksList } = require('./controllers/booksController')
 
 const sequelize = require('./sequelizeDbConn')
 
@@ -61,4 +62,5 @@ console.log(User === sequelize.models.User);
 //     console.log("All users:", JSON.stringify(users, null, 2));
 // }
 
-usersList()
+// usersList()
+booksList()

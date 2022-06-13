@@ -1,5 +1,7 @@
 const db = require('../dbcon')
 require('dotenv').config()
+const sequelize = require('../sequelizeDbConn')
+const { Book } = require('../models/bookModel')
 
 const addBook = async (req, res) => {
     console.log('Adding book...')
@@ -21,4 +23,9 @@ const addBook = async (req, res) => {
     )
 }
 
-module.exports = { addBook }
+const booksList = async () => {
+  const books = await Book.findAll();
+  console.log("All books:", JSON.stringify(books, null, 2));
+}
+
+module.exports = { addBook, booksList }
