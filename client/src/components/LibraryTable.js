@@ -4,10 +4,11 @@ import LibraryTableRow from "./LibraryTableRow";
 function LibraryTable({ books }) {
 
     return (
-        <table>
+        <table className="library-table">
             <thead>
                 <tr>
                     <th>Title</th>
+                    <th>Author</th>
                 </tr>
             </thead>
             <tbody>

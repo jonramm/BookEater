@@ -3,8 +3,9 @@ import React from "react";
 function LibraryTableRow({ book, key }) {
 
     return (
-        <tr>
-            <td key={key}>{book.title}</td>
+        <tr key={key}>
+            <td>{book.title}</td>
+            <td>{book.author}</td>
         </tr>
     )
 }

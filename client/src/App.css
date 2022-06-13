@@ -173,6 +173,7 @@ body {
 .nav-signout {
   display: flex;
   margin-top: 20%;
+  font-size: .5em;
 }
 
 .nav-title {
@@ -290,8 +291,17 @@ body {
 /* Library Page                            */
 /*******************************************/
 
+.library-page {
+  width: 100%;
+  align-items: center;
+}
+
 .library-content {
-  
+  display: flex;
+}
+
+.library-table {
+
 }
 
 /*******************************************/

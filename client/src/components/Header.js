@@ -15,7 +15,7 @@ const Header = (props) => {
 
         <nav class="navbar navbar-expand-sm">
             <div className='nav-item nav-left'>
-                <img className='nav-logo' src={logoImg} alt='BookEater Logo' />
+                <Link to='/'><img className='nav-logo' src={logoImg} alt='BookEater Logo' /></Link>
                 <p className='nav-greeting' >Hi, {props.headerProps.fName}!</p>
             </div>
             <div className='nav-item user-info'>
@@ -26,8 +26,8 @@ const Header = (props) => {
             </div>
             <div className='nav-item nav-right'>
                 <img className='nav-title' src={menuLogo} alt='BookEater Title' />
-                {/* <button className='btn btn-sm btn-primary btn-block nav-signout' onClick={logout}>Sign Out</button>
-                {auth.roles.includes(1)
+                <button className='btn btn-sm btn-primary btn-block nav-signout' onClick={logout}>Sign Out</button>
+                {/* {auth.roles.includes(1)
                     ? <Link className='users-link' to='/users'>Users</Link>
                     : null
                 } */}
