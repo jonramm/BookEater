@@ -30,8 +30,8 @@ function Report({ bookToEdit }) {
     }
 
     return (
-        <div className="login-container">
-            <form className="form-signin" onSubmit={editReport}>
+        <div className="report-container">
+            <form className="form-report" onSubmit={editReport}>
             <label className="" for="title">Title</label>
                 <input
                     class="form-control"

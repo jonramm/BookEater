@@ -22,6 +22,22 @@ const User = sequelize.define('User', {
     jwtToken: {
         type: DataTypes.STRING,
         allowNull: true
+    },
+    location: {
+        type: DataTypes.STRING,
+        allowNull: true
+    },
+    bookstore: {
+        type: DataTypes.STRING,
+        allowNull: true
+    },
+    favBook: {
+        type: DataTypes.STRING,
+        allowNull: true
+    },
+    quote: {
+        type: DataTypes.STRING,
+        allowNull: true
     }
     }, 
     {
@@ -79,7 +95,8 @@ const getUserByToken = async (token) => {
         const user = await User.findOne({
             where: {
                 jwtToken: token
-            }
+            },
+            attributes: ['email', 'fName', 'lName', 'location', 'bookstore', 'favBook', 'quote']
         })
         return user
     } catch(err) {

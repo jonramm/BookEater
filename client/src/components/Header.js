@@ -19,10 +19,10 @@ const Header = (props) => {
                 <p className='nav-greeting' >Hi, {props.headerProps.fName}!</p>
             </div>
             <div className='nav-item user-info'>
-                <p className='user-info-line'><strong>Location:</strong> Santa Fe, NM</p>
-                <p className='user-info-line'><strong>Favorite Bookstore:</strong> Blue Cypress, New Orleans, LA</p>
-                <p className='user-info-line'><strong>Favorite Book:</strong> East of Eden, John Steinbeck</p>
-                <p className='user-info-line'><strong>Quote:</strong> "He tried." - Breakfast of Champions, Vonnegut</p>
+                <p className='user-info-line'><strong>Location:</strong> {props.headerProps.location}</p>
+                <p className='user-info-line'><strong>Favorite Bookstore:</strong> {props.headerProps.bookstore}</p>
+                <p className='user-info-line'><strong>Favorite Book:</strong> {props.headerProps.favBook}</p>
+                <p className='user-info-line'><strong>Quote:</strong> {props.headerProps.quote}</p>
             </div>
             <div className='nav-item nav-right'>
                 <div className="dropleft">

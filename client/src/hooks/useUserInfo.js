@@ -17,9 +17,13 @@ const useUserInfo = () => {
                     withCredentials: true
                 })
             const headerProps = {
-                'email': response?.data[0].email,
-                'fName': response?.data[0].fName,
-                'lName': response?.data[0].lName
+                'email': response?.data.email,
+                'fName': response?.data.fName,
+                'lName': response?.data.lName,
+                'location': response?.data.location,
+                'bookstore': response?.data.bookstore,
+                'favBook': response?.data.favBook,
+                'quote': response?.data.quote
             }
             return headerProps
         } catch (err) {
