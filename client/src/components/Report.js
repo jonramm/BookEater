@@ -5,19 +5,20 @@ import AuthContext from '../context/AuthProvider'
 
 function Report({ bookToEdit }) {
 
+    const [reportId, setReportId] = useState(bookToEdit.id)
     const [report, setReport] = useState(bookToEdit.report)
     const [title, setTitle] = useState(bookToEdit.title)
     const [author, setAuthor] = useState(bookToEdit.author)
+    const [bookId, setBookId] = useState(bookToEdit.bookId)
 
     const { auth, setAuth } = useContext(AuthContext)
-    const id = bookToEdit.id
     const navigate = useNavigate()
 
     const editReport = async (e) => {
         e.preventDefault()
         try {
             const response = await axios.post('/update-report',
-            JSON.stringify({id, title, author, report}),
+            JSON.stringify({bookId, title, author, report, reportId}),
                 {
                     headers: { 'Content-Type': 'application/json', 'Authorization': `Bearer ${auth.accessToken}` },
                     withCredentials: true

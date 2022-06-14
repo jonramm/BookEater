@@ -45,7 +45,6 @@ const fetchBooks = async (req, res) => {
       const refreshToken = cookies.jwt
       getUserByToken(refreshToken).then((user) => {
         getBooks(user.email).then((books) => {
-          console.log(books)
           res.send(books)      
         })
       })
