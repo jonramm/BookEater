@@ -1,19 +1,21 @@
 import React from "react";
 import LibraryTableRow from "./LibraryTableRow";
 
-function LibraryTable({ books }) {
+function LibraryTable({ books, onBookEdit }) {
 
     return (
-        <table className="library-table">
+        <table className="library-table table table-hover">
             <thead>
                 <tr>
-                    <th>Title</th>
-                    <th>Author</th>
-                    <th>Report</th>
+                    <th scope="col">Title</th>
+                    <th scope="col">Author</th>
+                    <th scope="col">Report</th>
+                    <th scope="row">Edit</th>
+                    <th scope="row">Delete</th>
                 </tr>
             </thead>
             <tbody>
-                {books.map((book, key) => (<LibraryTableRow book={book} key={key} />))}
+                {books.map((book, key) => (<LibraryTableRow book={book} key={key} onBookEdit={onBookEdit} />))}
             </tbody>
         </table>
     )

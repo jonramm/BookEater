@@ -1,4 +1,5 @@
 import React, { useState, useEffect, useContext } from "react";
+import { useNavigate } from "react-router-dom";
 import AuthContext from '../context/AuthProvider'
 import axios from "../api/axios";
 import Header from "../components/Header";
@@ -7,7 +8,7 @@ import LibraryTable from "../components/LibraryTable";
 const USER_INFO_URL = '/user-info'
 const BOOKS_URL = '/get-books'
 
-function Library() {
+function Library({ setBookToEdit }) {
 
     const [email, setEmail] = useState('')
     const [fName, setFName] = useState('')
@@ -15,6 +16,8 @@ function Library() {
     const [books, setBooks] = useState([])
     const [headerProps, setHeaderProps] = useState({})
     const { auth, setAuth } = useContext(AuthContext)
+
+    const navigate = useNavigate()
 
     const getUserInfo = async () => {
         try {
@@ -55,6 +58,11 @@ function Library() {
         }
     }
 
+    const onBookEdit = async (book) => {
+        setBookToEdit(book)
+        navigate('/add-report')
+    }
+
     useEffect(() => {
         getUserInfo()
     }, [])
@@ -70,7 +78,7 @@ function Library() {
         <div className="library-page">
             <Header headerProps={headerProps} />
             <section className='library-content'>
-                <LibraryTable books={books} />
+                <LibraryTable books={books} onBookEdit={onBookEdit} />
             </section>
         </div>
     )

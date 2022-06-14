@@ -22,6 +22,8 @@ const ROLES = {
 
 function App() {
 
+  const [bookToEdit, setBookToEdit] = useState()
+
   return (
     <Routes>
       <Route path='/' element={<Layout />}>
@@ -36,8 +38,8 @@ function App() {
         <Route element={<PersistLogin />}>
           <Route element={<RequireAuth allowedRoles={[ROLES.admin, ROLES.editor, ROLES.user]} />}>
             <Route path='/' element={<HomePage />} />
-            <Route path='/library' element={<Library />} />
-            <Route path='add-report' element={<AddReport />} />
+            <Route path='/library' element={<Library setBookToEdit={setBookToEdit}/>} />
+            <Route path='add-report' element={<AddReport bookToEdit={bookToEdit} />} />
           </Route>
           <Route element={<RequireAuth allowedRoles={[ROLES.admin, ROLES.editor]} />}>
             <Route path='users' element={<SeeAllUsers />} />
