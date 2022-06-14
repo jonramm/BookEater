@@ -14,7 +14,7 @@ const addBook = async (req, res) => {
     const refreshToken = cookies.jwt
     createBook(title, author).then((newId) => {
       addUserBook(refreshToken, newId).then(() => {
-        res.status(200)
+        res.status(200).json({"message": "Book added!"})
       }).catch((err) => {
         console.log(err)
         res.status(500).json({"message": err.message}) 

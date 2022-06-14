@@ -21,7 +21,7 @@ body {
   display: flex;
   height: 100%;
   width: 100%;
-  background-color: #6eb09e;
+  background-color: #145a4e;
   overflow-x: hidden;
 }
 
@@ -139,7 +139,7 @@ body {
   display: flex;
   /* justify-content: space-evenly; */
   flex-direction: row;
-  background-color: rgb(255, 205, 118);
+  background-color: #ef838a;
   padding-left: 3%;
   padding-right: 3%;
 }

@@ -46,7 +46,7 @@ const booksList = async () => {
 }
 
 const getBooks = async (email) => {
-    const [results, metadata] = await sequelize.query(`select b.title, b.author, r.report from user_books ub join books b on ub.bookId = b.id left join reports r on ub.bookId = r.bookId where ub.user = '${email}';`)
+    const [results, metadata] = await sequelize.query(`select b.title, b.author, r.report, r.id from user_books ub join books b on ub.bookId = b.id left join reports r on ub.bookId = r.bookId where ub.user = '${email}';`)
     return JSON.stringify(results)
 }
 

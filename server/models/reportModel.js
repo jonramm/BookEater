@@ -53,9 +53,33 @@ const getReportByUserAndBookId = async (email, id) => {
     return report
 }
 
+const getReportByUserAndReportId = async (email, id) => {
+    const report = await Report.findOne({
+        where: {
+            user: email,
+            id: id
+        }
+    })
+    return report
+}
+
+const updateReport = async (id, title, author, report) => {
+    await Report.update({
+        title: title,
+        author: author,
+        report: report
+    }, {
+        where: {
+            id: id
+        }
+    })
+}
+
 module.exports = {
     addReport,
     Report,
     reportsList,
-    getReportByUserAndBookId
+    getReportByUserAndBookId,
+    getReportByUserAndReportId,
+    updateReport
 }
