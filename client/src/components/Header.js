@@ -19,10 +19,22 @@ const Header = (props) => {
                 <p className='nav-greeting' >Hi, {props.headerProps.fName}!</p>
             </div>
             <div className='nav-item user-info'>
-                <p className='user-info-line'><strong>Location:</strong> {props.headerProps.location}</p>
-                <p className='user-info-line'><strong>Favorite Bookstore:</strong> {props.headerProps.bookstore}</p>
-                <p className='user-info-line'><strong>Favorite Book:</strong> {props.headerProps.favBook}</p>
-                <p className='user-info-line'><strong>Quote:</strong> {props.headerProps.quote}</p>
+                {props.headerProps.location 
+                            ? <p className='user-info-line'><strong>Location:</strong> {props.headerProps.location}</p>
+                            : <Link to='/preferences'>Add your location!</Link>
+                        }
+                {props.headerProps.bookstore
+                            ? <p className='user-info-line'><strong>Favorite Bookstore:</strong> {props.headerProps.bookstore}</p>
+                            : <Link to='/preferences'>Add your favorite bookstore!</Link>
+                        }
+                {props.headerProps.favBook
+                            ? <p className='user-info-line'><strong>Favorite Book:</strong> {props.headerProps.favBook}</p>
+                            : <Link to='/preferences'>Add your favorite book!</Link>
+                        }
+                {props.headerProps.quote
+                            ? <p className='user-info-line'><strong>Quote:</strong> {props.headerProps.quote}</p>
+                            : <Link to='/preferences'>Add your favorite quote!</Link>
+                        }
             </div>
             <div className='nav-item nav-right'>
                 <div className="dropleft">
