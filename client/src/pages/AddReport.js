@@ -1,12 +1,14 @@
 import React, { useState, useEffect, useContext } from "react";
 import AuthContext from '../context/AuthProvider'
 import axios from "../api/axios";
+import { useLocation } from "react-router-dom";
 import Header from "../components/Header";
+import Report from "../components/Report";
 
 const USER_INFO_URL = '/user-info'
 const REPORT_URL = '/get-report'
 
-function AddReport({ title, author, id }) {
+function AddReport() {
 
     const { auth, setAuth } = useContext(AuthContext)
     const [email, setEmail] = useState('')
@@ -14,6 +16,9 @@ function AddReport({ title, author, id }) {
     const [lName, setLName] = useState('')
     const [report, setReport] = useState('')
     const [headerProps, setHeaderProps] = useState({})
+
+    const location = useLocation()
+    const { title, author, id } = location.state
 
     const getUserInfo = async () => {
         try {
@@ -40,21 +45,23 @@ function AddReport({ title, author, id }) {
 
     const loadReport = async () => {
         try {
-            try {
-                console.log("getting report...")
-                const response = await axios.post(REPORT_URL,
-                    JSON.stringify(auth),
-                    {
-                        headers: { 'Content-Type': 'application/json', 'Authorization': `Bearer ${auth.accessToken}` },
-                        withCredentials: true
-                    })
-                console.log('response report: ', response.data)
-                setReport(response.data)
-            } catch(err) {
-                console.log(err)
+            console.log("getting report...")
+            console.log('ID: ', id)
+            const reqObj = {
+                roles: auth.roles,
+                accessToken: auth.accessToken,
+                id: id
             }
-        } catch(err) {
-
+            const response = await axios.post(REPORT_URL,
+                JSON.stringify(reqObj),
+                {
+                    headers: { 'Content-Type': 'application/json', 'Authorization': `Bearer ${auth.accessToken}` },
+                    withCredentials: true
+                })
+            console.log('response report: ', response.data)
+            setReport(response.data)
+        } catch (err) {
+            console.log(err)
         }
     }
 
@@ -69,6 +76,7 @@ function AddReport({ title, author, id }) {
     return (
         <>
             <Header headerProps={headerProps} />
+            <Report title={title} author={author} report={report} />
         </>
     )
 }
