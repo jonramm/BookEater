@@ -1,7 +1,7 @@
 import React from "react";
 import LibraryTableRow from "./LibraryTableRow";
 
-function LibraryTable({ books, onBookEdit }) {
+function LibraryTable({ books, onBookEdit, onBookDelete }) {
 
     return (
         <table className="library-table table table-hover">
@@ -15,7 +15,7 @@ function LibraryTable({ books, onBookEdit }) {
                 </tr>
             </thead>
             <tbody>
-                {books.map((book, key) => (<LibraryTableRow book={book} key={key} onBookEdit={onBookEdit} />))}
+                {books.map((book, key) => (<LibraryTableRow book={book} key={key} onBookEdit={onBookEdit} onBookDelete={onBookDelete} />))}
             </tbody>
         </table>
     )

@@ -28,7 +28,7 @@ function AddReport({ bookToEdit }) {
                     headers: { 'Content-Type': 'application/json', 'Authorization': `Bearer ${auth.accessToken}` },
                     withCredentials: true
                 })
-            console.log(JSON.stringify(response?.data))
+            // console.log(JSON.stringify(response?.data))
             setEmail(response?.data[0].email)
             setFName(response?.data[0].fName)
             setLName(response?.data[0].lName)
@@ -43,40 +43,13 @@ function AddReport({ bookToEdit }) {
         }
     }
 
-    // const loadReport = async () => {
-    //     try {
-    //         console.log("getting report...")
-    //         console.log('ID: ', id)
-    //         const reqObj = {
-    //             roles: auth.roles,
-    //             accessToken: auth.accessToken,
-    //             id: id
-    //         }
-    //         const response = await axios.post(REPORT_URL,
-    //             JSON.stringify(reqObj),
-    //             {
-    //                 headers: { 'Content-Type': 'application/json', 'Authorization': `Bearer ${auth.accessToken}` },
-    //                 withCredentials: true
-    //             })
-    //         console.log('response report: ', response.data)
-    //         setReport(response.data)
-    //     } catch (err) {
-    //         console.log(err)
-    //     }
-    // }
-
     useEffect(() => {
         getUserInfo()
     }, [])
 
-    // useEffect(() => {
-    //     loadReport()
-    // }, [])
-
     return (
         <>
             <Header headerProps={headerProps} />
-            {/* <Report title={title} author={author} report={report} /> */}
             <Report bookToEdit={ bookToEdit } />
         </>
     )

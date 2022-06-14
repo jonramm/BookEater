@@ -7,6 +7,7 @@ import LibraryTable from "../components/LibraryTable";
 
 const USER_INFO_URL = '/user-info'
 const BOOKS_URL = '/get-books'
+const DESTROY_URL = '/destroy-user-book'
 
 function Library({ setBookToEdit }) {
 
@@ -63,6 +64,23 @@ function Library({ setBookToEdit }) {
         navigate('/add-report')
     }
 
+    const onBookDelete = async (book) => {
+        try {
+            const bookId = book.bookId
+            const response = await axios.post(DESTROY_URL,
+                JSON.stringify({bookId}),
+                {
+                    headers: { 'Content-Type': 'application/json', 'Authorization': `Bearer ${auth.accessToken}` },
+                    withCredentials: true
+                })
+            if (response.status === 204) {
+                setBooks(books.filter(e => e.bookId !== book.bookId));
+            }
+        } catch(err) {
+            console.log(err)
+        }
+    }
+
     useEffect(() => {
         getUserInfo()
     }, [])
@@ -78,7 +96,7 @@ function Library({ setBookToEdit }) {
         <div className="library-page">
             <Header headerProps={headerProps} />
             <section className='library-content'>
-                <LibraryTable books={books} onBookEdit={onBookEdit} />
+                <LibraryTable books={books} onBookEdit={onBookEdit} onBookDelete={onBookDelete} />
             </section>
         </div>
     )

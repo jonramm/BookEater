@@ -31,14 +31,6 @@ const createBook = async (title, author) => {
     console.log(`Adding ${newBook.title}...`)
     return newBook.id
   }
-
-const deleteBook = async (id) => {
-await Book.destroy({
-    where: {
-        id: id
-    }
-})
-}
   
 const booksList = async () => {
     const books = await Book.findAll();
@@ -46,7 +38,7 @@ const booksList = async () => {
 }
 
 const getBooks = async (email) => {
-    const [results, metadata] = await sequelize.query(`select b.title, b.author, b.id as 'bookId', r.report, r.id from user_books ub join books b on ub.bookId = b.id left join reports r on ub.bookId = r.bookId where ub.user = '${email}';`)
+    const [results, metadata] = await sequelize.query(`select b.title, b.author, b.id as 'bookId', r.report, r.id, r.dateAdded from user_books ub join books b on ub.bookId = b.id left join reports r on ub.bookId = r.bookId where ub.user = '${email}' order by r.dateAdded desc;`)
     return JSON.stringify(results)
 }
 
@@ -62,7 +54,6 @@ const getBookById = async (id) => {
 module.exports = { 
     Book,
     createBook, 
-    deleteBook, 
     booksList,
     getBooks,
     getBookById

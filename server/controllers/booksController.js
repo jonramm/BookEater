@@ -2,7 +2,7 @@ const db = require('../dbcon')
 require('dotenv').config()
 const sequelize = require('../sequelizeDbConn')
 const { createBook, getBooks, getBookById } = require('../models/bookModel')
-const { addUserBook } = require('../models/userBookModel')
+const { addUserBook, deleteUserBook } = require('../models/userBookModel')
 const { getUserByToken } = require('../models/userModel')
 
 const addBook = async (req, res) => {
@@ -53,5 +53,21 @@ const fetchBooks = async (req, res) => {
     }
 }
 
+const destroyUserBook = async (req, res) => {
+  try {
+    console.log('Deleting book from user library...')
+    const cookies = req.cookies
+    if (!cookies?.jwt) return res.sendStatus(401)
+    const refreshToken = cookies.jwt
+    getUserByToken(refreshToken).then((user) => {
+      deleteUserBook(user.email, req.body.bookId).then(() => {
+        res.status(204).json({"message": "Book deleted successfully!"})      
+      })
+    })
+  } catch(err) {
+    console.log(err)
+  }
+}
 
-module.exports = { addBook, fetchBooks }
+
+module.exports = { addBook, fetchBooks, destroyUserBook }

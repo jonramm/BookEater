@@ -1,7 +1,7 @@
 import React from "react";
 import { Link } from "react-router-dom";
 
-function LibraryTableRow({ book, key, onBookEdit }) {
+function LibraryTableRow({ book, key, onBookEdit, onBookDelete }) {
 
     let report = book.report
     if (report) {
@@ -16,7 +16,7 @@ function LibraryTableRow({ book, key, onBookEdit }) {
             <td>{book.author}</td>
             <td>{report}</td>
             <td><button onClick={() => onBookEdit(book)} className='btn btn-sm btn-primary btn-block'>Edit</button></td>
-            <td><button className='btn btn-sm btn-primary btn-block'>Delete</button></td>
+            <td><button onClick={() => onBookDelete(book)} className='btn btn-sm btn-primary btn-block'>Delete Book</button></td>
         </tr>
     )
 }

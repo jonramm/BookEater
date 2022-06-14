@@ -45,8 +45,18 @@ const addUserBook = async (jwtToken, bookId) => {
     console.log(`Adding ${newUserBook.user} to book ${newUserBook.bookId}...`)
 }
 
+const deleteUserBook = async (email, bookId) => {
+    await UserBook.destroy({
+        where: {
+            bookId: bookId,
+            user: email
+        }
+    })
+}
+
 module.exports = {
     UserBook,
     userBooksList,
-    addUserBook
+    addUserBook,
+    deleteUserBook
 }
