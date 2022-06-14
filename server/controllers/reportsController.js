@@ -25,6 +25,7 @@ const fetchReport = async (req, res) => {
 const editReport = async (req, res) => {
     try {
         console.log('Updating report...')
+        console.log(req.body)
         const cookies = req.cookies
         if (!cookies?.jwt) return res.sendStatus(401)
         const refreshToken = cookies.jwt
