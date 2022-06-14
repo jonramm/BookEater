@@ -10,9 +10,9 @@ import PersistLogin from './components/PersistLogin';
 import Layout from './components/Layout';
 import Missing from './pages/Missing';
 import Unauthorized from './pages/Unauthorized';
-import TestLinks from './pages/TestLinks';
 import Library from './pages/Library';
 import AddReport from './pages/AddReport';
+import Preferences from './pages/Preferences';
 
 const ROLES = {
   'admin': 1,
@@ -29,7 +29,6 @@ function App() {
       <Route path='/' element={<Layout />}>
 
         {/* Public Routes */}
-        <Route path='links' element={<TestLinks />} />
         <Route path='login' element={<Login />} />
         <Route path='register' element={<Register />} />
         <Route path='unauthorized' element={<Unauthorized />} />
@@ -39,7 +38,8 @@ function App() {
           <Route element={<RequireAuth allowedRoles={[ROLES.admin, ROLES.editor, ROLES.user]} />}>
             <Route path='/' element={<HomePage />} />
             <Route path='/library' element={<Library setBookToEdit={setBookToEdit}/>} />
-            <Route path='add-report' element={<AddReport bookToEdit={bookToEdit} />} />
+            <Route path='/add-report' element={<AddReport bookToEdit={bookToEdit} />} />
+            <Route path='/preferences' element={<Preferences />} />
           </Route>
           <Route element={<RequireAuth allowedRoles={[ROLES.admin, ROLES.editor]} />}>
             <Route path='users' element={<SeeAllUsers />} />
