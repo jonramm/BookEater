@@ -24,7 +24,7 @@ const Report = sequelize.define('Report', {
         type: DataTypes.INTEGER,
         allowNull: false
     }
-    }, 
+},
     {
         tableName: 'reports',
         timestamps: false
@@ -34,15 +34,21 @@ const Report = sequelize.define('Report', {
 // Report.hasOne(Book)
 
 const addReport = async (user, report, bookId) => {
-    let date = new Date().toISOString().slice(0, 19).replace('T', ' ');
-    date = date.slice(0, 10)
-    console.log('Date', date)
-    newReport = await Report.create({
-        user: user, 
-        report: report, 
-        dateAdded: date, 
-        bookId: bookId})
-    console.log(`Adding ${newReport.user}'s report...`)
+    try {
+        let date = new Date().toISOString().slice(0, 19).replace('T', ' ');
+        date = date.slice(0, 10)
+        console.log('Date', date)
+        newReport = await Report.create({
+            user: user,
+            report: report,
+            dateAdded: date,
+            bookId: bookId
+        })
+        console.log(`Adding ${newReport.user}'s report...`)
+    } catch(err) {
+        console.log(err)
+    }
+    
 }
 
 const reportsList = async () => {

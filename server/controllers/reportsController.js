@@ -29,15 +29,15 @@ const editReport = async (req, res) => {
         if (!cookies?.jwt) return res.sendStatus(401)
         const refreshToken = cookies.jwt
         getUserByToken(refreshToken).then((user) => {
-            if (req.body.id) {
-                getReportByUserAndReportId(user.email, req.body.id).then((report) => {
-                    console.log("Request body: ", req.body)
-                    updateReport(req.body.id, req.body.title, req.body.author, req.body.report)
+            if (req.body.reportId) {
+                getReportByUserAndReportId(user.email, req.body.reportId).then((report) => {
+                    updateReport(report.id, req.body.title, req.body.author, req.body.report)
                     res.status(200).json({ "message": "Report updated!" })
                 })
             } else {
-                addReport(user.email, req.body.report, req.body.bookId)
-                res.status(200).json({ "message": "Report updated!" })
+                addReport(user.email, req.body.report, req.body.bookId).then(() => {
+                    res.status(200).json({ "message": "Report updated!" })
+                })    
             }
         })
     } catch (err) {
