@@ -300,19 +300,29 @@ body {
 }
 
 .library-content {
-  display: flex;
+  margin-top: 3%;
 }
 
 .library-table {
-
+  background-color: #fff;
+  text-align: center;
+  width: 75%;
+  margin: auto;
 }
 
 /*******************************************/
-/* Search Table                            */
+/* Users Table                             */
 /*******************************************/
 
-.book-search-table {
-  
+.users-content {
+  margin-top: 3%;
+}
+
+.users-table {
+  background-color: #fff;
+  text-align: center;
+  width: 75%;
+  margin: auto;
 }
 
 /*******************************************/

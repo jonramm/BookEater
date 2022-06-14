@@ -1,11 +1,11 @@
 import React, { useState, useEffect, useContext } from "react";
 import { useNavigate } from "react-router-dom";
 import AuthContext from '../context/AuthProvider'
+import useUserInfo from '../hooks/useUserInfo'
 import axios from "../api/axios";
 import Header from "../components/Header";
 import LibraryTable from "../components/LibraryTable";
 
-const USER_INFO_URL = '/user-info'
 const BOOKS_URL = '/get-books'
 const DESTROY_URL = '/destroy-user-book'
 
@@ -20,28 +20,7 @@ function Library({ setBookToEdit }) {
 
     const navigate = useNavigate()
 
-    const getUserInfo = async () => {
-        try {
-            const response = await axios.post(USER_INFO_URL,
-                JSON.stringify(auth),
-                {
-                    headers: { 'Content-Type': 'application/json', 'Authorization': `Bearer ${auth.accessToken}` },
-                    withCredentials: true
-                })
-            console.log(JSON.stringify(response?.data))
-            setEmail(response?.data[0].email)
-            setFName(response?.data[0].fName)
-            setLName(response?.data[0].lName)
-            setHeaderProps({
-                'email': response?.data[0].email,
-                'fName': response?.data[0].fName,
-                'lName': response?.data[0].lName
-            })
-
-        } catch (err) {
-            console.log(err)
-        }
-    }
+    const getUserInfo = useUserInfo()
 
     const getBooks = async () => {
         try {
@@ -82,7 +61,9 @@ function Library({ setBookToEdit }) {
     }
 
     useEffect(() => {
-        getUserInfo()
+        getUserInfo().then((headerProps) => {
+            setHeaderProps(headerProps)
+        })
     }, [])
 
     useEffect(() => {
