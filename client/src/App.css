@@ -333,6 +333,10 @@ body {
   border-radius: 20px;
 }
 
+/*******************************************/
+/* Book Add and Review                     */
+/*******************************************/
+
 .book-add-container {
   display: flex;
   flex-direction: column;
@@ -406,6 +410,77 @@ body {
 
 .update-btn {
   margin-bottom: 4%;
+}
+
+.emoji-img {
+  width: 100px;
+  height: auto;
+}
+
+.emoji-checkbox {
+  display: none;
+}
+
+/* https://stackoverflow.com/questions/30663562/use-images-like-checkboxes */
+
+input[type="checkbox"][id^="cb"] {
+  display: none;
+}
+
+label {
+  /* border: 1px solid #fff; */
+  /* padding: 10px; */
+  /* display: block;
+  position: relative; */
+  /* margin: 10px; */
+  cursor: pointer;
+  -webkit-touch-callout: none;
+  -webkit-user-select: none;
+  -khtml-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+}
+
+label::before {
+  background-color: white;
+  color: white;
+  content: " ";
+  display: block;
+  border-radius: 50%;
+  border: 1px solid grey;
+  /* position: absolute;
+  top: -5px;
+  left: -5px;
+  width: 25px;
+  height: 25px;
+  text-align: center;
+  line-height: 28px; */
+  transition-duration: 0.4s;
+  transform: scale(0);
+}
+
+label img {
+  height: 100px;
+  width: 100px;
+  transition-duration: 0.2s;
+  transform-origin: 50% 50%;
+}
+
+:checked+label {
+  border-color: #ef838a;
+}
+
+:checked+label::before {
+  content: "✓";
+  background-color: #ef838a;
+  transform: scale(1);
+}
+
+:checked+label img {
+  transform: scale(0.9);
+  box-shadow: 0 0 5px #333;
+  z-index: -1;
 }
 
 /*******************************************/
