@@ -37,7 +37,7 @@ const addReport = async (user, report, bookId) => {
     try {
         let date = new Date().toISOString().slice(0, 19).replace('T', ' ');
         date = date.slice(0, 10)
-        console.log('Date', date)
+        console.log("User: ", user)
         newReport = await Report.create({
             user: user,
             report: report,
@@ -45,6 +45,7 @@ const addReport = async (user, report, bookId) => {
             bookId: bookId
         })
         console.log(`Adding ${newReport.user}'s report...`)
+        return newReport.id
     } catch(err) {
         console.log(err)
     }

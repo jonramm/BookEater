@@ -42,6 +42,29 @@ const BookAdd = () => {
         }
     }
 
+    const addBookAndNourishment = async (e) => {
+        e.preventDefault()
+        try {
+            let array = []
+            if (strawberryIsChecked) {array.push(1)}
+            if (burgerIsChecked) {array.push(2)}
+            if (herringIsChecked) {array.push(3)}
+            if (moonshineIsChecked) {array.push(4)}
+            if (cocktailIsChecked) {array.push(5)}
+            if (champagneIsChecked) {array.push(6)}
+            console.log('Food array: ', array)
+            const response = await axios.post('/add-book-and-nourishment',
+                JSON.stringify({ title, author, array }),
+                {
+                    headers: { 'Content-Type': 'application/json', 'Authorization': `Bearer ${auth.accessToken}` },
+                    withCredentials: true
+                })
+            navigate('/library')
+        } catch(err) {
+            console.log(err)
+        }
+    }
+
     return (
         <>
             <div className='book-add-container'>
@@ -125,7 +148,7 @@ const BookAdd = () => {
                             </input>
                             <label for="cb6" className="checkbox-label"><img className="emoji-img" src={champagne} /></label>
                         </form>
-                        <button class="btn btn-lg btn-light home-btn btn-block">Add book and review</button>
+                        <button onClick={(e) => addBookAndNourishment(e)} class="btn btn-lg btn-light home-btn btn-block">Add book and review</button>
                         <button onClick={(e) => addBook(e)} class="btn btn-lg btn-light home-btn btn-block">Skip and add to library</button>
                     </div>
                 </Popup>

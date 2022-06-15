@@ -43,6 +43,7 @@ const addUserBook = async (jwtToken, bookId) => {
     })
     const newUserBook = await UserBook.create({user: user.email, bookId: bookId})
     console.log(`Adding ${newUserBook.user} to book ${newUserBook.bookId}...`)
+    return {email: newUserBook.user, bookId: bookId}
 }
 
 const deleteUserBook = async (email, bookId) => {
