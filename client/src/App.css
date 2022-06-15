@@ -333,8 +333,36 @@ body {
   border-radius: 20px;
 }
 
+.book-add-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  margin-top: 5%;
+  height: 100%;
+}
+
+@keyframes modal-slide {
+  from {
+    transform: translateY(100%);
+    opacity: 0;
+  }
+
+  to {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+
 .popup-content {
-  background-color: #145a4e;
+  background-image: url('./assets/paper-background.png');
+  background-size: cover;
+  background-position: center;
+  width: 50%;
+  height: 90%;
+  animation: modal-slide .5s ease-out forwards;
+  transform: translateY(50%);
 }
 
 .update-btn {
