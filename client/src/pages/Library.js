@@ -5,6 +5,7 @@ import useUserInfo from '../hooks/useUserInfo'
 import axios from "../api/axios";
 import Header from "../components/Header";
 import LibraryTable from "../components/LibraryTable";
+import bookStack from '../assets/Book-Stack.png'
 
 const BOOKS_URL = '/get-books'
 const DESTROY_URL = '/destroy-user-book'
@@ -71,6 +72,7 @@ function Library({ setBookToEdit }) {
         <div className="library-page">
             <Header headerProps={headerProps} />
             <section className='library-content'>
+                <img className='book-stack-img' src={bookStack} />
                 <LibraryTable books={books} onBookEdit={onBookEdit} onBookDelete={onBookDelete} />
             </section>
         </div>

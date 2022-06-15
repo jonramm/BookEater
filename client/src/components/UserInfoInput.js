@@ -106,7 +106,7 @@ function UserInfoInput() {
                     value={quote}
                     required
                 />
-                <button class="btn btn-lg btn-primary btn-block">Save Preferences</button>
+                <button class="btn btn-lg btn-light home-btn btn-block">Save Preferences</button>
             </form>
         </div>
     )

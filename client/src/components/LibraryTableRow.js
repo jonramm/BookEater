@@ -6,8 +6,8 @@ function LibraryTableRow({ book, key, onBookEdit, onBookDelete }) {
 
     let report = book.report
     if (report) {
-        if (report.length > 20) {
-            report = report.slice(0, 20) + '...'
+        if (report.length > 100) {
+            report = report.slice(0, 100) + '...'
         }
     }
 
@@ -23,8 +23,11 @@ function LibraryTableRow({ book, key, onBookEdit, onBookDelete }) {
                     {book.report}
                 </Popup>
             </td>
-            <td><button onClick={() => onBookEdit(book)} className='btn btn-sm btn-primary btn-block'>Edit</button></td>
-            <td><button onClick={() => onBookDelete(book)} className='btn btn-sm btn-primary btn-block'>Delete Book</button></td>
+            <td>
+                <button onClick={() => onBookEdit(book)} className='btn btn-sm btn-light btn-block home-btn'>Edit</button><br/>
+                <button onClick={() => onBookDelete(book)} className='btn btn-sm btn-light btn-block home-btn'>Delete</button>
+            </td>
+            
         </tr>
     )
 }

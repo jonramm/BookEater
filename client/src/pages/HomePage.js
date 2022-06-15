@@ -8,7 +8,8 @@ import Popup from 'reactjs-popup';
 import 'reactjs-popup/dist/index.css';
 import BookSearch from "../components/BookSearch";
 import BookAdd from "../components/BookAdd";
-import homeImg from '../assets/Background-For-Home-Page-4k.png'
+// import homeImg from '../assets/Background-For-Home-Page-4k.png'
+import homeImg from '../assets/Merged-Home-PNG.png'
 
 function HomePage() {
 
