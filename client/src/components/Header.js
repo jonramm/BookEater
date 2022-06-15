@@ -15,7 +15,7 @@ const Header = (props) => {
 
         <nav class="navbar navbar-expand-sm">
             <div className='nav-item nav-left'>
-                <Link to='/'><img className='nav-logo' src={logoImg} alt='BookEater Logo' /></Link>
+                <Link className='logo-home-link' to='/'><img className='nav-logo' src={logoImg} alt='BookEater Logo' /></Link>
                 <p className='nav-greeting' >Hi, {props.headerProps.fName}!</p>
             </div>
             <div className='nav-item user-info'>

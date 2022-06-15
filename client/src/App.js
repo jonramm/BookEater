@@ -13,6 +13,7 @@ import Unauthorized from './pages/Unauthorized';
 import Library from './pages/Library';
 import AddReport from './pages/AddReport';
 import Preferences from './pages/Preferences';
+// import "bootstrap/dist/css/bootstrap.min.css";
 
 const ROLES = {
   'admin': 1,

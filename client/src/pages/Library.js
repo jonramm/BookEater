@@ -16,7 +16,6 @@ function Library({ setBookToEdit }) {
     const { auth, setAuth } = useContext(AuthContext)
 
     const navigate = useNavigate()
-
     const getUserInfo = useUserInfo()
 
     const getBooks = async () => {

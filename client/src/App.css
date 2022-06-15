@@ -150,8 +150,13 @@ body {
   height: auto;
 }
 
+.logo-home-link {
+  display: flex;
+  justify-content: center;
+}
+
 .nav-left {
-  margin-left: 5%;
+  margin-left: 0;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -310,6 +315,10 @@ body {
   margin: auto;
 }
 
+.popup-content {
+  background-color: #145a4e;
+}
+
 /*******************************************/
 /* Users Table                             */
 /*******************************************/
@@ -326,23 +335,25 @@ body {
 }
 
 /*******************************************/
-/* Reportn Form                            */
+/* Report Form                             */
 /*******************************************/
 
 .report-container {
+  background-image: url('./assets/paper-background.png');
+  background-size: cover;
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
   text-align: center;
-  margin-top: 5%;
 }
 
 .form-report {
   width: 100%;
-  width: 50%;
+  width: 40%;
   padding: 10px;
   margin: auto;
+  margin-top: 8%;
 }
 .form-report .checkbox {
   font-weight: 400;
@@ -366,18 +377,20 @@ body {
 /*******************************************/
 
 .info-container {
+  background-image: url('./assets/paper-background.png');
+  background-size: cover;
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
   text-align: center;
-  margin-top: 5%;
 }
 
 .form-info {
   width: 30%;
   padding: 10px;
   margin: auto;
+  margin-top: 8%;
 }
 .form-info .checkbox {
   font-weight: 400;
