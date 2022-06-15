@@ -32,26 +32,8 @@ function Report({ bookToEdit }) {
     return (
         <div className="report-container">
             <form className="form-report" onSubmit={editReport}>
-            <label className="" for="title">Title</label>
-                <input
-                    class="form-control"
-                    type="text"
-                    id="title"
-                    autoComplete='off'
-                    onChange={(e) => { setTitle(e.target.value) }}
-                    value={title}
-                    required
-                />
-            <label className="" for="author">Author</label>
-                <input
-                    class="form-control"
-                    type="text"
-                    id="author"
-                    autoComplete="off"
-                    onChange={(e) => { setAuthor(e.target.value) }}
-                    value={author}
-                    required
-                />
+            <h2>{title}</h2>
+            <h2>{author}</h2>
             <label className="" for="report">Report</label>
                 <textarea
                     class="form-control"

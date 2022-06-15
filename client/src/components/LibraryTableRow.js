@@ -28,7 +28,7 @@ function LibraryTableRow({ book, key, onBookEdit, onBookDelete }) {
                 </Popup>
             </td>
             <td>
-                <button onClick={() => onBookEdit(book)} className='btn btn-sm btn-light btn-block home-btn'>Edit</button><br/>
+                <button onClick={() => onBookEdit(book)} className='btn btn-sm btn-light btn-block home-btn'>Edit Report</button><br/>
                 <button onClick={() => onBookDelete(book)} className='btn btn-sm btn-light btn-block home-btn'>Delete</button>
             </td>
             
