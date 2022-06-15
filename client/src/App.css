@@ -413,8 +413,8 @@ body {
 }
 
 .emoji-img {
-  width: 100px;
-  height: auto;
+  /* width: 100%;
+  height: auto; */
 }
 
 .emoji-checkbox {
@@ -433,6 +433,8 @@ label {
   /* display: block;
   position: relative; */
   /* margin: 10px; */
+  width: 100px;
+  height: auto;
   cursor: pointer;
   -webkit-touch-callout: none;
   -webkit-user-select: none;
@@ -461,8 +463,8 @@ label::before {
 }
 
 label img {
-  height: 100px;
-  width: 100px;
+  width: 100%;
+  height: auto;
   transition-duration: 0.2s;
   transform-origin: 50% 50%;
 }

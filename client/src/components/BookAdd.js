@@ -6,6 +6,10 @@ import AuthContext from '../context/AuthProvider'
 import Popup from 'reactjs-popup';
 import strawberry from '../assets/strawberry.PNG'
 import burger from '../assets/burger.PNG'
+import herring from '../assets/herring.PNG'
+import moonshine from '../assets/moonshine.PNG'
+import cocktail from '../assets/cocktail.PNG'
+import champagne from '../assets/champagne.PNG'
 
 const BookAdd = () => {
 
@@ -71,7 +75,7 @@ const BookAdd = () => {
                     >
                     <div className="review-container">
                         <form className="form-signin">
-                            <p>How did {title} make you feel?</p>
+                            <p>This book tastes like...</p>
                             <input
                                 className="emoji-checkbox"
                                 type='checkbox'
@@ -88,6 +92,38 @@ const BookAdd = () => {
                                 onChange={(e) => { setBurgerIsChecked(!burgerIsChecked) }}>
                             </input>
                             <label for="cb2" className="checkbox-label"><img className="emoji-img" src={burger} /></label>
+                            <input
+                                className="emoji-checkbox"
+                                type='checkbox'
+                                id='cb3'
+                                value={herringIsChecked}
+                                onChange={(e) => { setHerringIsChecked(!herringIsChecked) }}>
+                            </input>
+                            <label for="cb3" className="checkbox-label"><img className="emoji-img" src={herring} /></label>
+                            <input
+                                className="emoji-checkbox"
+                                type='checkbox'
+                                id='cb4'
+                                value={moonshineIsChecked}
+                                onChange={(e) => { setMoonshineIsChecked(!moonshineIsChecked) }}>
+                            </input>
+                            <label for="cb4" className="checkbox-label"><img className="emoji-img" src={moonshine} /></label>
+                            <input
+                                className="emoji-checkbox"
+                                type='checkbox'
+                                id='cb5'
+                                value={cocktailIsChecked}
+                                onChange={(e) => { setCocktailIsChecked(!cocktailIsChecked) }}>
+                            </input>
+                            <label for="cb5" className="checkbox-label"><img className="emoji-img" src={cocktail} /></label>
+                            <input
+                                className="emoji-checkbox"
+                                type='checkbox'
+                                id='cb6'
+                                value={champagneIsChecked}
+                                onChange={(e) => { setChampagneIsChecked(!champagneIsChecked) }}>
+                            </input>
+                            <label for="cb6" className="checkbox-label"><img className="emoji-img" src={champagne} /></label>
                         </form>
                         <button class="btn btn-lg btn-light home-btn btn-block">Add book and review</button>
                         <button onClick={(e) => addBook(e)} class="btn btn-lg btn-light home-btn btn-block">Skip and add to library</button>
