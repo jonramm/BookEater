@@ -11,9 +11,6 @@ const DESTROY_URL = '/destroy-user-book'
 
 function Library({ setBookToEdit }) {
 
-    const [email, setEmail] = useState('')
-    const [fName, setFName] = useState('')
-    const [lName, setLName] = useState('')
     const [books, setBooks] = useState([])
     const [headerProps, setHeaderProps] = useState({})
     const { auth, setAuth } = useContext(AuthContext)
@@ -69,8 +66,6 @@ function Library({ setBookToEdit }) {
     useEffect(() => {
         getBooks()
     }, [])
-
-    console.log(books)
 
     return (
 

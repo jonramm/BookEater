@@ -64,13 +64,17 @@ const deleteUser = async (email) => {
     })
 }
 
-const updateUserInfo = async (email, fName, lName) => {
+const updateUserInfo = async (jwtToken, fName, lName, location, bookstore, favBook, quote) => {
     await User.update({
         fName: fName,
-        lName: lName
+        lName: lName,
+        location: location,
+        bookstore: bookstore,
+        favBook: favBook,
+        quote: quote
     }, {
         where: {
-            email: email
+            jwtToken: jwtToken
         }
     })
 }

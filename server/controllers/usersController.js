@@ -1,6 +1,6 @@
 const db = require('../dbcon')
 const sequelize = require('../sequelizeDbConn')
-const { User, getUserByToken } = require('../models/userModel')
+const { User, getUserByToken, updateUserInfo } = require('../models/userModel')
 
 const getAllUsers = async (req, res) => {
   db.query("SELECT email FROM users;", (err, result) => {
@@ -48,8 +48,21 @@ const getUser = async (req, res) => {
   try {
     console.log('Getting user info with jwt token...')
     const user = await getUserByToken(refreshToken)
-    console.log(user)
     res.status(200).json(user)
+  } catch(err) {
+    console.log(err)
+  }
+}
+
+const updateUser = async (req, res) => {
+  const cookies = req.cookies
+  if (!cookies?.jwt) return res.sendStatus(401)
+  const refreshToken = cookies.jwt
+  try {
+    console.log('Updating user info...')
+    updateUserInfo(refreshToken, req.body.fName, req.body.lName, req.body.location, req.body.bookstore, req.body.favBook, req.body.quote).then(() => {
+      res.status(200).json({"message": "User info updated!"})
+    })
   } catch(err) {
     console.log(err)
   }
@@ -59,5 +72,6 @@ module.exports = {
   getAllUsers,
   createNewUser,
   addUserRole,
-  getUser
+  getUser,
+  updateUser
 }
