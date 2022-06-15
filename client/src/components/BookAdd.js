@@ -53,21 +53,24 @@ const BookAdd = () => {
                         onChange={(e) => { setAuthor(e.target.value) }}
                         required
                     />
-                    </form>
-                    <Popup
-                            trigger={<button disabled={!title || !author} class="btn btn-lg btn-light next-btn btn-block">Next</button>}
-                            modal
-                            nested>
-                        <div className="review-container">
-                            <form className="form-signin">
-                                <p>How did it make you feel?</p>
-                                <p>{title}</p>
-                                <p>{author}</p>
-                            </form>
-                            <button class="btn btn-lg btn-light home-btn btn-block">Add book and review</button>
-                            <button onClick={(e) => addBook(e)} class="btn btn-lg btn-light home-btn btn-block">Skip and add to library</button>
-                        </div>
-                    </Popup>
+                </form>
+
+                <Popup
+                    trigger={<button disabled={!title || !author} class="btn btn-lg btn-light next-btn btn-block">Next</button>}
+                    modal
+                    nested
+                    >
+                    <div className="review-container">
+                        <form className="form-signin">
+                            <p>How did {title} make you feel?</p>
+                            <input
+                                type='checkbox'>
+                            </input>
+                        </form>
+                        <button class="btn btn-lg btn-light home-btn btn-block">Add book and review</button>
+                        <button onClick={(e) => addBook(e)} class="btn btn-lg btn-light home-btn btn-block">Skip and add to library</button>
+                    </div>
+                </Popup>
             </div>
         </>
     )
