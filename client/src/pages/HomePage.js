@@ -10,6 +10,8 @@ import BookSearch from "../components/BookSearch";
 import BookAdd from "../components/BookAdd";
 // import homeImg from '../assets/Background-For-Home-Page-4k.png'
 import homeImg from '../assets/Merged-Home-PNG.png'
+import styled, { keyframes } from 'styled-components';
+import { slideInDown } from 'react-animations'
 
 function HomePage() {
 
@@ -27,6 +29,9 @@ function HomePage() {
         })
     }, [])
 
+    const slideAnimation = keyframes`${slideInDown}`
+    const SlideDiv = styled.div`animation: 1s ${slideAnimation};` 
+
     return (
         <div className="home-page">
             <Header headerProps={headerProps} />
@@ -38,8 +43,10 @@ function HomePage() {
                     <Popup 
                         trigger={<button className='btn btn-sm btn-light btn-block home-btn add-book-btn'
                         nested
-                    >Add Book</button>} modal>    
-                        <BookAdd/>
+                    >Add Book</button>} modal>  
+                        <SlideDiv> 
+                            <BookAdd/>
+                        </SlideDiv> 
                     </Popup>
                     {/* <button className='btn btn-sm btn-light btn-block home-btn full-lib-btn'>Full Library</button> */}
                     <Link to='/library' className='btn btn-sm btn-light btn-block home-btn full-lib-btn'>Full Library</Link>

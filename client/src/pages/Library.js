@@ -6,6 +6,8 @@ import axios from "../api/axios";
 import Header from "../components/Header";
 import LibraryTable from "../components/LibraryTable";
 import bookStack from '../assets/Book-Stack.png'
+import styled, { keyframes } from 'styled-components';
+import { zoomIn } from 'react-animations'
 
 const BOOKS_URL = '/get-books'
 const DESTROY_URL = '/destroy-user-book'
@@ -67,14 +69,19 @@ function Library({ setBookToEdit }) {
         getBooks()
     }, [])
 
-    return (
+    const zoomAnimation = keyframes`${zoomIn}`
+    const ZoomDiv = styled.div`animation: .5s ${zoomAnimation}`
 
+    return (
+        
         <div className="library-page">
             <Header headerProps={headerProps} />
+            <ZoomDiv>
             <section className='library-content'>
                 <img className='book-stack-img' src={bookStack} />
                 <LibraryTable books={books} onBookEdit={onBookEdit} onBookDelete={onBookDelete} />
             </section>
+            </ZoomDiv>
         </div>
     )
 }

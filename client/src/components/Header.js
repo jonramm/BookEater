@@ -12,7 +12,6 @@ const Header = (props) => {
     const { auth, setAuth } = useContext(AuthContext)
 
     return (
-
         <nav class="navbar navbar-expand-sm">
             <div className='nav-item nav-left'>
                 <Link className='logo-home-link' to='/'><img className='nav-logo' src={logoImg} alt='BookEater Logo' /></Link>
