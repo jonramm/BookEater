@@ -417,6 +417,11 @@ body {
   height: auto; */
 }
 
+.nourishment-img {
+  width: 40px;
+  height: auto;
+}
+
 .emoji-checkbox {
   display: none;
 }

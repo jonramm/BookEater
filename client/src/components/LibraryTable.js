@@ -8,6 +8,7 @@ function LibraryTable({ books, onBookEdit, onBookDelete }) {
             <table className="library-table table table-hover">
             <thead>
                 <tr>
+                    <th scope="col">Nourishment</th>
                     <th scope="col">Title</th>
                     <th scope="col">Author</th>
                     <th scope="col">Report</th>

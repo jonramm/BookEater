@@ -37,7 +37,13 @@ const addReportNourishment = async (reportId, nourishmentArray) => {
     return reportId
 }
 
+const getNourishmentByReport = async (reportId) => {
+    const [results, metadata] = await sequelize.query(`select n.description from report_nourishment rn join nourishment n on rn.nourishmentId = n.id where rn.reportId = ${reportId};`)
+    return results
+}
+
 module.exports = {
     ReportNourishment, 
-    addReportNourishment
+    addReportNourishment,
+    getNourishmentByReport
 }
