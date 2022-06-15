@@ -36,11 +36,11 @@ function HomePage() {
                 <div className="home-btn-row">
                     <Popup
                         trigger={<button className='btn btn-sm btn-light btn-block home-btn add-book-btn'
+                            modal
                             nested
                         >Add Book</button>} modal>
                         <BookAdd />
                     </Popup>
-                    {/* <button className='btn btn-sm btn-light btn-block home-btn full-lib-btn'>Full Library</button> */}
                     <Link to='/library' className='btn btn-sm btn-light btn-block home-btn full-lib-btn'>Full Library</Link>
                 </div>
             </section>
