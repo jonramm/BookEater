@@ -2,6 +2,7 @@ import React from "react";
 import { Link } from "react-router-dom";
 import Popup from 'reactjs-popup';
 import Nourishment from "./Nourishment";
+import AddNourishment from "./AddNourishment";
 
 function LibraryTableRow({ book, key, onBookEdit, onBookDelete }) {
 
@@ -16,6 +17,7 @@ function LibraryTableRow({ book, key, onBookEdit, onBookDelete }) {
         <tr key={key}>
             <td>
                 <Nourishment book={book} />
+                <AddNourishment book={book} />
             </td>
             <td>{book.title}</td>
             <td>{book.author}</td>

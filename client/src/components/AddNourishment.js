@@ -1,7 +1,6 @@
-import React from "react";
-import { useState, useContext } from "react";
+import React, { useState, useEffect, useContext } from "react";
 import { useNavigate } from "react-router-dom";
-import axios from "../api/axios";
+import axios from '../api/axios'
 import AuthContext from '../context/AuthProvider'
 import Popup from 'reactjs-popup';
 import strawberry from '../assets/strawberry.PNG'
@@ -11,10 +10,10 @@ import moonshine from '../assets/moonshine.PNG'
 import cocktail from '../assets/cocktail.PNG'
 import champagne from '../assets/champagne.PNG'
 
-const BookAdd = () => {
+function AddNourishment({ book }) {
 
-    const [title, setTitle] = useState('')
-    const [author, setAuthor] = useState('')
+    const { auth, setAuth } = useContext(AuthContext)
+    const [nourishment, setNourishment] = useState([])
 
     const [strawberryIsChecked, setStrawberryIsChecked] = useState(false)
     const [burgerIsChecked, setBurgerIsChecked] = useState(false)
@@ -23,26 +22,24 @@ const BookAdd = () => {
     const [herringIsChecked, setHerringIsChecked] = useState(false)
     const [moonshineIsChecked, setMoonshineIsChecked] = useState(false)
 
-    const { auth, setAuth } = useContext(AuthContext)
-
     const navigate = useNavigate()
 
-    const addBook = async (e) => {
-        e.preventDefault()
+    const getNourishment = async () => {
         try {
-            const response = await axios.post('/add-book',
-                JSON.stringify({ title, author }),
+            const nourishmentReq = { "reportId": book.id }
+            const response = await axios.post('/get-nourishment',
+                JSON.stringify(nourishmentReq),
                 {
                     headers: { 'Content-Type': 'application/json', 'Authorization': `Bearer ${auth.accessToken}` },
                     withCredentials: true
                 })
-            navigate('/library')
+            setNourishment(response.data.nourishment)
         } catch (err) {
             console.log(err)
         }
     }
 
-    const addBookAndNourishment = async (e) => {
+    const addNourishment = async (e) => {
         e.preventDefault()
         try {
             let array = []
@@ -52,8 +49,11 @@ const BookAdd = () => {
             if (moonshineIsChecked) {array.push(4)}
             if (cocktailIsChecked) {array.push(5)}
             if (champagneIsChecked) {array.push(6)}
-            const response = await axios.post('/add-book-and-nourishment',
-                JSON.stringify({ title, author, array }),
+            const nourishmentReq = { "reportId": book.id,
+                                    "nourishmentArray": array }
+            console.log('Nourishment request: ', nourishmentReq)
+            const response = await axios.post('/add-nourishment',
+                JSON.stringify(nourishmentReq),
                 {
                     headers: { 'Content-Type': 'application/json', 'Authorization': `Bearer ${auth.accessToken}` },
                     withCredentials: true
@@ -64,34 +64,16 @@ const BookAdd = () => {
         }
     }
 
+    useEffect(() => {
+        getNourishment()
+    }, [])
+
+    console.log(nourishment)
+
     return (
         <>
-            <div className='book-add-container'>
-                <form className='form-signin'>
-                    <input
-                        class="form-control"
-                        type="text"
-                        id="title"
-                        autoComplete='off'
-                        placeholder="Enter book title..."
-                        value={title}
-                        onChange={(e) => { setTitle(e.target.value) }}
-                        required
-                    />
-                    <input
-                        class="form-control"
-                        type="text"
-                        id="author"
-                        autoComplete='off'
-                        placeholder="Enter author..."
-                        value={author}
-                        onChange={(e) => { setAuthor(e.target.value) }}
-                        required
-                    />
-                </form>
-
-                <Popup
-                    trigger={<button disabled={!title || !author} class="btn btn-lg btn-light next-btn btn-block">Next</button>}
+            <Popup
+                    trigger={<button class="btn btn-lg btn-light next-btn btn-block">Add Nourishment</button>}
                     modal
                     nested
                     >
@@ -147,13 +129,11 @@ const BookAdd = () => {
                             </input>
                             <label for="cb6" className="checkbox-label"><img className="emoji-img" src={champagne} /></label>
                         </form>
-                        <button onClick={(e) => addBookAndNourishment(e)} class="btn btn-lg btn-light home-btn btn-block">Add book and review</button>
-                        <button onClick={(e) => addBook(e)} class="btn btn-lg btn-light home-btn btn-block">Skip and add to library</button>
+                        <button onClick={(e) => addNourishment(e)} class="btn btn-lg btn-light home-btn btn-block">Add Nourishment</button>
                     </div>
                 </Popup>
-            </div>
         </>
     )
 }
 
-export default BookAdd
+export default AddNourishment
