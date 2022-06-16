@@ -47,6 +47,7 @@ app.use('/destroy-user-book', require('./routes/destroyUserBook'))
 app.use('/update-info', require('./routes/updateUserInfo'))
 app.use('/add-book-and-nourishment', require('./routes/addBookAndNourishment'))
 app.use('/get-nourishment', require('./routes/getNourishment'))
+app.use('/add-nourishment', require('./routes/addNourishment'))
 
 app.get("/", (req, res) => {
   res.json({ message: "Hello!" });

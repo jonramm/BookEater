@@ -1,7 +1,7 @@
 const db = require('../dbcon')
 require('dotenv').config()
 const sequelize = require('../sequelizeDbConn')
-const { getNourishmentByReport } = require('../models/reportNourishmentModel')
+const { getNourishmentByReport, addReportNourishment } = require('../models/reportNourishmentModel')
 
 const getNourishment = async (req, res) => {
     console.log("Nourishment request: ", req.body)
@@ -12,6 +12,19 @@ const getNourishment = async (req, res) => {
     })
 }
 
+const addNourishment = async (req, res) => {
+    try {
+        addReportNourishment(req.body.reportId, req.body.nourishmentArray).then(() => {
+            res.status(200).json({"message": "Nourishment added!"})
+        }).catch((err) => {
+            console.log(err)
+        })
+    } catch(err) {
+        console.log(err)
+    }
+}
+
 module.exports = {
-    getNourishment
+    getNourishment,
+    addNourishment
 }

@@ -30,7 +30,6 @@ const addBook = async (req, res) => {
 const addBookAndNourishment = async (req, res) => {
   console.log('Adding book and nourishment...')
   const { title, author, array } = req.body
-  console.log("Array: ", array)
   const cookies = req.cookies
   if (!cookies?.jwt) return res.sendStatus(401)
   console.log(cookies.jwt)

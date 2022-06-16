@@ -30,6 +30,11 @@ const ReportNourishment = sequelize.define('ReportNourishment', {
 ReportNourishment.removeAttribute('id')
 
 const addReportNourishment = async (reportId, nourishmentArray) => {
+    await ReportNourishment.destroy({
+        where: {
+            reportId: reportId
+        }
+    })
     for (const num of nourishmentArray) {
         const newReportNourishment = await ReportNourishment.create({ reportId: reportId, nourishmentId: num })
         console.log(`Adding ${num} to report ${reportId}...`)
