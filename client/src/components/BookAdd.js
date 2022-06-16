@@ -4,12 +4,12 @@ import { useNavigate } from "react-router-dom";
 import axios from "../api/axios";
 import AuthContext from '../context/AuthProvider'
 import Popup from 'reactjs-popup';
-import strawberry from '../assets/strawberry.PNG'
-import burger from '../assets/burger.PNG'
-import herring from '../assets/herring.PNG'
-import moonshine from '../assets/moonshine.PNG'
-import cocktail from '../assets/cocktail.PNG'
-import champagne from '../assets/champagne.PNG'
+import strawberry from '../assets/strawberry.png'
+import burger from '../assets/burger.png'
+import herring from '../assets/herring.png'
+import moonshine from '../assets/moonshine.png'
+import cocktail from '../assets/cocktail.png'
+import champagne from '../assets/champagne.png'
 
 const BookAdd = () => {
 

@@ -1,13 +1,6 @@
 import React, { useState, useEffect, useContext } from "react";
 import axios from '../api/axios'
 import AuthContext from '../context/AuthProvider'
-import strawberry from '../assets/strawberry.PNG'
-import burger from '../assets/burger.PNG'
-import herring from '../assets/herring.PNG'
-import moonshine from '../assets/moonshine.PNG'
-import cocktail from '../assets/cocktail.PNG'
-import champagne from '../assets/champagne.PNG'
-
 
 function Nourishment({ book }) {
 
@@ -38,7 +31,7 @@ function Nourishment({ book }) {
 
     return (
         <>
-            {nourishment.map((item, key) => (<img className="nourishment-img" src={require(`../assets/${item.description}.PNG`)} />))
+            {nourishment.map((item, key) => (<img className="nourishment-img" src={require(`../assets/${item.description}.png`)} />))
             }
         </>
     )
