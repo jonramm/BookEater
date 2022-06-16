@@ -6,7 +6,11 @@ function DeleteConfirm({ deleteShow, handleDeleteClose, bookToDelete, onBookDele
   
     return (
       <>
-        <Modal show={deleteShow} onHide={handleDeleteClose} centered>
+        <Modal 
+            show={deleteShow} 
+            onHide={handleDeleteClose} 
+            centered
+            contentClassName='delete-modal'>
           <Modal.Header closeButton>
             <Modal.Title>Confirm</Modal.Title>
           </Modal.Header>

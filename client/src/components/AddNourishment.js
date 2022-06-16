@@ -101,7 +101,7 @@ function AddNourishment({ book }) {
                     headers: { 'Content-Type': 'application/json', 'Authorization': `Bearer ${auth.accessToken}` },
                     withCredentials: true
                 })
-            navigate('/library')
+            window.location.reload()
         } catch (err) {
             console.log(err)
         }

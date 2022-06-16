@@ -5,7 +5,11 @@ function EditConfirm({ editShow, handleEditClose, book, editReport }) {
   
     return (
       <>
-        <Modal show={editShow} onHide={handleEditClose} centered>
+        <Modal 
+            show={editShow} 
+            onHide={handleEditClose} 
+            contentClassName='edit-modal'
+            centered>
           <Modal.Header closeButton>
             <Modal.Title>Confirm</Modal.Title>
           </Modal.Header>
@@ -15,7 +19,7 @@ function EditConfirm({ editShow, handleEditClose, book, editReport }) {
               Cancel
             </Button>
             <Button variant="primary" onClick={editReport}>
-              Edit
+              Yes!
             </Button>
           </Modal.Footer>
         </Modal>

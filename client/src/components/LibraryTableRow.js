@@ -3,6 +3,8 @@ import { Link } from "react-router-dom";
 import Popup from 'reactjs-popup';
 import Nourishment from "./Nourishment";
 import AddNourishment from "./AddNourishment";
+import { AiFillEdit } from 'react-icons/ai'
+import { AiFillDelete } from 'react-icons/ai'
 
 function LibraryTableRow({ book, key, onBookEdit, onBookDelete, handleDeleteShow, handleEditShow }) {
 
@@ -30,9 +32,8 @@ function LibraryTableRow({ book, key, onBookEdit, onBookDelete, handleDeleteShow
                 </Popup>
             </td>
             <td>
-                <button onClick={() => onBookEdit(book)} className='btn btn-sm btn-light btn-block home-btn'>Edit Report</button><br/>
-                {/* <button onClick={() => onBookDelete(book)} className='btn btn-sm btn-light btn-block home-btn'>Delete</button> */}
-                <button onClick={() => handleDeleteShow(book)} className='btn btn-sm btn-light btn-block home-btn'>Delete</button>
+                <AiFillEdit className='edit-icon' onClick={() => onBookEdit(book)} /><br/>
+                <AiFillDelete className='delete-icon' onClick={() => handleDeleteShow(book)} />
             </td>
             
         </tr>

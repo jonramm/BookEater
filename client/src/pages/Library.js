@@ -4,6 +4,8 @@ import AuthContext from '../context/AuthProvider'
 import useUserInfo from '../hooks/useUserInfo'
 import axios from "../api/axios";
 import Header from "../components/Header";
+import Popup from "reactjs-popup";
+import BookAdd from "../components/BookAdd";
 import LibraryTable from "../components/LibraryTable";
 import bookStack from '../assets/Book-Stack.png'
 import styled, { keyframes } from 'styled-components';
@@ -89,6 +91,15 @@ function Library({ setBookToEdit }) {
         <div className="library-page">
             <Header headerProps={headerProps} />
             <section className='library-content'>
+            <Popup
+                        trigger={<button className='btn btn-sm btn-light btn-block home-btn add-book-btn-library'
+                        >Add Book</button>}
+                        modal
+                        nested
+                        >
+                        <BookAdd />
+                    </Popup>
+            <div className='library-lower-content'>
                 <DeleteConfirm 
                     deleteShow={deleteShow} 
                     handleDeleteClose={handleDeleteClose}
@@ -97,6 +108,7 @@ function Library({ setBookToEdit }) {
                 />
                 <img className='book-stack-img' src={bookStack} />
                 <LibraryTable books={books} onBookEdit={onBookEdit} onBookDelete={onBookDelete} handleDeleteShow={handleDeleteShow} />
+            </div>
             </section>
         </div>
     )

@@ -51,7 +51,7 @@ function Report({ bookToEdit }) {
             <form className="form-report">
             <h2>{title}</h2>
             <h2>{author}</h2>
-            <label className="" for="report">Report</label>
+            <label className="" for="report"></label>
                 <textarea
                     class="form-control"
                     id="report"
@@ -60,10 +60,14 @@ function Report({ bookToEdit }) {
                     columns="50"
                     onChange={(e) => { setReport(e.target.value) }}
                     value={report}
+                    placeholder="Thoughts?"
                     required
                 />
                 {/* <button class="btn btn-lg btn-primary btn-block">Save</button> */}
-                <button onClick={(e) => handleEditShow(e)} className='btn btn-sm btn-light btn-block home-btn'>Save</button><br/>
+                <div className="edit-report-btn-row">
+                    <button onClick={() => navigate('/library')} className='btn btn-sm btn-light btn-block home-btn'>Go back</button>
+                    <button onClick={(e) => handleEditShow(e)} className='btn btn-sm btn-light btn-block home-btn'>Save</button><br/>
+                </div>
             </form>
         </div>
     )
