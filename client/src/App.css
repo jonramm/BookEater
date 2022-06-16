@@ -333,6 +333,18 @@ body {
   border-radius: 20px;
 }
 
+.carousel-indicators {
+  bottom:-50px;
+}
+
+.carousel-control-prev {
+  left: -20px;
+}
+
+.carousel-control-next {
+  right: -20px;
+}
+
 /*******************************************/
 /* Book Add and Review                     */
 /*******************************************/
