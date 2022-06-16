@@ -1,7 +1,8 @@
 import React from "react";
 import LibraryTableRow from "./LibraryTableRow";
+import { TransitionGroup } from 'react-transition-group'
 
-function LibraryTable({ books, onBookEdit, onBookDelete }) {
+function LibraryTable({ books, onBookEdit, onBookDelete, handleShow }) {
 
     return (
         <div className="library-table-container">
@@ -16,7 +17,7 @@ function LibraryTable({ books, onBookEdit, onBookDelete }) {
                 </tr>
             </thead>
             <tbody>
-                {books.map((book, key) => (<LibraryTableRow book={book} key={key} onBookEdit={onBookEdit} onBookDelete={onBookDelete} />))}
+                {books.map((book, key) => (<LibraryTableRow book={book} key={key} onBookEdit={onBookEdit} onBookDelete={onBookDelete} handleShow={handleShow}/>))}
             </tbody>
         </table>
         </div>

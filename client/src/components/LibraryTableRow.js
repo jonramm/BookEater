@@ -4,7 +4,7 @@ import Popup from 'reactjs-popup';
 import Nourishment from "./Nourishment";
 import AddNourishment from "./AddNourishment";
 
-function LibraryTableRow({ book, key, onBookEdit, onBookDelete }) {
+function LibraryTableRow({ book, key, onBookEdit, onBookDelete, handleShow }) {
 
     let report = book.report
     if (report) {
@@ -31,7 +31,8 @@ function LibraryTableRow({ book, key, onBookEdit, onBookDelete }) {
             </td>
             <td>
                 <button onClick={() => onBookEdit(book)} className='btn btn-sm btn-light btn-block home-btn'>Edit Report</button><br/>
-                <button onClick={() => onBookDelete(book)} className='btn btn-sm btn-light btn-block home-btn'>Delete</button>
+                {/* <button onClick={() => onBookDelete(book)} className='btn btn-sm btn-light btn-block home-btn'>Delete</button> */}
+                <button onClick={() => handleShow(book)} className='btn btn-sm btn-light btn-block home-btn'>Delete</button>
             </td>
             
         </tr>

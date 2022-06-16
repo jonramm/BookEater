@@ -8,6 +8,7 @@ import LibraryTable from "../components/LibraryTable";
 import bookStack from '../assets/Book-Stack.png'
 import styled, { keyframes } from 'styled-components';
 import { zoomIn } from 'react-animations'
+import DeleteConfirm from "../components/DeleteConfirm";
 
 const BOOKS_URL = '/get-books'
 const DESTROY_URL = '/destroy-user-book'
@@ -15,11 +16,22 @@ const DESTROY_URL = '/destroy-user-book'
 function Library({ setBookToEdit }) {
 
     const [books, setBooks] = useState([])
+    const [bookToDelete, setBookToDelete] = useState({})
+
     const [headerProps, setHeaderProps] = useState({})
     const { auth, setAuth } = useContext(AuthContext)
 
     const navigate = useNavigate()
     const getUserInfo = useUserInfo()
+
+    const [show, setShow] = useState(false);
+    const handleClose = () => setShow(false);
+    const handleShow = (book) => {
+        setShow(true);
+        setBookToDelete(book)
+    }
+
+    console.log(show)
 
     const getBooks = async () => {
         try {
@@ -42,6 +54,8 @@ function Library({ setBookToEdit }) {
         navigate('/add-report')
     }
 
+
+
     const onBookDelete = async (book) => {
         try {
             const bookId = book.bookId
@@ -53,6 +67,7 @@ function Library({ setBookToEdit }) {
                 })
             if (response.status === 204) {
                 setBooks(books.filter(e => e.bookId !== book.bookId));
+                handleClose()
             }
         } catch(err) {
             console.log(err)
@@ -76,12 +91,18 @@ function Library({ setBookToEdit }) {
         
         <div className="library-page">
             <Header headerProps={headerProps} />
-            <ZoomDiv>
+            {/* <ZoomDiv> */}
             <section className='library-content'>
+                <DeleteConfirm 
+                    show={show} 
+                    handleClose={handleClose}
+                    bookToDelete={bookToDelete}
+                    onBookDelete={onBookDelete}
+                />
                 <img className='book-stack-img' src={bookStack} />
-                <LibraryTable books={books} onBookEdit={onBookEdit} onBookDelete={onBookDelete} />
+                <LibraryTable books={books} onBookEdit={onBookEdit} onBookDelete={onBookDelete} handleShow={handleShow}/>
             </section>
-            </ZoomDiv>
+            {/* </ZoomDiv> */}
         </div>
     )
 }

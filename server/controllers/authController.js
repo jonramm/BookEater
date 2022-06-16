@@ -41,19 +41,6 @@ const handleLogin = async (req, res) => {
           console.log(err)
           res.status(500).json({"message": err.message}) 
         })
-        // inserts = [refreshToken, email]
-        // sql_insert_user = "UPDATE users SET jwtToken = ? WHERE email = ?;";
-        // db.query(sql_insert_user, inserts, (err, result) => {
-        //     if(err) {
-        //       console.log(err)
-        //       res.status(500).json({"message": err.message}) 
-        //     } else {
-        //       // Creates Secure Cookie with refresh token
-        //       res.cookie('jwt', refreshToken, { httpOnly: true, sameSite: 'None', secure: true, maxAge: 24 * 60 * 60 * 1000 });
-        //       // Send authorization roles and access token to user
-        //       res.json({ roles, accessToken });
-        //     }
-        //   })
     } else {
         res.sendStatus(401);
     }
