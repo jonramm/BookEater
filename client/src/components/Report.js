@@ -2,6 +2,7 @@ import React, { useState, useEffect, useContext } from "react";
 import { useNavigate } from "react-router-dom";
 import axios from "../api/axios";
 import AuthContext from '../context/AuthProvider'
+import EditConfirm from "./EditConfirm";
 
 function Report({ bookToEdit }) {
 
@@ -10,13 +11,22 @@ function Report({ bookToEdit }) {
     const [title, setTitle] = useState(bookToEdit.title)
     const [author, setAuthor] = useState(bookToEdit.author)
     const [bookId, setBookId] = useState(bookToEdit.bookId)
+    const [book, setBook] = useState({})
 
     const { auth, setAuth } = useContext(AuthContext)
     const navigate = useNavigate()
 
-    const editReport = async (e) => {
+    const [editShow, setEditShow] = useState(false);
+    const handleEditClose = () => setEditShow(false);
+    const handleEditShow = (e) => {
         e.preventDefault()
+        setEditShow(true);
+        setBookId(bookToEdit)
+    }
+
+    const editReport = async () => {
         try {
+            console.log('Editing...')
             const response = await axios.post('/update-report',
             JSON.stringify({bookId, title, author, report, reportId}),
                 {
@@ -31,7 +41,14 @@ function Report({ bookToEdit }) {
 
     return (
         <div className="report-container">
-            <form className="form-report" onSubmit={editReport}>
+            <EditConfirm 
+                editShow={editShow}
+                handleEditClose={handleEditClose}
+                book={book}
+                editReport={editReport}
+            />
+            {/* <form className="form-report" onSubmit={editReport}> */}
+            <form className="form-report">
             <h2>{title}</h2>
             <h2>{author}</h2>
             <label className="" for="report">Report</label>
@@ -45,7 +62,8 @@ function Report({ bookToEdit }) {
                     value={report}
                     required
                 />
-                <button class="btn btn-lg btn-primary btn-block">Save</button>
+                {/* <button class="btn btn-lg btn-primary btn-block">Save</button> */}
+                <button onClick={(e) => handleEditShow(e)} className='btn btn-sm btn-light btn-block home-btn'>Save</button><br/>
             </form>
         </div>
     )
