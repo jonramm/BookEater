@@ -16,6 +16,7 @@ function AddNourishment({ book }) {
 
     const { auth, setAuth } = useContext(AuthContext)
     const [nourishment, setNourishment] = useState([])
+    const [modalOpen, setModalOpen] = useState(false)
 
     const [strawberryIsChecked, setStrawberryIsChecked] = useState(false)
     const [burgerIsChecked, setBurgerIsChecked] = useState(false)
@@ -36,9 +37,22 @@ function AddNourishment({ book }) {
                     withCredentials: true
                 })
             setNourishment(response.data.nourishment)
+            setChecked()
         } catch (err) {
             console.log(err)
         }
+    }
+
+    const setChecked = () => {
+        for (const obj of nourishment) {
+            if (obj.description === 'strawberry') {setStrawberryIsChecked(true)}
+            if (obj.description === 'cocktail') {setCocktailIsChecked(true)}
+            if (obj.description === 'burger') {setBurgerIsChecked(true)}
+            if (obj.description === 'herring') {setHerringIsChecked(true)}
+            if (obj.description === 'champagne') {setChampagneIsChecked(true)}
+            if (obj.description === 'moonshine') {setMoonshineIsChecked(true)}
+        }
+
     }
 
     const addNourishment = async (e) => {
@@ -72,12 +86,11 @@ function AddNourishment({ book }) {
         getNourishment()
     }, [])
 
-    console.log(nourishment)
-
     return (
         <>
             <Popup
                 trigger={<button class="next-btn btn-block"><GiForkKnifeSpoon /></button>}
+                onOpen={getNourishment}
                 modal
                 nested
             >
@@ -88,6 +101,7 @@ function AddNourishment({ book }) {
                         <Carousel interval={null}>
                             <Carousel.Item>
                                 <input
+                                    checked={strawberryIsChecked ? 'checked' : ''}
                                     className="emoji-checkbox"
                                     type='checkbox'
                                     id='cb1'
@@ -96,6 +110,7 @@ function AddNourishment({ book }) {
                                 </input>
                                 <label for="cb1" className="checkbox-label"><img className="emoji-img" src={strawberry} /></label>
                                 <input
+                                    checked={burgerIsChecked ? 'checked' : ''}
                                     className="emoji-checkbox"
                                     type='checkbox'
                                     id='cb2'
@@ -104,6 +119,7 @@ function AddNourishment({ book }) {
                                 </input>
                                 <label for="cb2" className="checkbox-label"><img className="emoji-img" src={burger} /></label>
                                 <input
+                                    checked={herringIsChecked ? 'checked' : ''}
                                     className="emoji-checkbox"
                                     type='checkbox'
                                     id='cb3'
@@ -112,6 +128,7 @@ function AddNourishment({ book }) {
                                 </input>
                                 <label for="cb3" className="checkbox-label"><img className="emoji-img" src={herring} /></label>
                                 <input
+                                    checked={moonshineIsChecked ? 'checked' : ''}
                                     className="emoji-checkbox"
                                     type='checkbox'
                                     id='cb4'
@@ -120,6 +137,7 @@ function AddNourishment({ book }) {
                                 </input>
                                 <label for="cb4" className="checkbox-label"><img className="emoji-img" src={moonshine} /></label>
                                 <input
+                                    checked={cocktailIsChecked ? 'checked' : ''}
                                     className="emoji-checkbox"
                                     type='checkbox'
                                     id='cb5'
@@ -128,6 +146,7 @@ function AddNourishment({ book }) {
                                 </input>
                                 <label for="cb5" className="checkbox-label"><img className="emoji-img" src={cocktail} /></label>
                                 <input
+                                    checked={champagneIsChecked ? 'checked' : ''}
                                     className="emoji-checkbox"
                                     type='checkbox'
                                     id='cb6'
