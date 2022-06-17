@@ -4,6 +4,7 @@ import axios from '../api/axios'
 import AuthContext from '../context/AuthProvider'
 import Popup from 'reactjs-popup';
 import { GiForkKnifeSpoon } from 'react-icons/gi'
+import { FaEllipsisH } from 'react-icons/fa'
 import Carousel from 'react-bootstrap/Carousel';
 
 import strawberry from '../assets/strawberry.png'
@@ -114,7 +115,7 @@ function AddNourishment({ book }) {
     return (
         <>
             <Popup
-                trigger={<button class="next-btn btn-block"><GiForkKnifeSpoon /></button>}
+                trigger={<FaEllipsisH className="ellipses" />}
                 onOpen={getNourishment}
                 modal
                 nested

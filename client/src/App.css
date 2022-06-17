@@ -478,6 +478,15 @@ body {
   height: auto;
 }
 
+.ellipses {
+  width: 20px;
+  cursor: pointer;
+}
+
+.ellipses:hover {
+  color: #fff;
+}
+
 .emoji-checkbox {
   display: none;
 }
