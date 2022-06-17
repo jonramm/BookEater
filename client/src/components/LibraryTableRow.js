@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import { Link } from "react-router-dom";
 import Popup from 'reactjs-popup';
 import Nourishment from "./Nourishment";
@@ -6,7 +6,18 @@ import AddNourishment from "./AddNourishment";
 import { AiFillEdit } from 'react-icons/ai'
 import { AiFillDelete } from 'react-icons/ai'
 
-function LibraryTableRow({ book, key, onBookEdit, onBookDelete, handleDeleteShow, handleEditShow, addOpen, books }) {
+function LibraryTableRow({ 
+    book, 
+    key, 
+    onBookEdit, 
+    onBookDelete, 
+    handleDeleteShow, 
+    handleEditShow, 
+    addOpen, 
+    books, 
+    setNourOpen, 
+    nourOpen,
+    deleteShow }) {
 
     let report = book.report
     if (report) {
@@ -18,8 +29,16 @@ function LibraryTableRow({ book, key, onBookEdit, onBookDelete, handleDeleteShow
     return (
         <tr key={key}>
             <td>
-                <Nourishment book={book} addOpen={addOpen} books={books} />
-                <AddNourishment book={book} />
+                <Nourishment book={book} 
+                             addOpen={addOpen} 
+                             books={books} 
+                             nourOpen={nourOpen} 
+                             deleteShow={deleteShow} />
+                <AddNourishment book={book} 
+                                nourOpen={nourOpen} 
+                                setNourOpen={setNourOpen}
+                                deleteShow={deleteShow}
+                                addOpen={addOpen} />
             </td>
             <td>{book.title}</td>
             <td>{book.author}</td>

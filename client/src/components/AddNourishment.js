@@ -20,7 +20,7 @@ import redWine from '../assets/redWine.png'
 import sandwich from '../assets/sandwich.png'
 import whiskey from '../assets/whiskey.png'
 
-function AddNourishment({ book }) {
+function AddNourishment({ book, nourOpen, setNourOpen, deleteShow, addOpen }) {
 
     const { auth, setAuth } = useContext(AuthContext)
     const [nourishment, setNourishment] = useState([])
@@ -39,7 +39,9 @@ function AddNourishment({ book }) {
     const [sandwichIsChecked, setSandwichIsChecked] = useState(false)
     const [whiskeyIsChecked, setWhiskeyIsChecked] = useState(false)
 
-    const navigate = useNavigate()
+    const closeNourModal = () => {
+        console.log('closing nour modal...')
+        setNourOpen(false)}
 
     const getNourishment = async () => {
         try {
@@ -58,6 +60,18 @@ function AddNourishment({ book }) {
     }
 
     const setChecked = () => {
+        setStrawberryIsChecked(false)
+        setCocktailIsChecked(false)
+        setBurgerIsChecked(false)
+        setHerringIsChecked(false)
+        setChampagneIsChecked(false)
+        setMoonshineIsChecked(false)
+        setAnchoviesIsChecked(false)
+        setMoldyBreadIsChecked(false)
+        setPoopIsChecked(false)
+        setRedWineIsChecked(false)
+        setSandwichIsChecked(false)
+        setWhiskeyIsChecked(false)
         for (const obj of nourishment) {
             if (obj.description === 'strawberry') { setStrawberryIsChecked(true) }
             if (obj.description === 'cocktail') { setCocktailIsChecked(true) }
@@ -72,7 +86,6 @@ function AddNourishment({ book }) {
             if (obj.description === 'sandwich') { setSandwichIsChecked(true) }
             if (obj.description === 'whiskey') { setWhiskeyIsChecked(true) }
         }
-
     }
 
     const addNourishment = async (e) => {
@@ -102,28 +115,32 @@ function AddNourishment({ book }) {
                     headers: { 'Content-Type': 'application/json', 'Authorization': `Bearer ${auth.accessToken}` },
                     withCredentials: true
                 })
-            window.location.reload()
         } catch (err) {
             console.log(err)
         }
     }
 
+    const openModal = () => {
+        setNourOpen(true)
+        getNourishment()
+    }
+
     useEffect(() => {
         getNourishment()
-    }, [])
+    }, [nourOpen, deleteShow, addOpen])
 
     return (
         <>
             <Popup
                 trigger={<FaEllipsisH className="ellipses" />}
-                onOpen={getNourishment}
+                onOpen={openModal}
                 modal
                 nested
             >
+                {close => (
                 <div className="review-container">
                     <form className="form-signin">
                         <p>This book tastes like...</p>
-
                         <Carousel interval={null}>
                             <Carousel.Item>
                                 <input
@@ -240,8 +257,12 @@ function AddNourishment({ book }) {
                             </Carousel.Item>
                         </Carousel>
                     </form>
-                    <button onClick={(e) => addNourishment(e)} class="btn btn-lg btn-light home-btn btn-block">Add Nourishment</button>
+                    <button onClick={(e) => {
+                        closeNourModal()
+                        close()
+                        addNourishment(e)}} class="btn btn-lg btn-light home-btn btn-block">Add Nourishment</button>
                 </div>
+                )}
             </Popup>
         </>
     )

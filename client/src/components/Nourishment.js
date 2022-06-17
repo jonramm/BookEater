@@ -2,7 +2,7 @@ import React, { useState, useEffect, useContext } from "react";
 import axios from '../api/axios'
 import AuthContext from '../context/AuthProvider'
 
-function Nourishment({ book, addOpen, books }) {
+function Nourishment({ book, addOpen, books, nourOpen, deleteShow }) {
 
     const { auth, setAuth } = useContext(AuthContext)
     const [nourishment, setNourishment] = useState([])
@@ -25,7 +25,7 @@ function Nourishment({ book, addOpen, books }) {
 
     useEffect(() => {
         getNourishment()
-    }, [books])
+    }, [books, deleteShow, addOpen, nourOpen])
 
     return (
         <>

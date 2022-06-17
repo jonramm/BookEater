@@ -30,6 +30,8 @@ function Library({ setBookToEdit }) {
     const [addOpen, setAddOpen] = useState(false)
     const closeAddModal = () => {setAddOpen(false)}
 
+    const [nourOpen, setNourOpen] = useState(false)
+
     const [deleteShow, setDeleteShow] = useState(false);
     const handleDeleteClose = () => setDeleteShow(false);
     const handleDeleteShow = (book) => {
@@ -84,25 +86,24 @@ function Library({ setBookToEdit }) {
 
     useEffect(() => {
         getBooks()
-    }, [addOpen])
+    }, [addOpen, nourOpen, deleteShow])
 
     const zoomAnimation = keyframes`${zoomIn}`
     const ZoomDiv = styled.div`animation: .5s ${zoomAnimation}`
 
     return (
-        
         <div className="library-page">
             <Header headerProps={headerProps} />
             <section className='library-content'>
             <button onClick={() => setAddOpen(true)} className='btn btn-sm btn-light btn-block home-btn add-book-btn-library'>Add Book</button>   
             <Popup      
-                        open={addOpen}
-                        onClose={closeAddModal}
-                        modal
-                        nested
-                        >
-                        <BookAdd closeAddModal={closeAddModal}/>
-                    </Popup>
+                open={addOpen}
+                onClose={closeAddModal}
+                modal
+                nested
+                >
+                <BookAdd closeAddModal={closeAddModal}/>
+            </Popup>
             <div className='library-lower-content'>
                 <DeleteConfirm 
                     deleteShow={deleteShow} 
@@ -111,7 +112,15 @@ function Library({ setBookToEdit }) {
                     onBookDelete={onBookDelete}
                 />
                 <img className='book-stack-img' src={bookStack} />
-                <LibraryTable books={books} onBookEdit={onBookEdit} onBookDelete={onBookDelete} handleDeleteShow={handleDeleteShow} addOpen={addOpen} />
+                <LibraryTable 
+                    books={books} 
+                    onBookEdit={onBookEdit} 
+                    onBookDelete={onBookDelete} 
+                    handleDeleteShow={handleDeleteShow} 
+                    addOpen={addOpen} 
+                    setNourOpen={setNourOpen} 
+                    nourOpen={nourOpen}
+                    deleteShow={deleteShow} />
             </div>
             </section>
         </div>
