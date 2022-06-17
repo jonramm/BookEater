@@ -2,7 +2,7 @@ import React, { useState, useRef, useEffect } from "react";
 import { Link, useNavigate, useLocation } from "react-router-dom";
 import axios from '../api/axios'
 import useAuth from "../hooks/useAuth";
-import mainLogo from '../assets/Official-Logo-And-GIF.png'
+import mainLogo from '../assets/Official-Logo-And-GIF-No-Title.png'
 
 const LOGIN_URL = '/auth'
 

@@ -214,16 +214,33 @@ body {
   display: flex;
   flex-direction: column;
   text-align: center;
-  width: 80%;
-  margin: 3% auto 0 auto;
+  width: 60%;
+  margin: 0 auto 0 auto;
+}
+
+.landing-text {
+  /* width: 60%;
+  height: auto;
+  margin: 0 auto 0 auto; */
+  background-color: #b4cccb;
+  border-radius: 80px;
+  padding: 30px;
 }
 
 .landing-row {
   display: flex;
   justify-content: space-around;
   width: 80%;
-  margin: 3% auto 0 auto;
+  margin: 0 auto 5% auto;
   font-size: 1.5em;
+}
+
+.landing-link {
+  color: white;
+}
+
+.landing-link:hover {
+  color:#ef838a;
 }
 
 .landing-row-item {
@@ -235,11 +252,15 @@ body {
   height: auto;
 }
 
+.landing-logo-img {
+  width: 70%;
+  height: auto;
+}
+
 .landing-header {
   display: flex;
   justify-content: center;
   align-items: center;
-  margin-bottom: 5%;
 }
 
 .landing-header-item {
@@ -260,7 +281,7 @@ body {
 }
 
 .main-logo {
-  width: 18%;
+  width: 25%;
   height: auto;
   margin: auto;
 }
@@ -278,8 +299,9 @@ body {
   width: 30%;
   margin-left: auto;
   margin-right: auto;
-  background-color: #ef838a;
-  border-radius: 30px;
+  background-color: #b4cccb;
+  border-radius: 80px;
+  padding: 30px;
 }
 
 .form-register {

@@ -23,7 +23,7 @@ const BookAdd = ({ closeAddModal }) => {
 
     const [title, setTitle] = useState('')
     const [author, setAuthor] = useState('')
-    const [flavor, setFlavor] = useState('')
+    const [flavor, setFlavor] = useState('Tasty')
 
     const [strawberryIsChecked, setStrawberryIsChecked] = useState(false)
     const [burgerIsChecked, setBurgerIsChecked] = useState(false)
