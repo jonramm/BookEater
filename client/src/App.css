@@ -64,19 +64,6 @@ body {
 .form-signin .form-control:focus {
   z-index: 2;
 }
-/* .form-signin input[type="email"] {
-  margin-bottom: -1px;
-  border-bottom-right-radius: 0;
-  border-bottom-left-radius: 0;
-}
-.form-signin input[type="password"] {
-  margin-bottom: 10px;
-  border-top-left-radius: 0;
-  border-top-right-radius: 0;
-} */
-
-/*******************************************/
-/* Form validation                         */
 /*******************************************/
 /* Register CSS from tutorial: https://www.youtube.com/watch?v=brcHK3P6ChQ*/
 
@@ -483,14 +470,48 @@ body {
 /* Book Add and Review                     */
 /*******************************************/
 
+.book-add-form-header {
+  margin-top: 30%;
+}
+
+.add-book-btn-row {
+  display: flex;
+  width: 50%;
+  margin: 3% auto;
+  justify-content: center;
+}
+
+
+.form-book-add {
+  width: 100%;
+  max-width: 330px;
+  padding: 10px;
+  margin: auto;
+}
+.form-book-add .checkbox {
+  font-weight: 400;
+}
+.form-book-add .form-control {
+  position: relative;
+  box-sizing: border-box;
+  height: auto;
+  padding: 10px;
+  font-size: 16px;
+  margin: 1em auto;
+  border-radius: 30px;
+}
+.form-book-add .form-control:focus {
+  z-index: 2;
+}
+
 .book-add-container {
   display: flex;
   flex-direction: column;
-  justify-content: center;
+  justify-content: flex-start;
   align-items: center;
   text-align: center;
-  margin-top: 5%;
-  height: 80%;
+  margin-top: 15%;
+  height: 50%;
 }
 
 .next-btn {

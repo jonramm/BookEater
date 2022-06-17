@@ -129,8 +129,8 @@ const BookAdd = ({ closeAddModal }) => {
                 >
                 {close => (
                     <div className="review-container">
-                        <form className="form-signin">
-                            <p>This book tastes like...</p>
+                        <form className="form-book-add">
+                            <p className="book-add-form-header">If you could describe this literary journey in terms of food alone, how would it taste?</p>
                             <Carousel interval={null}>
                             <Carousel.Item>
                                 <input
@@ -247,14 +247,16 @@ const BookAdd = ({ closeAddModal }) => {
                             </Carousel.Item>
                         </Carousel>
                         </form>
-                        <button onClick={(e) => {
-                            // close()
-                            addBookAndNourishment(e)}} 
-                            class="btn btn-lg btn-light home-btn btn-block">Add book and review</button>
-                        <button onClick={(e) => {
-                            // close()
-                            addBook(e)}} 
-                            class="btn btn-lg btn-light home-btn btn-block">Skip and add to library</button>
+                        <div className="add-book-btn-row">
+                            <button onClick={(e) => {
+                                // close()
+                                addBook(e)}} 
+                                class="btn btn-lg btn-light home-btn btn-block">Do later</button>
+                            <button onClick={(e) => {
+                                // close()
+                                addBookAndNourishment(e)}} 
+                                class="btn btn-lg btn-light home-btn btn-block">Consume</button>
+                        </div>
                     </div>
                     )}
                 </Popup>
