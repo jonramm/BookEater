@@ -111,7 +111,7 @@ const Register = () => {
                     <div class="registration-container">
                         <p ref={errRef} className={errMsg ? "errmsg" : "offscreen"} aria-live="assertive">{errMsg}</p>
                         <h1 className="h3 mb-3 font-weight-normal">Register</h1>
-                        <form class="form-signin">
+                        <form class="form-register">
                             <label className="" for="fName">First Name:</label>
                             <input 
                                 class="form-control"
@@ -219,10 +219,6 @@ const Register = () => {
                                     onClick={createUser}>Sign Up</button>
                             </div>
                         </form>
-                        <p>
-                            Already have an account?
-                            <Link to="/" >Login</Link>
-                        </p>
                     </div>
                 </div>)}
         </>

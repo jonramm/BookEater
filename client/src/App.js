@@ -13,6 +13,8 @@ import Unauthorized from './pages/Unauthorized';
 import Library from './pages/Library';
 import AddReport from './pages/AddReport';
 import Preferences from './pages/Preferences';
+import About from './pages/About';
+import LandingPage from './pages/LandingPage';
 // import "bootstrap/dist/css/bootstrap.min.css";
 
 const ROLES = {
@@ -30,6 +32,7 @@ function App() {
       <Route path='/' element={<Layout />}>
 
         {/* Public Routes */}
+        <Route path='landing' element={<LandingPage />} />
         <Route path='login' element={<Login />} />
         <Route path='register' element={<Register />} />
         <Route path='unauthorized' element={<Unauthorized />} />
@@ -41,6 +44,7 @@ function App() {
             <Route path='/library' element={<Library setBookToEdit={setBookToEdit}/>} />
             <Route path='/add-report' element={<AddReport bookToEdit={bookToEdit} />} />
             <Route path='/preferences' element={<Preferences />} />
+            <Route path='/about' element={<About />} />
           </Route>
           <Route element={<RequireAuth allowedRoles={[ROLES.admin, ROLES.editor]} />}>
             <Route path='users' element={<SeeAllUsers />} />

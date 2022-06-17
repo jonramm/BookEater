@@ -207,6 +207,46 @@ body {
 }
 
 /*******************************************/
+/* Landing Page                            */
+/*******************************************/
+
+.landing-container {
+  display: flex;
+  flex-direction: column;
+  text-align: center;
+  width: 80%;
+  margin: 3% auto 0 auto;
+}
+
+.landing-row {
+  display: flex;
+  justify-content: space-around;
+  width: 80%;
+  margin: 3% auto 0 auto;
+  font-size: 1.5em;
+}
+
+.landing-row-item {
+  display: flex;
+}
+
+.bookeater-text-img {
+  width: 50%;
+  height: auto;
+}
+
+.landing-header {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-bottom: 5%;
+}
+
+.landing-header-item {
+  display: flex;
+}
+
+/*******************************************/
 /* Login                                   */
 /*******************************************/
 
@@ -234,7 +274,35 @@ body {
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  margin-top: 5%;
+  margin-top: 3%;
+  width: 30%;
+  margin-left: auto;
+  margin-right: auto;
+  background-color: #ef838a;
+  border-radius: 30px;
+}
+
+.form-register {
+  width: 100%;
+  max-width: 330px;
+  padding: 10px;
+  margin: auto;
+  text-align: center;
+}
+.form-register .checkbox {
+  font-weight: 400;
+}
+.form-register .form-control {
+  position: relative;
+  box-sizing: border-box;
+  height: auto;
+  padding: 10px;
+  font-size: 16px;
+  margin: .5em auto;
+  border-radius: 30px;
+}
+.form-register .form-control:focus {
+  z-index: 2;
 }
 
 /*******************************************/

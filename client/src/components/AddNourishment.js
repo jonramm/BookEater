@@ -40,7 +40,6 @@ function AddNourishment({ book, nourOpen, setNourOpen, deleteShow, addOpen, book
     const [whiskeyIsChecked, setWhiskeyIsChecked] = useState(false)
 
     const closeNourModal = () => {
-        console.log('closing nour modal...')
         setNourOpen(false)}
 
     const getNourishment = async () => {

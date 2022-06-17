@@ -95,11 +95,6 @@ function Login() {
                         />
                         <button class="btn btn-lg btn-primary btn-block">Login</button>
                     </form>
-                    <p>
-                        Need to create an account?
-                        <br />
-                        <Link to="/register">Sign Up</Link>
-                    </p>
                 </div>
             </div>
         </>
