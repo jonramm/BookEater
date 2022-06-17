@@ -16,7 +16,6 @@ function Nourishment({ book, addOpen, books, nourOpen, deleteShow }) {
                     headers: { 'Content-Type': 'application/json', 'Authorization': `Bearer ${auth.accessToken}` },
                     withCredentials: true
                 })
-            console.log('response nourishment: ', response.data)
             setNourishment(response.data.nourishment)
         } catch (err) {
             console.log(err)
@@ -29,7 +28,7 @@ function Nourishment({ book, addOpen, books, nourOpen, deleteShow }) {
 
     return (
         <>
-            {nourishment.map((item, key) => (<img className="nourishment-img" src={require(`../assets/${item.description}.png`)} />))
+            {nourishment.map((item, key) => (<img key={key} className="nourishment-img" src={require(`../assets/${item.description}.png`)} />))
             }
         </>
     )

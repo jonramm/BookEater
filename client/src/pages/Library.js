@@ -70,7 +70,8 @@ function Library({ setBookToEdit }) {
                     withCredentials: true
                 })
             if (response.status === 204) {
-                setBooks(books.filter(e => e.bookId !== book.bookId));
+                // setBooks(books.filter(e => e.bookId !== book.bookId));
+                getBooks()
                 handleDeleteClose()
             }
         } catch(err) {
@@ -87,6 +88,8 @@ function Library({ setBookToEdit }) {
     useEffect(() => {
         getBooks()
     }, [addOpen, nourOpen, deleteShow])
+
+    console.log(books)
 
     const zoomAnimation = keyframes`${zoomIn}`
     const ZoomDiv = styled.div`animation: .5s ${zoomAnimation}`

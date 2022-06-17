@@ -38,7 +38,8 @@ function LibraryTableRow({
                                 nourOpen={nourOpen} 
                                 setNourOpen={setNourOpen}
                                 deleteShow={deleteShow}
-                                addOpen={addOpen} />
+                                addOpen={addOpen}
+                                books={books} />
             </td>
             <td>{book.title}</td>
             <td>{book.author}</td>

@@ -20,7 +20,7 @@ import redWine from '../assets/redWine.png'
 import sandwich from '../assets/sandwich.png'
 import whiskey from '../assets/whiskey.png'
 
-function AddNourishment({ book, nourOpen, setNourOpen, deleteShow, addOpen }) {
+function AddNourishment({ book, nourOpen, setNourOpen, deleteShow, addOpen, books }) {
 
     const { auth, setAuth } = useContext(AuthContext)
     const [nourishment, setNourishment] = useState([])
@@ -127,7 +127,8 @@ function AddNourishment({ book, nourOpen, setNourOpen, deleteShow, addOpen }) {
 
     useEffect(() => {
         getNourishment()
-    }, [nourOpen, deleteShow, addOpen])
+    }, [books])
+
 
     return (
         <>

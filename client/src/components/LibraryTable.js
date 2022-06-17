@@ -33,7 +33,8 @@ function LibraryTable({
                                                 onBookDelete={onBookDelete} 
                                                 handleDeleteShow={handleDeleteShow} 
                                                 handleEditShow={handleEditShow} 
-                                                addOpen={addOpen} books={books} 
+                                                addOpen={addOpen} 
+                                                books={books} 
                                                 setNourOpen={setNourOpen} 
                                                 nourOpen={nourOpen}
                                                 deleteShow />))}
