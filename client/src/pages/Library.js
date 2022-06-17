@@ -27,6 +27,9 @@ function Library({ setBookToEdit }) {
     const navigate = useNavigate()
     const getUserInfo = useUserInfo()
 
+    const [addOpen, setAddOpen] = useState(false)
+    const closeAddModal = () => {setAddOpen(false)}
+
     const [deleteShow, setDeleteShow] = useState(false);
     const handleDeleteClose = () => setDeleteShow(false);
     const handleDeleteShow = (book) => {
@@ -81,7 +84,7 @@ function Library({ setBookToEdit }) {
 
     useEffect(() => {
         getBooks()
-    }, [])
+    }, [addOpen])
 
     const zoomAnimation = keyframes`${zoomIn}`
     const ZoomDiv = styled.div`animation: .5s ${zoomAnimation}`
@@ -91,13 +94,14 @@ function Library({ setBookToEdit }) {
         <div className="library-page">
             <Header headerProps={headerProps} />
             <section className='library-content'>
-            <Popup
-                        trigger={<button className='btn btn-sm btn-light btn-block home-btn add-book-btn-library'
-                        >Add Book</button>}
+            <button onClick={() => setAddOpen(true)} className='btn btn-sm btn-light btn-block home-btn add-book-btn-library'>Add Book</button>   
+            <Popup      
+                        open={addOpen}
+                        onClose={closeAddModal}
                         modal
                         nested
                         >
-                        <BookAdd />
+                        <BookAdd closeAddModal={closeAddModal}/>
                     </Popup>
             <div className='library-lower-content'>
                 <DeleteConfirm 
@@ -107,7 +111,7 @@ function Library({ setBookToEdit }) {
                     onBookDelete={onBookDelete}
                 />
                 <img className='book-stack-img' src={bookStack} />
-                <LibraryTable books={books} onBookEdit={onBookEdit} onBookDelete={onBookDelete} handleDeleteShow={handleDeleteShow} />
+                <LibraryTable books={books} onBookEdit={onBookEdit} onBookDelete={onBookDelete} handleDeleteShow={handleDeleteShow} addOpen={addOpen} />
             </div>
             </section>
         </div>

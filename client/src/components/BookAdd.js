@@ -19,7 +19,7 @@ import redWine from '../assets/redWine.png'
 import sandwich from '../assets/sandwich.png'
 import whiskey from '../assets/whiskey.png'
 
-const BookAdd = () => {
+const BookAdd = ({ closeAddModal }) => {
 
     const [title, setTitle] = useState('')
     const [author, setAuthor] = useState('')
@@ -50,6 +50,7 @@ const BookAdd = () => {
                     headers: { 'Content-Type': 'application/json', 'Authorization': `Bearer ${auth.accessToken}` },
                     withCredentials: true
                 })
+            closeAddModal()
             navigate('/library')
         } catch (err) {
             console.log(err)
@@ -79,6 +80,7 @@ const BookAdd = () => {
                     headers: { 'Content-Type': 'application/json', 'Authorization': `Bearer ${auth.accessToken}` },
                     withCredentials: true
                 })
+            closeAddModal()
             navigate('/library')
         } catch (err) {
             console.log(err)
@@ -116,6 +118,7 @@ const BookAdd = () => {
                     modal
                     nested
                 >
+                {close => (
                     <div className="review-container">
                         <form className="form-signin">
                             <p>This book tastes like...</p>
@@ -235,9 +238,16 @@ const BookAdd = () => {
                             </Carousel.Item>
                         </Carousel>
                         </form>
-                        <button onClick={(e) => addBookAndNourishment(e)} class="btn btn-lg btn-light home-btn btn-block">Add book and review</button>
-                        <button onClick={(e) => addBook(e)} class="btn btn-lg btn-light home-btn btn-block">Skip and add to library</button>
+                        <button onClick={(e) => {
+                            // close()
+                            addBookAndNourishment(e)}} 
+                            class="btn btn-lg btn-light home-btn btn-block">Add book and review</button>
+                        <button onClick={(e) => {
+                            // close()
+                            addBook(e)}} 
+                            class="btn btn-lg btn-light home-btn btn-block">Skip and add to library</button>
                     </div>
+                    )}
                 </Popup>
             </div>
         </>

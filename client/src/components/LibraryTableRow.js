@@ -6,7 +6,7 @@ import AddNourishment from "./AddNourishment";
 import { AiFillEdit } from 'react-icons/ai'
 import { AiFillDelete } from 'react-icons/ai'
 
-function LibraryTableRow({ book, key, onBookEdit, onBookDelete, handleDeleteShow, handleEditShow }) {
+function LibraryTableRow({ book, key, onBookEdit, onBookDelete, handleDeleteShow, handleEditShow, addOpen, books }) {
 
     let report = book.report
     if (report) {
@@ -18,7 +18,7 @@ function LibraryTableRow({ book, key, onBookEdit, onBookDelete, handleDeleteShow
     return (
         <tr key={key}>
             <td>
-                <Nourishment book={book} />
+                <Nourishment book={book} addOpen={addOpen} books={books} />
                 <AddNourishment book={book} />
             </td>
             <td>{book.title}</td>
