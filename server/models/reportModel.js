@@ -23,6 +23,10 @@ const Report = sequelize.define('Report', {
     bookId: {
         type: DataTypes.INTEGER,
         allowNull: false
+    },
+    flavor: {
+        type: DataTypes.STRING,
+        allowNull: true
     }
 },
     {
@@ -33,7 +37,7 @@ const Report = sequelize.define('Report', {
 
 // Report.hasOne(Book)
 
-const addReport = async (user, report, bookId) => {
+const addReport = async (user, report, bookId, flavor) => {
     try {
         let date = new Date().toISOString().slice(0, 19).replace('T', ' ');
         date = date.slice(0, 10)
@@ -42,7 +46,8 @@ const addReport = async (user, report, bookId) => {
             user: user,
             report: report,
             dateAdded: date,
-            bookId: bookId
+            bookId: bookId,
+            flavor: flavor
         })
         console.log(`Adding ${newReport.user}'s report...`)
         return newReport.id
@@ -50,6 +55,18 @@ const addReport = async (user, report, bookId) => {
         console.log(err)
     }
     
+}
+
+const deleteReport = async (reportId) => {
+    try {
+        await Report.destroy({
+            where: {
+                id: reportId
+            }
+        })
+    } catch(err) {
+        console.log(err)
+    }
 }
 
 const reportsList = async () => {
@@ -95,5 +112,6 @@ module.exports = {
     reportsList,
     getReportByUserAndBookId,
     getReportByUserAndReportId,
-    updateReport
+    updateReport,
+    deleteReport
 }

@@ -4,7 +4,7 @@ const sequelize = require('../sequelizeDbConn')
 const { createBook, getBooks, getBookById } = require('../models/bookModel')
 const { addUserBook, deleteUserBook } = require('../models/userBookModel')
 const { getUserByToken } = require('../models/userModel')
-const { addReport } = require('../models/reportModel')
+const { addReport, deleteReport } = require('../models/reportModel')
 const { addReportNourishment } = require('../models/reportNourishmentModel')
 
 const addBook = async (req, res) => {
@@ -29,14 +29,14 @@ const addBook = async (req, res) => {
 
 const addBookAndNourishment = async (req, res) => {
   console.log('Adding book and nourishment...')
-  const { title, author, array } = req.body
+  const { title, author, array, flavor } = req.body
   const cookies = req.cookies
   if (!cookies?.jwt) return res.sendStatus(401)
   console.log(cookies.jwt)
   const refreshToken = cookies.jwt
   createBook(title, author).then((newId) => {
     addUserBook(refreshToken, newId).then((userBook) => {
-      addReport(userBook.email, '', userBook.bookId).then((id) => {
+      addReport(userBook.email, '', userBook.bookId, flavor).then((id) => {
         console.log('Array right before function call: ', array)
         addReportNourishment(id, array).then(() => {
           res.status(200).json({ "message": "Nourishment added!" })
@@ -76,8 +76,10 @@ const destroyUserBook = async (req, res) => {
     const refreshToken = cookies.jwt
     getUserByToken(refreshToken).then((user) => {
       deleteUserBook(user.email, req.body.bookId).then(() => {
-        res.status(204).json({ "message": "Book deleted successfully!" })
+        deleteReport(req.body.reportId).then(() => {
+          res.status(204).json({ "message": "Book deleted successfully!" })
       })
+    })
     })
   } catch (err) {
     console.log(err)

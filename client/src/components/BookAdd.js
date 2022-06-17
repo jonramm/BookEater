@@ -23,6 +23,7 @@ const BookAdd = ({ closeAddModal }) => {
 
     const [title, setTitle] = useState('')
     const [author, setAuthor] = useState('')
+    const [flavor, setFlavor] = useState('')
 
     const [strawberryIsChecked, setStrawberryIsChecked] = useState(false)
     const [burgerIsChecked, setBurgerIsChecked] = useState(false)
@@ -45,7 +46,7 @@ const BookAdd = ({ closeAddModal }) => {
         e.preventDefault()
         try {
             const response = await axios.post('/add-book',
-                JSON.stringify({ title, author }),
+                JSON.stringify({ title, author, flavor }),
                 {
                     headers: { 'Content-Type': 'application/json', 'Authorization': `Bearer ${auth.accessToken}` },
                     withCredentials: true
@@ -75,7 +76,7 @@ const BookAdd = ({ closeAddModal }) => {
             if (whiskeyIsChecked) { array.push(12) }
 
             const response = await axios.post('/add-book-and-nourishment',
-                JSON.stringify({ title, author, array }),
+                JSON.stringify({ title, author, array, flavor }),
                 {
                     headers: { 'Content-Type': 'application/json', 'Authorization': `Bearer ${auth.accessToken}` },
                     withCredentials: true
@@ -111,6 +112,14 @@ const BookAdd = ({ closeAddModal }) => {
                         onChange={(e) => { setAuthor(e.target.value) }}
                         required
                     />
+                    <label for="flavor">This book was: </label>
+                    <select id="flavor" 
+                            value={flavor}
+                            onChange={(e) => { setFlavor(e.target.value) }}>
+                        <option selected value="Tasty">Tasty</option>  
+                        <option value="Edible">Edible</option>  
+                        <option value="Inedible">Inedible</option>              
+                    </select>
                 </form>
 
                 <Popup

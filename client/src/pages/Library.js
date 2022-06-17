@@ -62,9 +62,13 @@ function Library({ setBookToEdit }) {
 
     const onBookDelete = async (book) => {
         try {
-            const bookId = book.bookId
+            console.log('book data: ', book)
+            const requestObj = {
+                bookId: book.bookId,
+                reportId: book.id
+            }
             const response = await axios.post(DESTROY_URL,
-                JSON.stringify({bookId}),
+                JSON.stringify(requestObj),
                 {
                     headers: { 'Content-Type': 'application/json', 'Authorization': `Bearer ${auth.accessToken}` },
                     withCredentials: true
