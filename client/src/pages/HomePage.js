@@ -18,6 +18,9 @@ function HomePage() {
     const [headerProps, setHeaderProps] = useState({})
     const { auth, setAuth } = useContext(AuthContext)
 
+    const [addOpen, setAddOpen] = useState(false)
+    const closeAddModal = () => {setAddOpen(false)}
+
     const getUserInfo = useUserInfo()
 
     useEffect(() => {
@@ -34,13 +37,14 @@ function HomePage() {
                     <img className='home-img' src={homeImg} alt='BookEater Library' />
                 </div>
                 <div className="home-btn-row">
+                <button onClick={() => setAddOpen(true)} className='btn btn-sm btn-light btn-block home-btn add-book-btn'>Add Book</button>
                     <Popup
-                        trigger={<button className='btn btn-sm btn-light btn-block home-btn add-book-btn'
-                        >Add Book</button>}
+                        open={addOpen}
+                        onClose={closeAddModal}
                         modal
                         nested
                         >
-                        <BookAdd />
+                        <BookAdd closeAddModal={closeAddModal}/>
                     </Popup>
                     <Link to='/library' className='btn btn-sm btn-light btn-block home-btn full-lib-btn'>Full Library</Link>
                 </div>
