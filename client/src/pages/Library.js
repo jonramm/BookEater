@@ -102,7 +102,7 @@ function Library({ setBookToEdit }) {
         <div className="library-page">
             <Header headerProps={headerProps} />
             <section className='library-content'>
-            <button onClick={() => setAddOpen(true)} className='btn btn-sm btn-light btn-block home-btn add-book-btn-library'>Add Book</button>   
+            <button onClick={() => setAddOpen(true)} className='btn btn-sm btn-light btn-block home-btn add-book-btn-library'>ADD BOOK</button>   
             <Popup      
                 open={addOpen}
                 onClose={closeAddModal}

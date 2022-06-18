@@ -125,7 +125,7 @@ const BookAdd = ({ closeAddModal, brainDisplay, setBookToEdit }) => {
                 </form>
 
                 <Popup
-                    trigger={<button disabled={!title || !author} class="btn btn-lg btn-light next-btn btn-block">Next</button>}
+                    trigger={<button disabled={!title || !author} class="btn btn-lg btn-light next-btn btn-block">NEXT</button>}
                     modal
                     nested
                 >
@@ -257,7 +257,7 @@ const BookAdd = ({ closeAddModal, brainDisplay, setBookToEdit }) => {
                             <button onClick={(e) => {
                                 // close()
                                 addBookAndNourishment(e)}} 
-                                class="btn btn-lg btn-light home-btn btn-block">Consume</button>
+                                class="btn btn-lg btn-light home-btn btn-block">CONSUME</button>
                         </div>
                     </div>
                     )}

@@ -7,6 +7,7 @@
 .App {
   /* text-align: center; */
   width: 100%;
+  font-family: 'Pangolin', cursive;
 }
 
 #root {
@@ -395,6 +396,10 @@ body {
   margin-bottom: 0;
 }
 
+.add-book-btn-library:hover {
+  background-color: #ef838a;
+}
+
 .library-content {
   display: flex;
   flex-direction: column;
@@ -503,7 +508,7 @@ body {
 
 .brain-btn-row {
   display: flex;
-  justify-content: center;
+  justify-content: centerf;
   width: 100%;
   margin: auto;
 }
