@@ -12,6 +12,7 @@ import styled, { keyframes } from 'styled-components';
 import { zoomIn } from 'react-animations'
 import DeleteConfirm from "../components/DeleteConfirm";
 import EditConfirm from "../components/EditConfirm";
+import { propTypes } from "react-bootstrap/esm/Image";
 
 const BOOKS_URL = '/get-books'
 const DESTROY_URL = '/destroy-user-book'
@@ -93,8 +94,6 @@ function Library({ setBookToEdit }) {
         getBooks()
     }, [addOpen, nourOpen, deleteShow])
 
-    console.log(books)
-
     const zoomAnimation = keyframes`${zoomIn}`
     const ZoomDiv = styled.div`animation: .5s ${zoomAnimation}`
 
@@ -102,23 +101,27 @@ function Library({ setBookToEdit }) {
         <div className="library-page">
             <Header headerProps={headerProps} />
             <section className='library-content'>
-            <button onClick={() => setAddOpen(true)} className='btn btn-sm btn-light btn-block home-btn add-book-btn-library'>ADD BOOK</button>   
-            <Popup      
-                open={addOpen}
-                onClose={closeAddModal}
-                modal
-                nested
-                >
-                <BookAdd closeAddModal={closeAddModal}/>
-            </Popup>
-            <div className='library-lower-content'>
-                <DeleteConfirm 
-                    deleteShow={deleteShow} 
-                    handleDeleteClose={handleDeleteClose}
-                    bookToDelete={bookToDelete}
-                    onBookDelete={onBookDelete}
-                />
                 <img className='book-stack-img' src={bookStack} />
+            
+            <div className='library-table-content'>
+                <div className="library-header">
+                    <h1 className="library-name">{headerProps.fName}'s library</h1>
+                    <button onClick={() => setAddOpen(true)} className='btn btn-sm btn-light btn-block home-btn add-book-btn-library'>ADD BOOK</button>   
+                </div>
+                <Popup      
+                    open={addOpen}
+                    onClose={closeAddModal}
+                    modal
+                    nested
+                    >
+                    <BookAdd closeAddModal={closeAddModal}/>
+                </Popup>
+                    <DeleteConfirm 
+                        deleteShow={deleteShow} 
+                        handleDeleteClose={handleDeleteClose}
+                        bookToDelete={bookToDelete}
+                        onBookDelete={onBookDelete}
+                    />
                 <LibraryTable 
                     books={books} 
                     onBookEdit={onBookEdit} 
