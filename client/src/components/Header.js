@@ -19,11 +19,11 @@ const Header = (props) => {
 
     return (
         <nav class="navbar navbar-expand-sm shadow">
-            <div className='nav-item'>
-                <Link className='logo-home-link' to='/'><img className='nav-logo' src={logoImg} alt='BookEater Logo' /></Link>
-            </div>
-            <div className="nav-item">
-                <p className='nav-greeting' >{props.headerProps.fName}</p>
+            <div className='nav-item nav-left'>
+                <div className="nav-logo-and-name">
+                    <Link className='logo-home-link' to='/'><img className='nav-logo' src={logoImg} alt='BookEater Logo' /></Link>
+                    <p className='nav-greeting' >{props.headerProps.fName}</p>
+                </div>
             </div>
             <div className="nav-item icon-container">
                 <OverlayTrigger
@@ -91,7 +91,7 @@ const Header = (props) => {
                 </Link>
                 </OverlayTrigger>
             </div>
-            <div className='nav-item'>
+            <div className='nav-item nav-right'>
                 <div className="dropleft">
                     <button class="dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                         <img className='nav-title' src={menuLogo} alt='BookEater Title' />
