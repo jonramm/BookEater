@@ -130,11 +130,13 @@ body {
   background-color: #ef838a;
   padding-left: 3%;
   padding-right: 3%;
+  padding-top: .25rem;
+  padding-bottom: .25rem;
 }
 
 .nav-logo {
   display: flex;
-  width: 5em;
+  width: 4em;
   height: auto;
 }
 
@@ -176,7 +178,7 @@ body {
 
 .nav-title {
   width: auto;
-  height: 4em;
+  height: 3em;
   background-color: transparent;
 }
 
@@ -204,12 +206,13 @@ body {
 .header-icons {
   width: 4em;
   height: auto;
+  cursor: pointer;
 }
 
 .icon-container {
   display: flex;
-  flex-grow: 4;
-  justify-content: center;
+  width: 25%;
+  justify-content: space-around;
 }
 
 .user-info-line {
