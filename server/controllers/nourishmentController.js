@@ -1,6 +1,4 @@
-const db = require('../dbcon')
 require('dotenv').config()
-const sequelize = require('../sequelizeDbConn')
 const { getNourishmentByReport, addReportNourishment } = require('../models/reportNourishmentModel')
 
 const getNourishment = async (req, res) => {

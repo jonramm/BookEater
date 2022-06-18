@@ -1,6 +1,5 @@
-const { Sequelize, DataTypes } = require('sequelize');
+const { DataTypes } = require('sequelize');
 const sequelize = require('../sequelizeDbConn');
-const { Report } = require('./reportModel');
 
 const Nourishment = sequelize.define('Nourishment', {
     id: {

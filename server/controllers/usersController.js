@@ -1,6 +1,5 @@
 const db = require('../dbcon')
-const sequelize = require('../sequelizeDbConn')
-const { User, getUserByToken, updateUserInfo } = require('../models/userModel')
+const { getUserByToken, updateUserInfo } = require('../models/userModel')
 
 const getAllUsers = async (req, res) => {
   db.query("SELECT email FROM users;", (err, result) => {

@@ -1,7 +1,5 @@
-const db = require('../dbcon')
 require('dotenv').config()
-const sequelize = require('../sequelizeDbConn')
-const { createBook, getBooks, getBookById } = require('../models/bookModel')
+const { createBook, getBooks } = require('../models/bookModel')
 const { addUserBook, deleteUserBook } = require('../models/userBookModel')
 const { getUserByToken } = require('../models/userModel')
 const { addReport, deleteReport } = require('../models/reportModel')

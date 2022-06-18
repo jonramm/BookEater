@@ -1,6 +1,5 @@
-const { Sequelize, DataTypes } = require('sequelize');
+const { DataTypes } = require('sequelize');
 const sequelize = require('../sequelizeDbConn')
-const { Book } = require('./bookModel')
 
 const Report = sequelize.define('Report', {
     id: {
@@ -35,8 +34,6 @@ const Report = sequelize.define('Report', {
     }
 )
 
-// Report.hasOne(Book)
-
 const addReport = async (user, report, bookId, flavor) => {
     try {
         let date = new Date().toISOString().slice(0, 19).replace('T', ' ');
@@ -67,11 +64,6 @@ const deleteReport = async (reportId) => {
     } catch(err) {
         console.log(err)
     }
-}
-
-const reportsList = async () => {
-    const reports = await Report.findAll();
-    console.log("All reports:", JSON.stringify(reports, null, 2));
 }
 
 const getReportByUserAndBookId = async (email, id) => {
@@ -109,7 +101,6 @@ const updateReport = async (id, title, author, report) => {
 module.exports = {
     addReport,
     Report,
-    reportsList,
     getReportByUserAndBookId,
     getReportByUserAndReportId,
     updateReport,

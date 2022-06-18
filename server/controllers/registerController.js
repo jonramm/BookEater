@@ -1,5 +1,3 @@
-const db = require('../dbcon')
-const path = require('path')
 const bcrypt = require('bcrypt');
 
 const { addUser } = require('../models/userModel')

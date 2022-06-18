@@ -1,4 +1,4 @@
-const { Sequelize, DataTypes } = require('sequelize');
+const { DataTypes } = require('sequelize');
 const sequelize = require('../sequelizeDbConn')
 
 const User = sequelize.define('User', {
@@ -108,6 +108,18 @@ const getUserByToken = async (token) => {
     }
   }
 
+const clearTokenByUser = async (user) => {
+    try {
+        await User.update({ jwtToken: '' }, {
+            where: {
+                user: user
+            }
+        })
+    } catch(err) {
+        console.log(err)
+    }
+}
+
 module.exports = { 
     User,
     usersList, 
@@ -116,5 +128,6 @@ module.exports = {
     updateUserInfo,
     updateUserToken,
     getUser,
-    getUserByToken
+    getUserByToken,
+    clearTokenByUser
 }

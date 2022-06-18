@@ -1,6 +1,4 @@
-const db = require('../dbcon')
 require('dotenv').config()
-const sequelize = require('../sequelizeDbConn')
 const { getUserByToken } = require('../models/userModel')
 const { getReportByUserAndBookId, getReportByUserAndReportId, updateReport, addReport } = require('../models/reportModel')
 
