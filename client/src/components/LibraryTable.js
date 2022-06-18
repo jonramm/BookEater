@@ -1,6 +1,5 @@
 import React from "react";
 import LibraryTableRow from "./LibraryTableRow";
-import { TransitionGroup } from 'react-transition-group'
 
 function LibraryTable({ 
     books, 

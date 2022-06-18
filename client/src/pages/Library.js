@@ -112,8 +112,7 @@ function Library({ setBookToEdit, brainShow, brainDisplay, handleBrainClose }) {
         <div className="library-page">
             <Header headerProps={headerProps} />
             <section className='library-content'>
-                <img className='book-stack-img' src={bookStack} />
-            
+            <img className='book-stack-img' src={bookStack} />
             <div className='library-table-content'>
                 <div className="library-header">
                     <img className="library-img" src={library} />
@@ -143,6 +142,7 @@ function Library({ setBookToEdit, brainShow, brainDisplay, handleBrainClose }) {
                     nourOpen={nourOpen}
                     deleteShow={deleteShow} />
             </div>
+            <img className='book-stack-img' src={bookStack} />
             </section>
             <Modal 
                 show={brainShow} 
