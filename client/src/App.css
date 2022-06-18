@@ -125,7 +125,7 @@ body {
 
 .navbar {
   display: flex;
-  /* justify-content: space-evenly; */
+  justify-content: space-evenly;
   flex-direction: row;
   background-color: #ef838a;
   padding-left: 3%;
@@ -134,7 +134,7 @@ body {
 
 .nav-logo {
   display: flex;
-  width: 40%;
+  width: 5em;
   height: auto;
 }
 
@@ -155,7 +155,9 @@ body {
 
 .nav-greeting {
   display: flex;
+  justify-content: center;
   margin-bottom: 0;
+  font-size: 2em;
 }
 
 .nav-right {
@@ -173,9 +175,18 @@ body {
 }
 
 .nav-title {
-  width: 100%;
-  height: auto;
-  /* margin-top: 2%; */
+  width: auto;
+  height: 4em;
+  background-color: transparent;
+}
+
+.dropdown-toggle {
+  background-color: transparent;
+  border: none;
+}
+
+.dropdown-toggle::after {
+  border: none;
 }
 
 .user-info {
@@ -184,6 +195,21 @@ body {
   width: 25%;
   font-size: .75em;
   /* margin-right: 6%; */
+}
+
+.user-info-images {
+  display: flex;
+}
+
+.header-icons {
+  width: 4em;
+  height: auto;
+}
+
+.icon-container {
+  display: flex;
+  flex-grow: 4;
+  justify-content: center;
 }
 
 .user-info-line {

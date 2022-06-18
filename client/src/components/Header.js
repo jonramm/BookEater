@@ -1,10 +1,14 @@
 import React, { useContext } from "react";
 import mainLogo from '../assets/Official-Logo-And-GIF.png'
-import logoImg from '../assets/Official-Logo-And-GIF-No-Title.png'
+import logoImg from '../assets/logo-img.png'
 import menuLogo from '../assets/menu-logo.png'
 import useLogout from "../hooks/useLogout";
 import { Link } from "react-router-dom";
 import AuthContext from '../context/AuthProvider'
+import location from '../assets/location.png'
+import favBookstore from '../assets/favBookstore.png'
+import favBook from '../assets/favBook.png'
+import quote from '../assets/quote.png'
 
 const Header = (props) => {
 
@@ -13,11 +17,13 @@ const Header = (props) => {
 
     return (
         <nav class="navbar navbar-expand-sm">
-            <div className='nav-item nav-left'>
+            <div className='nav-item'>
                 <Link className='logo-home-link' to='/'><img className='nav-logo' src={logoImg} alt='BookEater Logo' /></Link>
-                <p className='nav-greeting' >Hi, {props.headerProps.fName}!</p>
             </div>
-            <div className='nav-item user-info'>
+            <div className="nav-item">
+                <p className='nav-greeting' >{props.headerProps.fName}</p>
+            </div>
+            {/* <div className='nav-item user-info'>
                 {props.headerProps.location 
                             ? <p className='user-info-line'><strong>Location:</strong> {props.headerProps.location}</p>
                             : <Link to='/preferences'>Add your location!</Link>
@@ -34,8 +40,14 @@ const Header = (props) => {
                             ? <p className='user-info-line'><strong>Quote:</strong> {props.headerProps.quote}</p>
                             : <Link to='/preferences'>Add your favorite quote!</Link>
                         }
+            </div> */}
+            <div className="nav-item icon-container">
+                <img className="nav-item header-icons" src={location} />
+                <img className="nav-item header-icons" src={favBookstore} />
+                <img className="nav-item header-icons" src={favBook} />
+                <img className="nav-item header-icons" src={quote} />
             </div>
-            <div className='nav-item nav-right'>
+            <div className='nav-item'>
                 <div className="dropleft">
                     <button class="dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                         <img className='nav-title' src={menuLogo} alt='BookEater Title' />
