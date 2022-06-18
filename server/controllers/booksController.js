@@ -41,7 +41,8 @@ const addBookAndNourishment = async (req, res) => {
             "report": newReport.report,
             "title": title,
             "author": author,
-            "bookId": userBook.bookId 
+            "bookId": userBook.bookId,
+            "flavor": newReport.flavor
           })
         })
       })

@@ -86,11 +86,12 @@ const getReportByUserAndReportId = async (email, id) => {
     return report
 }
 
-const updateReport = async (id, title, author, report) => {
+const updateReport = async (id, title, author, report, flavor) => {
     await Report.update({
         title: title,
         author: author,
-        report: report
+        report: report,
+        flavor: flavor
     }, {
         where: {
             id: id

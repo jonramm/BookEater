@@ -30,11 +30,11 @@ const editReport = async (req, res) => {
         getUserByToken(refreshToken).then((user) => {
             if (req.body.reportId) {
                 getReportByUserAndReportId(user.email, req.body.reportId).then((report) => {
-                    updateReport(report.id, req.body.title, req.body.author, req.body.report)
+                    updateReport(report.id, req.body.title, req.body.author, req.body.report, req.body.flavor)
                     res.status(200).json({ "message": "Report updated!" })
                 })
             } else {
-                addReport(user.email, req.body.report, req.body.bookId).then(() => {
+                addReport(user.email, req.body.report, req.body.bookId, req.body.flavor).then(() => {
                     res.status(200).json({ "message": "Report updated!" })
                 })    
             }

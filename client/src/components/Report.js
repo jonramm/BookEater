@@ -11,6 +11,7 @@ function Report({ bookToEdit }) {
     const [title, setTitle] = useState(bookToEdit.title)
     const [author, setAuthor] = useState(bookToEdit.author)
     const [bookId, setBookId] = useState(bookToEdit.bookId)
+    const [flavor, setFlavor] = useState(bookToEdit.flavor)
     const [book, setBook] = useState({})
 
     const { auth, setAuth } = useContext(AuthContext)
@@ -28,7 +29,7 @@ function Report({ bookToEdit }) {
         try {
             console.log('Editing...')
             const response = await axios.post('/update-report',
-            JSON.stringify({bookId, title, author, report, reportId}),
+                JSON.stringify({ bookId, title, author, report, reportId, flavor }),
                 {
                     headers: { 'Content-Type': 'application/json', 'Authorization': `Bearer ${auth.accessToken}` },
                     withCredentials: true
@@ -39,9 +40,11 @@ function Report({ bookToEdit }) {
         }
     }
 
+    console.log(flavor)
+
     return (
         <div className="report-container">
-            <EditConfirm 
+            <EditConfirm
                 editShow={editShow}
                 handleEditClose={handleEditClose}
                 book={book}
@@ -49,9 +52,26 @@ function Report({ bookToEdit }) {
             />
             {/* <form className="form-report" onSubmit={editReport}> */}
             <form className="form-report">
-            <h2>{title}</h2>
-            <h2>{author}</h2>
-            <label className="" for="report"></label>
+                <h2>{title}</h2>
+                <h2>{author}</h2>
+                <label className="" for="report"></label>
+                <div>
+                    <label for="flavor">This book was: </label>
+                    <select id="flavor"
+                        value={flavor}
+                        onChange={(e) => { setFlavor(e.target.value) }}>
+                        <option selected={(flavor === 'Tasty')
+                            ? true
+                            : false}
+                            value="Tasty">Tasty</option>
+                        <option selected={(flavor === 'Edible')
+                            ? true
+                            : false} value="Edible">Edible</option>
+                        <option selected={(flavor === 'Inedible')
+                            ? true
+                            : false} value="Inedible">Inedible</option>
+                    </select>
+                </div>
                 <textarea
                     class="form-control"
                     id="report"
@@ -66,7 +86,7 @@ function Report({ bookToEdit }) {
                 {/* <button class="btn btn-lg btn-primary btn-block">Save</button> */}
                 <div className="edit-report-btn-row">
                     <button onClick={() => navigate('/library')} className='btn btn-sm btn-light btn-block home-btn'>Go back</button>
-                    <button onClick={(e) => handleEditShow(e)} className='btn btn-sm btn-light btn-block home-btn'>Save</button><br/>
+                    <button onClick={(e) => handleEditShow(e)} className='btn btn-sm btn-light btn-block home-btn'>Save</button><br />
                 </div>
             </form>
         </div>
