@@ -1,12 +1,11 @@
-import React, { useState, useRef, useEffect, useContext } from "react";
+import React, { useState, useEffect, useContext } from "react";
 import AuthContext from '../context/AuthProvider'
 import useUserInfo from '../hooks/useUserInfo'
 import axios from '../api/axios'
-import { Link, Navigate, useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import Header from "../components/Header";
 import Popup from 'reactjs-popup';
 import { Modal, Button } from 'react-bootstrap'
-import BookSearch from "../components/BookSearch";
 import BookAdd from "../components/BookAdd";
 import homeImg from '../assets/Merged-Home-PNG.png'
 import styled, { keyframes } from 'styled-components';

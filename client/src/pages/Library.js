@@ -11,8 +11,6 @@ import bookStack from '../assets/Book-Stack.png'
 import styled, { keyframes } from 'styled-components';
 import { zoomIn } from 'react-animations'
 import DeleteConfirm from "../components/DeleteConfirm";
-import EditConfirm from "../components/EditConfirm";
-import { propTypes } from "react-bootstrap/esm/Image";
 import { Modal } from "react-bootstrap";
 import brainFood from '../assets/brain-food.gif'
 

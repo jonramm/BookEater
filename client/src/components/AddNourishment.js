@@ -20,6 +20,13 @@ import redWine from '../assets/redWine.png'
 import sandwich from '../assets/sandwich.png'
 import whiskey from '../assets/whiskey.png'
 
+import bloodyKnife from '../assets/bloodyKnife.png'
+import chocolateCake from '../assets/chocolateCake.png'
+import earthworm from '../assets/earthworm.png'
+import grass from '../assets/grass.png'
+import herbs from '../assets/herbs.png'
+import parchment from '../assets/parchment.png'
+
 function AddNourishment({ book, nourOpen, setNourOpen, deleteShow, addOpen, books }) {
 
     const { auth, setAuth } = useContext(AuthContext)
@@ -38,6 +45,13 @@ function AddNourishment({ book, nourOpen, setNourOpen, deleteShow, addOpen, book
     const [redWineIsChecked, setRedWineIsChecked] = useState(false)
     const [sandwichIsChecked, setSandwichIsChecked] = useState(false)
     const [whiskeyIsChecked, setWhiskeyIsChecked] = useState(false)
+
+    const [bloodyKnifeIsChecked, setBloodyKnifeIsChecked] = useState(false)
+    const [chocolateCakeIsChecked, setChocolateCakeIsChecked] = useState(false)
+    const [earthwormIsChecked, setEarthwormIsChecked] = useState(false)
+    const [grassIsChecked, setGrassIsChecked] = useState(false)
+    const [herbsIsChecked, setHerbsIsChecked] = useState(false)
+    const [parchmentIsChecked, setParchmentIsChecked] = useState(false)
 
     const closeNourModal = () => {
         setNourOpen(false)}
@@ -71,6 +85,12 @@ function AddNourishment({ book, nourOpen, setNourOpen, deleteShow, addOpen, book
         setRedWineIsChecked(false)
         setSandwichIsChecked(false)
         setWhiskeyIsChecked(false)
+        setBloodyKnifeIsChecked(false)
+        setChocolateCakeIsChecked(false)
+        setEarthwormIsChecked(false)
+        setGrassIsChecked(false)
+        setHerbsIsChecked(false)
+        setParchmentIsChecked(false)
         for (const obj of nourishment) {
             if (obj.description === 'strawberry') { setStrawberryIsChecked(true) }
             if (obj.description === 'cocktail') { setCocktailIsChecked(true) }
@@ -84,6 +104,12 @@ function AddNourishment({ book, nourOpen, setNourOpen, deleteShow, addOpen, book
             if (obj.description === 'redWine') { setRedWineIsChecked(true) }
             if (obj.description === 'sandwich') { setSandwichIsChecked(true) }
             if (obj.description === 'whiskey') { setWhiskeyIsChecked(true) }
+            if (obj.description === 'bloodyKnife') { setBloodyKnifeIsChecked(true) }
+            if (obj.description === 'chocolateCake') { setChocolateCakeIsChecked(true) }
+            if (obj.description === 'earthworm') { setEarthwormIsChecked(true) }
+            if (obj.description === 'grass') { setGrassIsChecked(true) }
+            if (obj.description === 'herbs') { setHerbsIsChecked(true) }
+            if (obj.description === 'parchment') { setParchmentIsChecked(true) }
         }
     }
 
@@ -103,6 +129,12 @@ function AddNourishment({ book, nourOpen, setNourOpen, deleteShow, addOpen, book
             if (redWineIsChecked) { array.push(10) }
             if (sandwichIsChecked) { array.push(11) }
             if (whiskeyIsChecked) { array.push(12) }
+            if (bloodyKnifeIsChecked) { array.push(13) }
+            if (chocolateCakeIsChecked) { array.push(14) }
+            if (earthwormIsChecked) { array.push(15) }
+            if (grassIsChecked) { array.push(16) }
+            if (herbsIsChecked) { array.push(17) }
+            if (parchmentIsChecked) { array.push(18) }
             const nourishmentReq = {
                 "reportId": book.id,
                 "nourishmentArray": array
@@ -198,7 +230,6 @@ function AddNourishment({ book, nourOpen, setNourOpen, deleteShow, addOpen, book
                                 </input>
                                 <label for="cb6" className="checkbox-label"><img className="emoji-img" src={champagne} /></label>
                             </Carousel.Item>
-
                             <Carousel.Item>
                                 <input
                                     checked={anchoviesIsChecked ? 'checked' : ''}
@@ -254,6 +285,62 @@ function AddNourishment({ book, nourOpen, setNourOpen, deleteShow, addOpen, book
                                     onChange={(e) => { setWhiskeyIsChecked(!whiskeyIsChecked) }}>
                                 </input>
                                 <label for="cb12" className="checkbox-label"><img className="emoji-img" src={whiskey} /></label>
+                            </Carousel.Item>
+                            <Carousel.Item>
+                                <input
+                                    checked={bloodyKnifeIsChecked ? 'checked' : ''}
+                                    className="emoji-checkbox"
+                                    type='checkbox'
+                                    id='cb13'
+                                    value={bloodyKnifeIsChecked}
+                                    onChange={(e) => { setBloodyKnifeIsChecked(!bloodyKnifeIsChecked) }}>
+                                </input>
+                                <label for="cb13" className="checkbox-label"><img className="emoji-img" src={bloodyKnife} /></label>
+                                <input
+                                    checked={chocolateCakeIsChecked ? 'checked' : ''}
+                                    className="emoji-checkbox"
+                                    type='checkbox'
+                                    id='cb14'
+                                    value={chocolateCakeIsChecked}
+                                    onChange={(e) => { setChocolateCakeIsChecked(!chocolateCakeIsChecked) }}>
+                                </input>
+                                <label for="cb14" className="checkbox-label"><img className="emoji-img" src={chocolateCake} /></label>
+                                <input
+                                    checked={earthwormIsChecked ? 'checked' : ''}
+                                    className="emoji-checkbox"
+                                    type='checkbox'
+                                    id='cb15'
+                                    value={earthwormIsChecked}
+                                    onChange={(e) => { setEarthwormIsChecked(!earthwormIsChecked) }}>
+                                </input>
+                                <label for="cb15" className="checkbox-label"><img className="emoji-img" src={earthworm} /></label>
+                                <input
+                                    checked={grassIsChecked ? 'checked' : ''}
+                                    className="emoji-checkbox"
+                                    type='checkbox'
+                                    id='cb16'
+                                    value={grassIsChecked}
+                                    onChange={(e) => { setGrassIsChecked(!grassIsChecked) }}>
+                                </input>
+                                <label for="cb16" className="checkbox-label"><img className="emoji-img" src={grass} /></label>
+                                <input
+                                    checked={herbsIsChecked ? 'checked' : ''}
+                                    className="emoji-checkbox"
+                                    type='checkbox'
+                                    id='cb17'
+                                    value={herbsIsChecked}
+                                    onChange={(e) => { setHerbsIsChecked(!herbsIsChecked) }}>
+                                </input>
+                                <label for="cb17" className="checkbox-label"><img className="emoji-img" src={herbs} /></label>
+                                <input
+                                    checked={parchmentIsChecked ? 'checked' : ''}
+                                    className="emoji-checkbox"
+                                    type='checkbox'
+                                    id='cb18'
+                                    value={parchmentIsChecked}
+                                    onChange={(e) => { setParchmentIsChecked(!parchmentIsChecked) }}>
+                                </input> 
+                                <label for="cb18" className="checkbox-label"><img className="emoji-img" src={parchment} /></label>
                             </Carousel.Item>
                         </Carousel>
                     </form>
