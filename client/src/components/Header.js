@@ -100,7 +100,6 @@ const Header = (props) => {
                         <Link className="dropdown-item" to="/">Home</Link>
                         <Link className="dropdown-item" to="/library">Library</Link>
                         <Link className="dropdown-item" to="/preferences">Preferences</Link>
-                        <Link className="dropdown-item" to='/about'>About</Link>
                         {auth.roles.includes(1)
                             ? <Link className='dropdown-item' to='/users'>Users</Link>
                             : null

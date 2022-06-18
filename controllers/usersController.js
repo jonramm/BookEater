@@ -35,7 +35,7 @@ const addUserRole = async (req, res) => {
       res.status(406).json({ 'error': 'role assignment failed' })
     } else {
       //   db.query(`INSERT INTO user_roles (user, role) VALUES ("${email}", 1);`)
-      //   res.status(201).json({'success': `New user ${email} created!`})
+      // res.status(201).json({'success': `New user ${email} created!`})
     }
   })
 }

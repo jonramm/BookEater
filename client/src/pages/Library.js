@@ -13,6 +13,7 @@ import { zoomIn } from 'react-animations'
 import DeleteConfirm from "../components/DeleteConfirm";
 import { Modal } from "react-bootstrap";
 import brainFood from '../assets/brain-food.gif'
+import library from '../assets/library.png'
 
 const BOOKS_URL = '/get-books'
 const DESTROY_URL = '/destroy-user-book'
@@ -115,7 +116,7 @@ function Library({ setBookToEdit, brainShow, brainDisplay, handleBrainClose }) {
             
             <div className='library-table-content'>
                 <div className="library-header">
-                    <h1 className="library-name">LIBRARY</h1>
+                    <img className="library-img" src={library} />
                     <button onClick={() => setAddOpen(true)} className='btn btn-sm btn-light btn-block add-book-btn-library'>ADD BOOK</button>   
                 </div>
                 <Popup      
