@@ -50,7 +50,7 @@ const addReport = async (user, report, bookId, flavor) => {
             flavor: flavor
         })
         console.log(`Adding ${newReport.user}'s report...`)
-        return newReport.id
+        return newReport
     } catch(err) {
         console.log(err)
     }

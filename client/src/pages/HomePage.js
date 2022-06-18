@@ -2,15 +2,17 @@ import React, { useState, useRef, useEffect, useContext } from "react";
 import AuthContext from '../context/AuthProvider'
 import useUserInfo from '../hooks/useUserInfo'
 import axios from '../api/axios'
-import { Link } from "react-router-dom";
+import { Link, Navigate, useNavigate } from "react-router-dom";
 import Header from "../components/Header";
 import Popup from 'reactjs-popup';
+import { Modal, Button } from 'react-bootstrap'
 import BookSearch from "../components/BookSearch";
 import BookAdd from "../components/BookAdd";
 import homeImg from '../assets/Merged-Home-PNG.png'
 import styled, { keyframes } from 'styled-components';
+import brainFood from '../assets/brain-food.gif'
 
-function HomePage() {
+function HomePage({ setBookToEdit }) {
 
     const [email, setEmail] = useState('')
     const [fName, setFName] = useState('')
@@ -18,8 +20,19 @@ function HomePage() {
     const [headerProps, setHeaderProps] = useState({})
     const { auth, setAuth } = useContext(AuthContext)
 
+    const navigate = useNavigate()
+
     const [addOpen, setAddOpen] = useState(false)
     const closeAddModal = () => {setAddOpen(false)}
+
+    const [brainShow, setBrainShow] = useState(false)
+    const handleBrainClose = () => {
+        setBrainShow(false)
+    }
+
+    const brainDisplay = () => {
+        setBrainShow(true)
+    }
 
     const getUserInfo = useUserInfo()
 
@@ -37,6 +50,7 @@ function HomePage() {
                     <img className='home-img' src={homeImg} alt='BookEater Library' />
                 </div>
                 <div className="home-btn-row">
+                <button onClick={brainDisplay}>Modal!</button>
                 <button onClick={() => setAddOpen(true)} className='btn btn-sm btn-light btn-block home-btn add-book-btn'>Add Book</button>
                     <Popup
                         open={addOpen}
@@ -44,11 +58,29 @@ function HomePage() {
                         modal
                         nested
                         >
-                        <BookAdd closeAddModal={closeAddModal}/>
+                        <BookAdd closeAddModal={closeAddModal} brainDisplay={brainDisplay} setBookToEdit={setBookToEdit} />
                     </Popup>
                     <Link to='/library' className='btn btn-sm btn-light btn-block home-btn full-lib-btn'>Full Library</Link>
                 </div>
             </section>
+            <Modal 
+                show={brainShow} 
+                onHide={handleBrainClose} 
+                contentClassName='brain-modal'
+                centered
+                animation={true} >
+            <div className="brain-container">
+                <img className='brain-food-gif' src={brainFood} />
+            </div>
+            <div className='brain-footer'>
+                <h2 classname="cortex-header">Saving to taste cortex...</h2>
+                <div className="brain-btn-row">
+                    <button onClick={handleBrainClose} className="btn btn-lg btn-light brain-btn btn-block">Close</button>
+                    <button onClick={() => navigate('/library')} className="btn btn-lg btn-light brain-btn btn-block">Visit library</button>
+                    <button onClick={() => navigate('/add-report')} className="btn btn-lg btn-light brain-btn btn-block">Add journal entry</button>
+                </div>
+            </div>
+            </Modal>
         </div>
     )
 }

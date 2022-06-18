@@ -36,10 +36,15 @@ const addBookAndNourishment = async (req, res) => {
   const refreshToken = cookies.jwt
   createBook(title, author).then((newId) => {
     addUserBook(refreshToken, newId).then((userBook) => {
-      addReport(userBook.email, '', userBook.bookId, flavor).then((id) => {
-        console.log('Array right before function call: ', array)
-        addReportNourishment(id, array).then(() => {
-          res.status(200).json({ "message": "Nourishment added!" })
+      addReport(userBook.email, '', userBook.bookId, flavor).then((newReport) => {
+        addReportNourishment(newReport.id, array).then(() => {
+          res.status(200).json({ 
+            "id": newReport.id,
+            "report": newReport.report,
+            "title": title,
+            "author": author,
+            "bookId": userBook.bookId 
+          })
         })
       })
     }).catch((err) => {

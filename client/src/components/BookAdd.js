@@ -5,6 +5,7 @@ import axios from "../api/axios";
 import AuthContext from '../context/AuthProvider'
 import Popup from 'reactjs-popup';
 import Carousel from 'react-bootstrap/Carousel';
+import Modal from 'react-bootstrap/Modal'
 
 import strawberry from '../assets/strawberry.png'
 import burger from '../assets/burger.png'
@@ -19,7 +20,7 @@ import redWine from '../assets/redWine.png'
 import sandwich from '../assets/sandwich.png'
 import whiskey from '../assets/whiskey.png'
 
-const BookAdd = ({ closeAddModal }) => {
+const BookAdd = ({ closeAddModal, brainDisplay, setBookToEdit }) => {
 
     const [title, setTitle] = useState('')
     const [author, setAuthor] = useState('')
@@ -81,8 +82,9 @@ const BookAdd = ({ closeAddModal }) => {
                     headers: { 'Content-Type': 'application/json', 'Authorization': `Bearer ${auth.accessToken}` },
                     withCredentials: true
                 })
+            setBookToEdit(response.data)
             closeAddModal()
-            navigate('/library')
+            brainDisplay()
         } catch (err) {
             console.log(err)
         }
@@ -248,10 +250,10 @@ const BookAdd = ({ closeAddModal }) => {
                         </Carousel>
                         </form>
                         <div className="add-book-btn-row">
-                            <button onClick={(e) => {
+                            {/* <button onClick={(e) => {
                                 // close()
                                 addBook(e)}} 
-                                class="btn btn-lg btn-light home-btn btn-block">Do later</button>
+                                class="btn btn-lg btn-light home-btn btn-block">Skip</button> */}
                             <button onClick={(e) => {
                                 // close()
                                 addBookAndNourishment(e)}} 

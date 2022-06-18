@@ -40,7 +40,7 @@ function App() {
         {/* Protected Routes */}
         <Route element={<PersistLogin />}>
           <Route element={<RequireAuth allowedRoles={[ROLES.admin, ROLES.editor, ROLES.user]} />}>
-            <Route path='/' element={<HomePage />} />
+            <Route path='/' element={<HomePage setBookToEdit={setBookToEdit}/>} />
             <Route path='/library' element={<Library setBookToEdit={setBookToEdit}/>} />
             <Route path='/add-report' element={<AddReport bookToEdit={bookToEdit} />} />
             <Route path='/preferences' element={<Preferences />} />
