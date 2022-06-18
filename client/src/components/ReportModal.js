@@ -1,7 +1,7 @@
 import React from 'react';
 import { Modal, Button } from "react-bootstrap";
 
-function ReportModal({ reportShow, handleReportClose, report, title }) {
+function ReportModal({ reportShow, handleReportClose, book, onBookEdit }) {
   
     return (
       <>
@@ -12,17 +12,20 @@ function ReportModal({ reportShow, handleReportClose, report, title }) {
             contentClassName='report-modal'
             centered>
           <Modal.Header closeButton>
-            <Modal.Title>Thoughts on {title}...</Modal.Title>
+            <Modal.Title>Thoughts on {book.title}...</Modal.Title>
           </Modal.Header>
           <Modal.Body>
             <p>
-                {report}
+                {book.report}
             </p>
           </Modal.Body>
           <Modal.Footer>
-            <Button variant="secondary" onClick={handleReportClose}>
+            <button className="btn btn-lg btn-light brain-btn btn-block" onClick={handleReportClose}>
               Cancel
-            </Button>
+            </button>
+            <button className="btn btn-lg btn-light brain-btn btn-block" onClick={() => onBookEdit(book)}>
+              Edit
+            </button>
           </Modal.Footer>
         </Modal>
       </>

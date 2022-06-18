@@ -53,7 +53,7 @@ function LibraryTableRow({
                 <button onClick={() => setReportShow(true)} className='btn btn-sm btn-light btn-block home-btn add-book-btn'
                     >{report}
                 </button>
-                <ReportModal reportShow={reportShow} handleReportClose={handleReportClose} report={book.report} title={book.title} />
+                <ReportModal reportShow={reportShow} handleReportClose={handleReportClose} book={book} onBookEdit={onBookEdit} />
             </td>
             <td>
                 <AiFillEdit className='edit-icon' onClick={() => onBookEdit(book)} /><br/>
