@@ -454,18 +454,6 @@ body {
   align-items: center;
 }
 
-.tasty {
-  color: #2b8c42;
-}
-
-.edible {
-  color: #934948;
-}
-
-.inedible {
-  color: #917e5a;
-}
-
 .book-stack-img {
   display: flex;
   width: 30%;
@@ -488,22 +476,22 @@ body {
   background-color: #f1cc9f;
 }
 
-/* .report-popup {
-  width: 50%;
-  margin: auto;
-  margin-top: 15%;
-  text-align: center;
-}
-
-.report-popup-content {
-  white-space: pre-wrap;
-  word-wrap: break-word;
-} */
-
 .library-table {
   background-color: #ef838a;
   text-align: center;
   border-radius: 20px;
+}
+
+.library-table-row-tasty {
+  background-color: #f29ba1;
+}
+
+.library-table-row-edible {
+  background-color: #bf7d7d
+}
+
+.library-table-row-inedible {
+  background-color: #96896d;
 }
 
 .carousel-indicators {
