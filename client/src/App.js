@@ -35,12 +35,10 @@ function App() {
         setBrainShow(true)
     }
 
-  console.log('App.js brainShow: ', brainShow)
-
   return (
     <Routes>
       <Route path='/' element={<Layout />}>
-
+        
         {/* Public Routes */}
         <Route path='landing' element={<LandingPage />} />
         <Route path='login' element={<Login />} />
