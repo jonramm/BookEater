@@ -12,9 +12,6 @@ const credentials = require('./middleware/credentials');
 const cookieParser = require('cookie-parser')
 const verifyJWT = require('./middleware/verifyJWT');
 
-const { Router } = require("express");
-const router = Router();
-
 db.connect((err) => {
     if (err) throw err;
     console.log('Connected to MySQL server!')
@@ -49,10 +46,7 @@ app.use('/add-book-and-nourishment', require('./routes/addBookAndNourishment'))
 app.use('/get-nourishment', require('./routes/getNourishment'))
 app.use('/add-nourishment', require('./routes/addNourishment'))
 
-app.get("/", (req, res) => {
-  res.json({ message: "Hello!" });
-}); 
-
+app.use(express.static(path.join(__dirname, 'build')));
 
 app.listen(PORT, () => {
     console.log(`Server listening on port ${PORT}...`)
