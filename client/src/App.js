@@ -26,6 +26,16 @@ const ROLES = {
 function App() {
 
   const [bookToEdit, setBookToEdit] = useState()
+  const [brainShow, setBrainShow] = useState(false)
+    const handleBrainClose = () => {
+        setBrainShow(false)
+    }
+
+    const brainDisplay = () => {
+        setBrainShow(true)
+    }
+
+  console.log('App.js brainShow: ', brainShow)
 
   return (
     <Routes>
@@ -40,8 +50,16 @@ function App() {
         {/* Protected Routes */}
         <Route element={<PersistLogin />}>
           <Route element={<RequireAuth allowedRoles={[ROLES.admin, ROLES.editor, ROLES.user]} />}>
-            <Route path='/' element={<HomePage setBookToEdit={setBookToEdit}/>} />
-            <Route path='/library' element={<Library setBookToEdit={setBookToEdit}/>} />
+            <Route path='/' element={<HomePage 
+                                        setBookToEdit={setBookToEdit}
+                                        brainShow={brainShow} 
+                                        brainDisplay={brainDisplay} 
+                                        handleBrainClose={handleBrainClose} />} /> 
+            <Route path='/library' element={<Library 
+                                                    setBookToEdit={setBookToEdit}
+                                                    brainShow={brainShow} 
+                                                    brainDisplay={brainDisplay} 
+                                                    handleBrainClose={handleBrainClose}/>} />
             <Route path='/add-report' element={<AddReport bookToEdit={bookToEdit} />} />
             <Route path='/preferences' element={<Preferences />} />
             <Route path='/about' element={<About />} />

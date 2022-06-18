@@ -13,11 +13,13 @@ import { zoomIn } from 'react-animations'
 import DeleteConfirm from "../components/DeleteConfirm";
 import EditConfirm from "../components/EditConfirm";
 import { propTypes } from "react-bootstrap/esm/Image";
+import { Modal } from "react-bootstrap";
+import brainFood from '../assets/brain-food.gif'
 
 const BOOKS_URL = '/get-books'
 const DESTROY_URL = '/destroy-user-book'
 
-function Library({ setBookToEdit }) {
+function Library({ setBookToEdit, brainShow, brainDisplay, handleBrainClose }) {
 
     const [books, setBooks] = useState([])
     const [bookToDelete, setBookToDelete] = useState({})
@@ -30,6 +32,16 @@ function Library({ setBookToEdit }) {
 
     const [addOpen, setAddOpen] = useState(false)
     const closeAddModal = () => {setAddOpen(false)}
+
+    const navToLibrary = () => {
+        handleBrainClose()
+        navigate('/library')
+    }
+
+    const navToAddReport = () => {
+        handleBrainClose()
+        navigate('/add-report')
+    }
 
     const [nourOpen, setNourOpen] = useState(false)
 
@@ -114,7 +126,7 @@ function Library({ setBookToEdit }) {
                     modal
                     nested
                     >
-                    <BookAdd closeAddModal={closeAddModal}/>
+                    <BookAdd closeAddModal={closeAddModal} brainDisplay={brainDisplay} setBookToEdit={setBookToEdit} />
                 </Popup>
                     <DeleteConfirm 
                         deleteShow={deleteShow} 
@@ -133,6 +145,24 @@ function Library({ setBookToEdit }) {
                     deleteShow={deleteShow} />
             </div>
             </section>
+            <Modal 
+                show={brainShow} 
+                onHide={handleBrainClose} 
+                contentClassName='brain-modal'
+                centered
+                animation={true} >
+            <div className="brain-container">
+                <img className='brain-food-gif' src={brainFood} />
+            </div>
+            <div className='brain-footer'>
+                <h2 classname="cortex-header">SAVING TO TASTE CORTEX...</h2>
+                <div className="brain-btn-row">
+                    <button onClick={handleBrainClose} className="btn btn-lg btn-light brain-btn btn-block">CLOSE</button>
+                    <button onClick={navToLibrary} className="btn btn-lg btn-light brain-btn btn-block">VISIT LIBRARY</button>
+                    <button onClick={navToAddReport} className="btn btn-lg btn-light brain-btn btn-block">ADD JOURNAL ENTRY</button>
+                </div>
+            </div>
+            </Modal>
         </div>
     )
 }

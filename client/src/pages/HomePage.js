@@ -12,7 +12,7 @@ import homeImg from '../assets/Merged-Home-PNG.png'
 import styled, { keyframes } from 'styled-components';
 import brainFood from '../assets/brain-food.gif'
 
-function HomePage({ setBookToEdit }) {
+function HomePage({ setBookToEdit, brainShow, brainDisplay, handleBrainClose }) {
 
     const [email, setEmail] = useState('')
     const [fName, setFName] = useState('')
@@ -25,13 +25,14 @@ function HomePage({ setBookToEdit }) {
     const [addOpen, setAddOpen] = useState(false)
     const closeAddModal = () => {setAddOpen(false)}
 
-    const [brainShow, setBrainShow] = useState(false)
-    const handleBrainClose = () => {
-        setBrainShow(false)
+    const navToLibrary = () => {
+        handleBrainClose()
+        navigate('/library')
     }
 
-    const brainDisplay = () => {
-        setBrainShow(true)
+    const navToAddReport = () => {
+        handleBrainClose()
+        navigate('/add-report')
     }
 
     const getUserInfo = useUserInfo()
@@ -41,6 +42,8 @@ function HomePage({ setBookToEdit }) {
             setHeaderProps(headerProps)
         })
     }, [])
+
+    
 
     return (
         <div className="home-page">
@@ -57,7 +60,7 @@ function HomePage({ setBookToEdit }) {
                         modal
                         nested
                         >
-                        <BookAdd closeAddModal={closeAddModal} brainDisplay={brainDisplay} setBookToEdit={setBookToEdit} />
+                       <BookAdd closeAddModal={closeAddModal} brainDisplay={brainDisplay} setBookToEdit={setBookToEdit} /> 
                     </Popup>
                     <Link to='/library' className='btn btn-sm btn-light btn-block home-btn full-lib-btn'>FULL LIBRARY</Link>
                 </div>
@@ -75,8 +78,8 @@ function HomePage({ setBookToEdit }) {
                 <h2 classname="cortex-header">SAVING TO TASTE CORTEX...</h2>
                 <div className="brain-btn-row">
                     <button onClick={handleBrainClose} className="btn btn-lg btn-light brain-btn btn-block">CLOSE</button>
-                    <button onClick={() => navigate('/library')} className="btn btn-lg btn-light brain-btn btn-block">VISIT LIBRARY</button>
-                    <button onClick={() => navigate('/add-report')} className="btn btn-lg btn-light brain-btn btn-block">ADD JOURNAL ENTRY</button>
+                    <button onClick={navToLibrary} className="btn btn-lg btn-light brain-btn btn-block">VISIT LIBRARY</button>
+                    <button onClick={navToAddReport} className="btn btn-lg btn-light brain-btn btn-block">ADD JOURNAL ENTRY</button>
                 </div>
             </div>
             </Modal>
