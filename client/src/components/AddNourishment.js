@@ -19,7 +19,6 @@ import poop from '../assets/poop.png'
 import redWine from '../assets/redWine.png'
 import sandwich from '../assets/sandwich.png'
 import whiskey from '../assets/whiskey.png'
-
 import bloodyKnife from '../assets/bloodyKnife.png'
 import chocolateCake from '../assets/chocolateCake.png'
 import earthworm from '../assets/earthworm.png'
@@ -45,7 +44,6 @@ function AddNourishment({ book, nourOpen, setNourOpen, deleteShow, addOpen, book
     const [redWineIsChecked, setRedWineIsChecked] = useState(false)
     const [sandwichIsChecked, setSandwichIsChecked] = useState(false)
     const [whiskeyIsChecked, setWhiskeyIsChecked] = useState(false)
-
     const [bloodyKnifeIsChecked, setBloodyKnifeIsChecked] = useState(false)
     const [chocolateCakeIsChecked, setChocolateCakeIsChecked] = useState(false)
     const [earthwormIsChecked, setEarthwormIsChecked] = useState(false)
