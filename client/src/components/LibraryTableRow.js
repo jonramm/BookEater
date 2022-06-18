@@ -3,6 +3,7 @@ import { Link } from "react-router-dom";
 import Popup from 'reactjs-popup';
 import Nourishment from "./Nourishment";
 import AddNourishment from "./AddNourishment";
+import ReportModal from "./ReportModal";
 import { AiFillEdit } from 'react-icons/ai'
 import { AiFillDelete } from 'react-icons/ai'
 
@@ -26,6 +27,11 @@ function LibraryTableRow({
         }
     }
 
+    const [reportShow, setReportShow] = useState(false)
+    const handleReportClose = () => {
+        setReportShow(false)
+    }
+
     return (
         <tr key={key}>
             <td>
@@ -44,12 +50,10 @@ function LibraryTableRow({
             <td>{book.title}</td>
             <td>{book.author}</td>
             <td>
-                <Popup
-                    trigger={<button className='btn btn-sm btn-light btn-block home-btn add-book-btn'
-                    >{report}</button>} 
-                    modal >
-                    {book.report}
-                </Popup>
+                <button onClick={() => setReportShow(true)} className='btn btn-sm btn-light btn-block home-btn add-book-btn'
+                    >{report}
+                </button>
+                <ReportModal reportShow={reportShow} handleReportClose={handleReportClose} report={book.report} title={book.title} />
             </td>
             <td>
                 <AiFillEdit className='edit-icon' onClick={() => onBookEdit(book)} /><br/>

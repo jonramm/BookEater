@@ -105,8 +105,8 @@ function Library({ setBookToEdit }) {
             
             <div className='library-table-content'>
                 <div className="library-header">
-                    <h1 className="library-name">{headerProps.fName}'s library</h1>
-                    <button onClick={() => setAddOpen(true)} className='btn btn-sm btn-light btn-block home-btn add-book-btn-library'>ADD BOOK</button>   
+                    <h1 className="library-name">LIBRARY</h1>
+                    <button onClick={() => setAddOpen(true)} className='btn btn-sm btn-light btn-block add-book-btn-library'>ADD BOOK</button>   
                 </div>
                 <Popup      
                     open={addOpen}

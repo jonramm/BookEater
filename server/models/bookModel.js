@@ -29,7 +29,7 @@ const createBook = async (title, author) => {
   }
 
 const getBooks = async (email) => {
-    const [results, metadata] = await sequelize.query(`select b.title, b.author, b.id as 'bookId', r.report, r.user, r.id, r.dateAdded from user_books ub join books b on ub.bookId = b.id left join reports r on ub.bookId = r.bookId and r.user = '${email}' where ub.user = '${email}' order by r.dateAdded desc;`)
+    const [results, metadata] = await sequelize.query(`select b.title, b.author, b.id as 'bookId', r.report, r.user, r.id, r.dateAdded, r.flavor from user_books ub join books b on ub.bookId = b.id left join reports r on ub.bookId = r.bookId and r.user = '${email}' where ub.user = '${email}' order by r.dateAdded desc;`)
     return JSON.stringify(results)
 }
 
