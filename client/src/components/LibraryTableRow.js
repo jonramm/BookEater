@@ -32,6 +32,8 @@ function LibraryTableRow({
         setReportShow(false)
     }
 
+    console.log(book.flavor)
+
     return (
         <tr key={key}>
             <td>
@@ -47,7 +49,14 @@ function LibraryTableRow({
                                 addOpen={addOpen}
                                 books={books} />
             </td>
-            <td>{book.title}</td>
+            <td
+                className={
+                    (book.flavor === 'Tasty') ? "tasty"
+                    : (book.flavor === 'Edible') ? "edible"
+                    : (book.flavor === 'Inedible') ? "inedible"
+                    : ""
+                }
+            >{book.title}</td>
             <td>{book.author}</td>
             <td>
                 <button onClick={() => setReportShow(true)} className='btn btn-sm btn-light btn-block home-btn add-book-btn'

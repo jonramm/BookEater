@@ -454,6 +454,18 @@ body {
   align-items: center;
 }
 
+.tasty {
+  color: green;
+}
+
+.edible {
+  color: darkcyan;
+}
+
+.inedible {
+  color: gray;
+}
+
 .book-stack-img {
   display: flex;
   width: 25%;
