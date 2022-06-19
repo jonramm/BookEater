@@ -153,7 +153,7 @@ const BookAdd = ({ closeAddModal, brainDisplay, setBookToEdit }) => {
                 {close => (
                     <div className="review-container">
                         <form className="form-book-add">
-                            <p className="book-add-form-header">If you could describe this literary journey in terms of food alone, how would it taste?</p>
+                            <p className="book-add-form-header">This book tastes like: </p>
                             <Carousel interval={null}>
                             <Carousel.Item>
                                 <input

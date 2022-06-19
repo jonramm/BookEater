@@ -530,6 +530,10 @@ th {
   width: 100%;
 }
 
+.flavor-cell {
+  width: 20%;
+}
+
 .report-btn {
   font-size: 1em;
   border: none;

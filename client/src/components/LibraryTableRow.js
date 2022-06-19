@@ -38,7 +38,7 @@ function LibraryTableRow({
                 : (book.flavor === 'Inedible') ? "library-table-row-inedible"
                 : ""}
             key={key}>
-            <td>
+            <td className="flavor-cell">
                 <Nourishment book={book} 
                              addOpen={addOpen} 
                              books={books} 

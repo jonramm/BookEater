@@ -431,7 +431,7 @@ function AddNourishment({ book, nourOpen, setNourOpen, deleteShow, addOpen, book
                     <button onClick={(e) => {
                         closeNourModal()
                         close()
-                        addNourishment(e)}} class="btn btn-lg btn-light report-btn btn-block">Add Nourishment</button>
+                        addNourishment(e)}} class="btn btn-lg btn-light report-btn btn-block">CONSUME</button>
                 </div>
                 )}
             </Popup>
