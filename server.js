@@ -24,10 +24,10 @@ app.use(express.urlencoded({ extended: true }));
 app.use(express.json())
 app.use(cookieParser());
 
-app.use(express.static(path.join(__dirname, 'client/build')));
+app.use(express.static(path.join(__dirname, 'build')));
 
 app.get('*', function (req, res) {
-  res.sendFile(path.join(__dirname, 'client', 'build', 'index.html'));
+  res.sendFile(path.join(__dirname, 'build', 'index.html'));
 });
 
 app.get('/hello', (req, res) => {
