@@ -16,10 +16,7 @@ db.connect((err) => {
     if (err) throw err;
     console.log('Connected to MySQL server!')
   })
- 
-app.use(express.urlencoded({
-    extended: true
-  }));
+
 
 app.use(credentials);
 app.use(cors(corsOptions))

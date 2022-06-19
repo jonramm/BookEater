@@ -5,7 +5,7 @@ const allowedOrigins = [
     'https://localhost:3000',
     'localhost:4000',
     'http://bookeater-site.herokuapp.com',
-    'http://bookeater-site.herokuapp.com',
+    'https://bookeater-site.herokuapp.com',
     'http://www.bookeater.org',
     'https://www.bookeater.org',
     'bookeater.org',

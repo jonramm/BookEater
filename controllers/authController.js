@@ -34,7 +34,7 @@ const handleLogin = async (req, res) => {
         updateUserToken(email, refreshToken).then(() => {
           // Creates Secure Cookie with refresh token
           res.cookie('jwt', refreshToken, { httpOnly: true, sameSite: 'None', secure: true, maxAge: 24 * 60 * 60 * 1000 });
-          res.header("Access-Control-Allow-Origin", "*");
+          // res.header("Access-Control-Allow-Origin", "*");
           res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
           // Send authorization roles and access token to user
           res.json({ roles, accessToken });
