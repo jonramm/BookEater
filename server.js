@@ -1,7 +1,8 @@
 require('dotenv').config();
 const db = require('./dbcon')
 
-const PORT = process.env.PORT || 4000;
+// const PORT = process.env.PORT || 4000;
+const { PORT=4000, LOCAL_ADDRESS='0.0.0.0' } = process.env
 
 const express = require('express');
 const app = express();
@@ -52,6 +53,6 @@ app.get('*', function (req, res) {
   res.sendFile(path.join(__dirname, 'build', 'index.html'));
 });
 
-app.listen(PORT, () => {
+app.listen(PORT, LOCAL_ADDRESS, () => {
     console.log(`Server listening on port ${PORT}...`)
 });
