@@ -26,10 +26,6 @@ app.use(cookieParser());
 
 app.use(express.static(path.join(__dirname, 'build')));
 
-app.get('*', function (req, res) {
-  res.sendFile(path.join(__dirname, 'build', 'index.html'));
-});
-
 app.get('/hello', (req, res) => {
   res.json({"message": "hello"})
 })
@@ -39,6 +35,10 @@ app.use('/register', require('./routes/register'))
 app.use('/refresh', require('./routes/refresh'))
 app.use('/logout', require('./routes/logout'))
 app.use('/add-role', require('./routes/addRole'))
+
+app.get('*', function (req, res) {
+  res.sendFile(path.join(__dirname, 'build', 'index.html'));
+});
 
 app.use(verifyJWT)
 app.use('/user-info', require('./routes/api/userInfo'))
@@ -52,6 +52,8 @@ app.use('/update-info', require('./routes/updateUserInfo'))
 app.use('/add-book-and-nourishment', require('./routes/addBookAndNourishment'))
 app.use('/get-nourishment', require('./routes/getNourishment'))
 app.use('/add-nourishment', require('./routes/addNourishment'))
+
+
 
 app.listen(PORT, () => {
     console.log(`Server listening on port ${PORT}...`)
