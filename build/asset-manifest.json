@@ -1,12 +1,13 @@
 {
   "files": {
-    "main.css": "/static/css/main.0362d374.css",
-    "main.js": "/static/js/main.43258bd7.js",
+    "main.css": "/static/css/main.f97ff551.css",
+    "main.js": "/static/js/main.74b7cfca.js",
     "static/media/brain-food.gif": "/static/media/brain-food.38b801d79931225df55f.gif",
     "static/media/Official_Logo_And_GIF.gif": "/static/media/Official_Logo_And_GIF.601f37409ca6d8a52de8.gif",
     "static/media/Merged-Home-PNG.png": "/static/media/Merged-Home-PNG.90405cec00e2bd03beaa.png",
     "static/media/Background-For-Home-Page-4k.png": "/static/media/Background-For-Home-Page-4k.cc13bda1a772475562f1.png",
     "static/media/Background-For-Home-Page-4k-cropped.png": "/static/media/Background-For-Home-Page-4k-cropped.8e25463cdbd7a0572d42.png",
+    "static/media/bookStackFlip.png": "/static/media/bookStackFlip.3faa691b7119782fac58.png",
     "static/media/Book-Stack.png": "/static/media/Book-Stack.a59b6d80e3f11f479d06.png",
     "static/media/paper-background.png": "/static/media/paper-background.bf7f2d9f3373e9443d60.png",
     "static/media/Official-Logo-And-GIF.png": "/static/media/Official-Logo-And-GIF.a5320d4dbeb6c69a82fc.png",
@@ -16,6 +17,7 @@
     "static/media/Official-Logo-And-GIF-No-Title.png": "/static/media/Official-Logo-And-GIF-No-Title.95887a27e972d61564bc.png",
     "static/media/logo-img.png": "/static/media/logo-img.04bf714955eaae27d9ae.png",
     "static/media/earthworm.png": "/static/media/earthworm.53c3b4367632f0aa7a94.png",
+    "static/media/save-to-cortex.png": "/static/media/save-to-cortex.6eefa0f7c20ad9150675.png",
     "static/media/herbs.png": "/static/media/herbs.6c131bfc850377fdcdf3.png",
     "static/media/menu-logo.png": "/static/media/menu-logo.9c52ddc9265cb0a83bff.png",
     "static/media/anchovies.png": "/static/media/anchovies.12e6d9bce0d008496418.png",
@@ -42,11 +44,11 @@
     "static/media/cocktail.png": "/static/media/cocktail.99c15a4ca14e630d11c2.png",
     "static/media/Bookeater-Regular.ttf": "/static/media/Bookeater-Regular.b5eb3043165d79029100.ttf",
     "index.html": "/index.html",
-    "main.0362d374.css.map": "/static/css/main.0362d374.css.map",
-    "main.43258bd7.js.map": "/static/js/main.43258bd7.js.map"
+    "main.f97ff551.css.map": "/static/css/main.f97ff551.css.map",
+    "main.74b7cfca.js.map": "/static/js/main.74b7cfca.js.map"
   },
   "entrypoints": [
-    "static/css/main.0362d374.css",
-    "static/js/main.43258bd7.js"
+    "static/css/main.f97ff551.css",
+    "static/js/main.74b7cfca.js"
   ]
 }
