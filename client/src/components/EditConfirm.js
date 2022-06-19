@@ -13,7 +13,7 @@ function EditConfirm({ editShow, handleEditClose, book, editReport }) {
           <Modal.Header closeButton>
             <Modal.Title>Confirm</Modal.Title>
           </Modal.Header>
-          <Modal.Body>Are you sure you want to edit this report?</Modal.Body>
+          <Modal.Body>Save changes?</Modal.Body>
           <Modal.Footer>
             <Button variant="secondary" onClick={handleEditClose}>
               Cancel
