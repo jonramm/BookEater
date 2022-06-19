@@ -61,6 +61,8 @@ const fetchBooks = async (req, res) => {
       getBooks(user.email).then((books) => {
         console.log(books)
         res.send(books)
+      }).catch((err) => {
+        res.status(500).json({"message": err})
       })
     })
   } catch (err) {
@@ -75,7 +77,7 @@ const destroyUserBook = async (req, res) => {
     if (!cookies?.jwt) return res.sendStatus(401)
     const refreshToken = cookies.jwt
     getUserByToken(refreshToken).then((user) => {
-      deleteUserBook(user.email, req.body.bookId).then(() => {
+      deleteUserBook(user?.email, req.body.bookId).then(() => {
         deleteReport(req.body.reportId).then(() => {
           res.status(204).json({ "message": "Book deleted successfully!" })
       })
