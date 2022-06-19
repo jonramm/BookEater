@@ -5,12 +5,10 @@ require('dotenv').config()
 const { getUser, updateUserToken } = require('../models/userModel')
 
 const handleLogin = async (req, res) => {
-    console.log("Logging in...")
     const { email, password } = req.body;
     if (!email || !password) return res.status(400).json({ 'message': 'Email and password are required.' });
     foundUser = JSON.parse(await getUser(email))[0]
     if (!foundUser) return res.sendStatus(401); //Unauthorized 
-
     // evaluate password 
     const match = await bcrypt.compare(password, foundUser.password);
     if (match) {

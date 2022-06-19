@@ -55,22 +55,6 @@ const BookAdd = ({ closeAddModal, brainDisplay, setBookToEdit }) => {
 
     const navigate = useNavigate()
 
-    const addBook = async (e) => {
-        e.preventDefault()
-        try {
-            const response = await axios.post('/add-book',
-                JSON.stringify({ title, author, flavor }),
-                {
-                    headers: { 'Content-Type': 'application/json', 'Authorization': `Bearer ${auth.accessToken}` },
-                    withCredentials: true
-                })
-            closeAddModal()
-            navigate('/library')
-        } catch (err) {
-            console.log(err)
-        }
-    }
-
     const addBookAndNourishment = async (e) => {
         e.preventDefault()
         try {
@@ -141,7 +125,8 @@ const BookAdd = ({ closeAddModal, brainDisplay, setBookToEdit }) => {
                         <option value="Inedible">Inedible</option>              
                     </select>
                 </form>
-
+                <div className="next-btn-row">
+                <button onClick={closeAddModal} className='btn btn-lg btn-light next-btn btn-block'>CANCEL</button>
                 <Popup
                     trigger={<button disabled={!title || !author} class="btn btn-lg btn-light next-btn btn-block">NEXT</button>}
                     modal
@@ -331,11 +316,12 @@ const BookAdd = ({ closeAddModal, brainDisplay, setBookToEdit }) => {
                             <button onClick={(e) => {
                                 // close()
                                 addBookAndNourishment(e)}} 
-                                class="btn btn-lg btn-light home-btn btn-block">CONSUME</button>
+                                class="btn btn-lg btn-light consume-btn btn-block">CONSUME</button>
                         </div>
                     </div>
                     )}
                 </Popup>
+                </div>
             </div>
         </>
     )

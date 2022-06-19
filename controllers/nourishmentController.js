@@ -2,11 +2,11 @@ require('dotenv').config()
 const { getNourishmentByReport, addReportNourishment } = require('../models/reportNourishmentModel')
 
 const getNourishment = async (req, res) => {
-    console.log("Nourishment request: ", req.body)
     getNourishmentByReport(req.body.reportId).then((result) => {
         res.status(200).json({"nourishment": result})
     }).catch((err) => {
         console.log(err)
+        res.status(500).json({ "message": err.message })
     })
 }
 
@@ -19,6 +19,7 @@ const addNourishment = async (req, res) => {
         })
     } catch(err) {
         console.log(err)
+        res.status(500).json({ "message": err.message })
     }
 }
 

@@ -6,11 +6,9 @@ const { addReport, deleteReport } = require('../models/reportModel')
 const { addReportNourishment } = require('../models/reportNourishmentModel')
 
 const addBook = async (req, res) => {
-  console.log('Adding book...')
   const { title, author } = req.body
   const cookies = req.cookies
   if (!cookies?.jwt) return res.sendStatus(401)
-  console.log(cookies.jwt)
   const refreshToken = cookies.jwt
   createBook(title, author).then((newId) => {
     addUserBook(refreshToken, newId).then(() => {
@@ -26,11 +24,9 @@ const addBook = async (req, res) => {
 }
 
 const addBookAndNourishment = async (req, res) => {
-  console.log('Adding book and nourishment...')
   const { title, author, array, flavor } = req.body
   const cookies = req.cookies
   if (!cookies?.jwt) return res.sendStatus(401)
-  console.log(cookies.jwt)
   const refreshToken = cookies.jwt
   createBook(title, author).then((newId) => {
     addUserBook(refreshToken, newId).then((userBook) => {
@@ -58,7 +54,6 @@ const addBookAndNourishment = async (req, res) => {
 
 const fetchBooks = async (req, res) => {
   try {
-    console.log('Fetching books...')
     const cookies = req.cookies
     if (!cookies?.jwt) return res.sendStatus(401)
     const refreshToken = cookies.jwt
@@ -69,12 +64,12 @@ const fetchBooks = async (req, res) => {
     })
   } catch (err) {
     console.log(err)
+    res.status(500).json({ "message": err.message })
   }
 }
 
 const destroyUserBook = async (req, res) => {
   try {
-    console.log('Deleting book from user library...')
     const cookies = req.cookies
     if (!cookies?.jwt) return res.sendStatus(401)
     const refreshToken = cookies.jwt
@@ -87,6 +82,7 @@ const destroyUserBook = async (req, res) => {
     })
   } catch (err) {
     console.log(err)
+    res.status(500).json({ "message": err.message })
   }
 }
 

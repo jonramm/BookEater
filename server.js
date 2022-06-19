@@ -30,7 +30,6 @@ app.get('/hello', (req, res) => {
   res.json({"message": "hello"})
 })
 
-
 app.use('/auth', require('./routes/auth'));
 app.use('/register', require('./routes/register'))
 app.use('/refresh', require('./routes/refresh'))

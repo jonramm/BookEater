@@ -5,6 +5,7 @@ const getAllUsers = async (req, res) => {
   db.query("SELECT email FROM users;", (err, result) => {
     if (err) {
       console.log(err)
+      res.status(500).json({ "message": err.message })
     }
     res.json(result)
   })

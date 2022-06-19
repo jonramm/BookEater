@@ -8,6 +8,7 @@ import Popup from "reactjs-popup";
 import BookAdd from "../components/BookAdd";
 import LibraryTable from "../components/LibraryTable";
 import bookStack from '../assets/Book-Stack.png'
+import bookStackFlip from '../assets/bookStackFlip.png'
 import styled, { keyframes } from 'styled-components';
 import { zoomIn } from 'react-animations'
 import DeleteConfirm from "../components/DeleteConfirm";
@@ -86,7 +87,6 @@ function Library({ setBookToEdit, brainShow, brainDisplay, handleBrainClose }) {
                     withCredentials: true
                 })
             if (response.status === 204) {
-                // setBooks(books.filter(e => e.bookId !== book.bookId));
                 getBooks()
                 handleDeleteClose()
             }
@@ -116,7 +116,7 @@ function Library({ setBookToEdit, brainShow, brainDisplay, handleBrainClose }) {
             <div className='library-table-content'>
                 <div className="library-header">
                     <img className="library-img" src={library} />
-                    <button onClick={() => setAddOpen(true)} className='btn btn-sm btn-light btn-block add-book-btn-library'>ADD BOOK</button>   
+                    {/* <button onClick={() => setAddOpen(true)} className='btn btn-sm btn-light btn-block add-book-btn-library'>ADD BOOK</button>    */}
                 </div>
                 <Popup      
                     open={addOpen}
@@ -140,9 +140,10 @@ function Library({ setBookToEdit, brainShow, brainDisplay, handleBrainClose }) {
                     addOpen={addOpen} 
                     setNourOpen={setNourOpen} 
                     nourOpen={nourOpen}
-                    deleteShow={deleteShow} />
+                    deleteShow={deleteShow}
+                    setAddOpen={setAddOpen} />
             </div>
-            <img className='book-stack-img' src={bookStack} />
+            <img className='book-stack-img' src={bookStackFlip} />
             </section>
             <Modal 
                 show={brainShow} 

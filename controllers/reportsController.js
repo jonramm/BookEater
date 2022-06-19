@@ -4,8 +4,6 @@ const { getReportByUserAndBookId, getReportByUserAndReportId, updateReport, addR
 
 const fetchReport = async (req, res) => {
     try {
-        console.log('Fetching report...')
-        console.log(req.body)
         const cookies = req.cookies
         if (!cookies?.jwt) return res.sendStatus(401)
         const refreshToken = cookies.jwt
@@ -17,13 +15,12 @@ const fetchReport = async (req, res) => {
         })
     } catch (err) {
         console.log(err)
+        res.status(500).json({ "message": err.message })
     }
 }
 
 const editReport = async (req, res) => {
     try {
-        console.log('Updating report...')
-        console.log(req.body)
         const cookies = req.cookies
         if (!cookies?.jwt) return res.sendStatus(401)
         const refreshToken = cookies.jwt
@@ -41,6 +38,7 @@ const editReport = async (req, res) => {
         })
     } catch (err) {
         console.log(err)
+        res.status(500).json({ "message": err.message })
     }
 }
 
