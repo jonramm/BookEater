@@ -24,7 +24,11 @@ app.use(express.urlencoded({ extended: true }));
 app.use(express.json())
 app.use(cookieParser());
 
-app.use(express.static(path.join(__dirname, 'build')));
+app.use(express.static(path.join(__dirname, 'client/build')));
+
+app.get('*', function (req, res) {
+  res.sendFile(path.join(__dirname, 'client', 'build', 'index.html'));
+});
 
 app.get('/hello', (req, res) => {
   res.json({"message": "hello"})
@@ -48,10 +52,6 @@ app.use('/update-info', require('./routes/updateUserInfo'))
 app.use('/add-book-and-nourishment', require('./routes/addBookAndNourishment'))
 app.use('/get-nourishment', require('./routes/getNourishment'))
 app.use('/add-nourishment', require('./routes/addNourishment'))
-
-app.get('*', function (req, res) {
-  res.sendFile(path.join(__dirname, 'build', 'index.html'));
-});
 
 app.listen(PORT, () => {
     console.log(`Server listening on port ${PORT}...`)
