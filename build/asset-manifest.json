@@ -1,7 +1,7 @@
 {
   "files": {
     "main.css": "/static/css/main.0362d374.css",
-    "main.js": "/static/js/main.55ce13ea.js",
+    "main.js": "/static/js/main.45aba173.js",
     "static/media/brain-food.gif": "/static/media/brain-food.38b801d79931225df55f.gif",
     "static/media/Official_Logo_And_GIF.gif": "/static/media/Official_Logo_And_GIF.601f37409ca6d8a52de8.gif",
     "static/media/Merged-Home-PNG.png": "/static/media/Merged-Home-PNG.90405cec00e2bd03beaa.png",
@@ -43,10 +43,10 @@
     "static/media/Bookeater-Regular.ttf": "/static/media/Bookeater-Regular.b5eb3043165d79029100.ttf",
     "index.html": "/index.html",
     "main.0362d374.css.map": "/static/css/main.0362d374.css.map",
-    "main.55ce13ea.js.map": "/static/js/main.55ce13ea.js.map"
+    "main.45aba173.js.map": "/static/js/main.45aba173.js.map"
   },
   "entrypoints": [
     "static/css/main.0362d374.css",
-    "static/js/main.55ce13ea.js"
+    "static/js/main.45aba173.js"
   ]
 }
