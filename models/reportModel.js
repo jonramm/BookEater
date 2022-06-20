@@ -50,6 +50,7 @@ const addReport = async (user, report, bookId, flavor) => {
         return newReport
     } catch(err) {
         console.log(err)
+        res.status(500).json({ "message": err })
     }
     
 }
@@ -63,6 +64,7 @@ const deleteReport = async (reportId) => {
         })
     } catch(err) {
         console.log(err)
+        res.status(500).json({ "message": err })
     }
 }
 

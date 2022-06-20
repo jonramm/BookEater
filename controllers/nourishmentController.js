@@ -16,6 +16,7 @@ const addNourishment = async (req, res) => {
             res.status(200).json({"message": "Nourishment added!"})
         }).catch((err) => {
             console.log(err)
+            res.status(500).json({ "message": err })
         })
     } catch(err) {
         console.log(err)

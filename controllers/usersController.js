@@ -36,7 +36,7 @@ const addUserRole = async (req, res) => {
       res.status(406).json({ 'error': 'role assignment failed' })
     } else {
       //   db.query(`INSERT INTO user_roles (user, role) VALUES ("${email}", 1);`)
-      // res.status(201).json({'success': `New user ${email} created!`})
+      res.status(201).json({'success': `New user ${email} created!`})
     }
   })
 }
@@ -51,6 +51,7 @@ const getUser = async (req, res) => {
     res.status(200).json(user)
   } catch(err) {
     console.log(err)
+    res.status(500).json({ "message": err })
   }
 }
 
@@ -65,6 +66,7 @@ const updateUser = async (req, res) => {
     })
   } catch(err) {
     console.log(err)
+    res.status(500).json({ "message": err })
   }
 }
 
