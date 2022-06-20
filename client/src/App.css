@@ -548,8 +548,8 @@ th {
 
 .book-stack-img {
   display: flex;
-  width: 200px;
-  height: auto;
+  width: 250px;
+  height: 100%;
 }
 
 .library-table-container {
