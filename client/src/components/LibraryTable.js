@@ -22,7 +22,7 @@ function LibraryTable({
                     <th scope="col">Flavor Profile</th>
                     <th scope="col">Title</th>
                     <th scope="col">Author</th>
-                    <th scope="col">Report</th>
+                    <th scope="col">Journal</th>
                     <th scope="col"><AiFillPlusSquare onClick={() => setAddOpen(true)} className="edit-icons" /></th>
                 </tr>
             </thead>

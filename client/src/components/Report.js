@@ -27,7 +27,6 @@ function Report({ bookToEdit }) {
 
     const editReport = async () => {
         try {
-            console.log('Editing...')
             const response = await axios.post('/update-report',
                 JSON.stringify({ bookId, title, author, report, reportId, flavor }),
                 {
