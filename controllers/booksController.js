@@ -30,6 +30,9 @@ const addBookAndNourishment = async (req, res) => {
   const refreshToken = cookies.jwt
   createBook(title, author).then((newId) => {
     addUserBook(refreshToken, newId).then((userBook) => {
+      if (!userBook) {
+        res.status(400).json({"message": "User book unable to be created with refresh token"})
+      }
       addReport(userBook.email, '', userBook.bookId, flavor).then((newReport) => {
         addReportNourishment(newReport.id, array).then(() => {
           res.status(200).json({ 
@@ -58,8 +61,10 @@ const fetchBooks = async (req, res) => {
     if (!cookies?.jwt) return res.sendStatus(401)
     const refreshToken = cookies.jwt
     getUserByToken(refreshToken).then((user) => {
+      if (!user) {
+        res.status(400).json({"message": "User not found with refresh token"})
+      }
       getBooks(user.email).then((books) => {
-        console.log(books)
         res.send(books)
       }).catch((err) => {
         res.status(500).json({"message": err})
@@ -77,7 +82,10 @@ const destroyUserBook = async (req, res) => {
     if (!cookies?.jwt) return res.sendStatus(401)
     const refreshToken = cookies.jwt
     getUserByToken(refreshToken).then((user) => {
-      deleteUserBook(user?.email, req.body.bookId).then(() => {
+      if (!user) {
+        res.status(400).json({"message": "User not found with refresh token"})
+      }
+      deleteUserBook(user.email, req.body.bookId).then(() => {
         deleteReport(req.body.reportId).then(() => {
           res.status(204).json({ "message": "Book deleted successfully!" })
       })
