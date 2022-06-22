@@ -1,2 +1,2 @@
 # BookEater
-For making memorable literary memories!
+React SPA with a MySql database for keeping track of books you read.
