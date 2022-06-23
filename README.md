@@ -1,5 +1,5 @@
 # BookEater
-## React SPA with a Node.js/Express/MySQL backend for keeping track of books you've read (eaten). 
+### React SPA with a Node.js/Express/MySQL backend for keeping track of books you've read (eaten). 
 </br>
 <a href="https://www.bookeater.org">bookeater.org</a>
 
