@@ -27,7 +27,6 @@ function Report({ bookToEdit }) {
 
     const editReport = async () => {
         try {
-            console.log('Editing...')
             const response = await axios.post('/update-report',
                 JSON.stringify({ bookId, title, author, report, reportId, flavor }),
                 {
@@ -76,7 +75,7 @@ function Report({ bookToEdit }) {
                     class="form-control"
                     id="report"
                     autoComplete="off"
-                    rows="20"
+                    rows="15"
                     columns="50"
                     onChange={(e) => { setReport(e.target.value) }}
                     value={report}
@@ -85,8 +84,8 @@ function Report({ bookToEdit }) {
                 />
                 {/* <button class="btn btn-lg btn-primary btn-block">Save</button> */}
                 <div className="edit-report-btn-row">
-                    <button onClick={() => navigate('/library')} className='btn btn-sm btn-light btn-block home-btn'>Go back</button>
-                    <button onClick={(e) => handleEditShow(e)} className='btn btn-sm btn-light btn-block home-btn'>Save</button><br />
+                    <button onClick={() => navigate('/library')} className='btn btn-sm btn-light btn-block report-btn'>Go back</button>
+                    <button onClick={(e) => handleEditShow(e)} className='btn btn-sm btn-light btn-block report-btn'>Save</button><br />
                 </div>
             </form>
         </div>

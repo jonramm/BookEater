@@ -4,8 +4,7 @@ import Popup from 'reactjs-popup';
 import Nourishment from "./Nourishment";
 import AddNourishment from "./AddNourishment";
 import ReportModal from "./ReportModal";
-import { AiFillEdit } from 'react-icons/ai'
-import { AiFillDelete } from 'react-icons/ai'
+import { AiFillDelete, AiFillEdit } from 'react-icons/ai'
 
 function LibraryTableRow({ 
     book, 
@@ -39,7 +38,7 @@ function LibraryTableRow({
                 : (book.flavor === 'Inedible') ? "library-table-row-inedible"
                 : ""}
             key={key}>
-            <td>
+            <td className="flavor-cell">
                 <Nourishment book={book} 
                              addOpen={addOpen} 
                              books={books} 
@@ -55,14 +54,14 @@ function LibraryTableRow({
             <td>{book.title}</td>
             <td>{book.author}</td>
             <td>
-                <button onClick={() => setReportShow(true)} className='btn btn-sm btn-light btn-block home-btn add-book-btn'
+                <button onClick={() => setReportShow(true)} className='btn btn-sm btn-light btn-block report-btn add-book-btn'
                     >{report}
                 </button>
                 <ReportModal reportShow={reportShow} handleReportClose={handleReportClose} book={book} onBookEdit={onBookEdit} />
             </td>
             <td>
-                <AiFillEdit className='edit-icon' onClick={() => onBookEdit(book)} /><br/>
-                <AiFillDelete className='delete-icon' onClick={() => handleDeleteShow(book)} />
+                <AiFillEdit className='edit-icons' onClick={() => onBookEdit(book)} /><br/>
+                <AiFillDelete className='edit-icons' onClick={() => handleDeleteShow(book)} />
             </td>
             
         </tr>

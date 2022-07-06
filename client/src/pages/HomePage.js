@@ -10,6 +10,7 @@ import BookAdd from "../components/BookAdd";
 import homeImg from '../assets/Merged-Home-PNG.png'
 import styled, { keyframes } from 'styled-components';
 import brainFood from '../assets/brain-food.gif'
+import saveToCortex from '../assets/save-to-cortex.png'
 
 function HomePage({ setBookToEdit, brainShow, brainDisplay, handleBrainClose }) {
 
@@ -52,7 +53,8 @@ function HomePage({ setBookToEdit, brainShow, brainDisplay, handleBrainClose }) 
                     <img className='home-img' src={homeImg} alt='BookEater Library' />
                 </div>
                 <div className="home-btn-row">
-                <button onClick={() => setAddOpen(true)} className='btn btn-sm btn-light btn-block home-btn add-book-btn'>ADD BOOK</button>
+                <button onClick={() => setAddOpen(true)} className='home-btn'>ADD BOOK</button>
+                <button onClick={navToLibrary} className='home-btn'>FULL LIBRARY</button>
                     <Popup
                         open={addOpen}
                         onClose={closeAddModal}
@@ -60,8 +62,7 @@ function HomePage({ setBookToEdit, brainShow, brainDisplay, handleBrainClose }) 
                         nested
                         >
                        <BookAdd closeAddModal={closeAddModal} brainDisplay={brainDisplay} setBookToEdit={setBookToEdit} /> 
-                    </Popup>
-                    <Link to='/library' className='btn btn-sm btn-light btn-block home-btn full-lib-btn'>FULL LIBRARY</Link>
+                    </Popup> 
                 </div>
             </section>
             <Modal 
@@ -74,7 +75,10 @@ function HomePage({ setBookToEdit, brainShow, brainDisplay, handleBrainClose }) 
                 <img className='brain-food-gif' src={brainFood} />
             </div>
             <div className='brain-footer'>
-                <h2 classname="cortex-header">SAVING TO TASTE CORTEX...</h2>
+                {/* <h2 classname="cortex-header">SAVING TO TASTE CORTEX...</h2> */}
+                <div className="save-img-container">
+                    <img className='save-to-cortex-img' src={saveToCortex} />
+                </div>
                 <div className="brain-btn-row">
                     <button onClick={handleBrainClose} className="btn btn-lg btn-light brain-btn btn-block">CLOSE</button>
                     <button onClick={navToLibrary} className="btn btn-lg btn-light brain-btn btn-block">VISIT LIBRARY</button>

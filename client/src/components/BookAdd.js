@@ -25,6 +25,12 @@ import earthworm from '../assets/earthworm.png'
 import grass from '../assets/grass.png'
 import herbs from '../assets/herbs.png'
 import parchment from '../assets/parchment.png'
+import honey from '../assets/honey.png'
+import mushrooms from '../assets/mushrooms.png'
+import oysters from '../assets/oysters.png'
+import pizza from '../assets/pizza.png'
+import popcorn from '../assets/popcorn.png'
+import trash from '../assets/trash.png'
 
 const BookAdd = ({ closeAddModal, brainDisplay, setBookToEdit }) => {
 
@@ -50,26 +56,16 @@ const BookAdd = ({ closeAddModal, brainDisplay, setBookToEdit }) => {
     const [grassIsChecked, setGrassIsChecked] = useState(false)
     const [herbsIsChecked, setHerbsIsChecked] = useState(false)
     const [parchmentIsChecked, setParchmentIsChecked] = useState(false)
+    const [honeyIsChecked, setHoneyIsChecked] = useState(false)
+    const [mushroomsIsChecked, setMushroomsIsChecked] = useState(false)
+    const [oystersIsChecked, setOystersIsChecked] = useState(false)
+    const [pizzaIsChecked, setPizzaIsChecked] = useState(false)
+    const [popcornIsChecked, setPopcornIsChecked] = useState(false)
+    const [trashIsChecked, setTrashIsChecked] = useState(false)
 
     const { auth, setAuth } = useContext(AuthContext)
 
     const navigate = useNavigate()
-
-    const addBook = async (e) => {
-        e.preventDefault()
-        try {
-            const response = await axios.post('/add-book',
-                JSON.stringify({ title, author, flavor }),
-                {
-                    headers: { 'Content-Type': 'application/json', 'Authorization': `Bearer ${auth.accessToken}` },
-                    withCredentials: true
-                })
-            closeAddModal()
-            navigate('/library')
-        } catch (err) {
-            console.log(err)
-        }
-    }
 
     const addBookAndNourishment = async (e) => {
         e.preventDefault()
@@ -93,6 +89,12 @@ const BookAdd = ({ closeAddModal, brainDisplay, setBookToEdit }) => {
             if (grassIsChecked) { array.push(16) }
             if (herbsIsChecked) { array.push(17) }
             if (parchmentIsChecked) { array.push(18) }
+            if (honeyIsChecked) { array.push(19) }
+            if (mushroomsIsChecked) { array.push(20) }
+            if (oystersIsChecked) { array.push(21) }
+            if (pizzaIsChecked) { array.push(22) }
+            if (popcornIsChecked) { array.push(23) }
+            if (trashIsChecked) { array.push(24) }
 
             const response = await axios.post('/add-book-and-nourishment',
                 JSON.stringify({ title, author, array, flavor }),
@@ -141,7 +143,8 @@ const BookAdd = ({ closeAddModal, brainDisplay, setBookToEdit }) => {
                         <option value="Inedible">Inedible</option>              
                     </select>
                 </form>
-
+                <div className="next-btn-row">
+                <button onClick={closeAddModal} className='btn btn-lg btn-light next-btn btn-block'>CANCEL</button>
                 <Popup
                     trigger={<button disabled={!title || !author} class="btn btn-lg btn-light next-btn btn-block">NEXT</button>}
                     modal
@@ -150,7 +153,7 @@ const BookAdd = ({ closeAddModal, brainDisplay, setBookToEdit }) => {
                 {close => (
                     <div className="review-container">
                         <form className="form-book-add">
-                            <p className="book-add-form-header">If you could describe this literary journey in terms of food alone, how would it taste?</p>
+                            <p className="book-add-form-header">This book tastes like: </p>
                             <Carousel interval={null}>
                             <Carousel.Item>
                                 <input
@@ -321,21 +324,73 @@ const BookAdd = ({ closeAddModal, brainDisplay, setBookToEdit }) => {
                                 </input> 
                                 <label for="cb18" className="checkbox-label"><img className="emoji-img" src={parchment} /></label>
                             </Carousel.Item>
+                            <Carousel.Item>
+                                <input
+                                    checked={honeyIsChecked ? 'checked' : ''}
+                                    className="emoji-checkbox"
+                                    type='checkbox'
+                                    id='cb19'
+                                    value={honeyIsChecked}
+                                    onChange={(e) => { setHoneyIsChecked(!honeyIsChecked) }}>
+                                </input>
+                                <label for="cb19" className="checkbox-label"><img className="emoji-img" src={honey} /></label>
+                                <input
+                                    checked={mushroomsIsChecked ? 'checked' : ''}
+                                    className="emoji-checkbox"
+                                    type='checkbox'
+                                    id='cb20'
+                                    value={mushroomsIsChecked}
+                                    onChange={(e) => { setMushroomsIsChecked(!mushroomsIsChecked) }}>
+                                </input>
+                                <label for="cb20" className="checkbox-label"><img className="emoji-img" src={mushrooms} /></label>
+                                <input
+                                    checked={oystersIsChecked ? 'checked' : ''}
+                                    className="emoji-checkbox"
+                                    type='checkbox'
+                                    id='cb21'
+                                    value={oystersIsChecked}
+                                    onChange={(e) => { setOystersIsChecked(!oystersIsChecked) }}>
+                                </input>
+                                <label for="cb21" className="checkbox-label"><img className="emoji-img" src={oysters} /></label>
+                                <input
+                                    checked={pizzaIsChecked ? 'checked' : ''}
+                                    className="emoji-checkbox"
+                                    type='checkbox'
+                                    id='cb22'
+                                    value={pizzaIsChecked}
+                                    onChange={(e) => { setPizzaIsChecked(!pizzaIsChecked) }}>
+                                </input>
+                                <label for="cb22" className="checkbox-label"><img className="emoji-img" src={pizza} /></label>
+                                <input
+                                    checked={popcornIsChecked ? 'checked' : ''}
+                                    className="emoji-checkbox"
+                                    type='checkbox'
+                                    id='cb23'
+                                    value={popcornIsChecked}
+                                    onChange={(e) => { setPopcornIsChecked(!popcornIsChecked) }}>
+                                </input>
+                                <label for="cb23" className="checkbox-label"><img className="emoji-img" src={popcorn} /></label>
+                                <input
+                                    checked={trashIsChecked ? 'checked' : ''}
+                                    className="emoji-checkbox"
+                                    type='checkbox'
+                                    id='cb24'
+                                    value={trashIsChecked}
+                                    onChange={(e) => { setTrashIsChecked(!trashIsChecked) }}>
+                                </input> 
+                                <label for="cb24" className="checkbox-label"><img className="emoji-img" src={trash} /></label>
+                            </Carousel.Item>
                         </Carousel>
                         </form>
                         <div className="add-book-btn-row">
-                            {/* <button onClick={(e) => {
-                                // close()
-                                addBook(e)}} 
-                                class="btn btn-lg btn-light home-btn btn-block">Skip</button> */}
                             <button onClick={(e) => {
-                                // close()
                                 addBookAndNourishment(e)}} 
-                                class="btn btn-lg btn-light home-btn btn-block">CONSUME</button>
+                                class="btn btn-lg btn-light consume-btn btn-block">CONSUME</button>
                         </div>
                     </div>
                     )}
                 </Popup>
+                </div>
             </div>
         </>
     )

@@ -1,5 +1,6 @@
 import React from "react";
 import LibraryTableRow from "./LibraryTableRow";
+import { AiFillPlusSquare } from 'react-icons/ai'
 
 function LibraryTable({ 
     books, 
@@ -10,18 +11,19 @@ function LibraryTable({
     addOpen, 
     setNourOpen, 
     nourOpen,
-    deleteShow }) {
+    deleteShow,
+    setAddOpen }) {
 
     return (
         <div className="library-table-container">
             <table className="library-table table table-hover">
             <thead>
                 <tr>
-                    <th scope="col">Nourishment</th>
+                    <th scope="col">Flavor Profile</th>
                     <th scope="col">Title</th>
                     <th scope="col">Author</th>
-                    <th scope="col">Report</th>
-                    <th scope="col"> </th>
+                    <th scope="col">Journal</th>
+                    <th scope="col"><AiFillPlusSquare onClick={() => setAddOpen(true)} className="edit-icons" /></th>
                 </tr>
             </thead>
             <tbody>

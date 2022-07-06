@@ -105,6 +105,7 @@ const getUserByToken = async (token) => {
         return user
     } catch(err) {
         console.log(err)
+        res.status(500).json({ "message": err })
     }
   }
 
@@ -117,6 +118,7 @@ const clearTokenByUser = async (user) => {
         })
     } catch(err) {
         console.log(err)
+        res.status(500).json({ "message": err })
     }
 }
 

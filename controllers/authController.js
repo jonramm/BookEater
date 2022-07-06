@@ -5,12 +5,10 @@ require('dotenv').config()
 const { getUser, updateUserToken } = require('../models/userModel')
 
 const handleLogin = async (req, res) => {
-    console.log("Logging in...")
     const { email, password } = req.body;
     if (!email || !password) return res.status(400).json({ 'message': 'Email and password are required.' });
     foundUser = JSON.parse(await getUser(email))[0]
     if (!foundUser) return res.sendStatus(401); //Unauthorized 
-
     // evaluate password 
     const match = await bcrypt.compare(password, foundUser.password);
     if (match) {
@@ -23,17 +21,19 @@ const handleLogin = async (req, res) => {
               "roles": roles}
             },
             process.env.ACCESS_TOKEN_SECRET,
-            { expiresIn: '30m' }
+            { expiresIn: '1h' }
         );
         const refreshToken = jwt.sign(
             {"email": foundUser.email},
             process.env.REFRESH_TOKEN_SECRET,
-            { expiresIn: '1d' }
+            { expiresIn: '2d' }
         );
         // Saving refreshToken with current user
         updateUserToken(email, refreshToken).then(() => {
           // Creates Secure Cookie with refresh token
           res.cookie('jwt', refreshToken, { httpOnly: true, sameSite: 'None', secure: true, maxAge: 24 * 60 * 60 * 1000 });
+          // res.header("Access-Control-Allow-Origin", "*");
+          res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
           // Send authorization roles and access token to user
           res.json({ roles, accessToken });
         }).catch((err) => {

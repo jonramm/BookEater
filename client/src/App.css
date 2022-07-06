@@ -39,6 +39,11 @@ body {
   justify-content: center;
 }
 
+th {
+  font-size: 1.2rem;
+  padding: 30px;
+}
+
 /*******************************************/
 /* Forms                                   */
 /*******************************************/
@@ -119,6 +124,23 @@ body {
 /***********************************************************************************************************/
 
 /*******************************************/
+/* Loading                                 */
+/*******************************************/
+
+.loading-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-around;
+  height: 100vh;
+}
+
+.loading-img {
+  width: 100%;
+  height: auto;
+}
+
+/*******************************************/
 /* Navbar                                  */
 /*******************************************/
 
@@ -164,7 +186,7 @@ body {
 .nav-logo-and-name {
   display: flex;
   align-items: center;
-  gap: 10%;
+  gap: 3%;
 }
 
 .nav-greeting {
@@ -406,15 +428,14 @@ body {
 }
 
 .home-btn {
-  font-size: 1em;
+  background-color: transparent;
   border: none;
-  cursor: pointer;
-  border-radius: 20px;
+  font-size: 1em;
   margin: 3%;
 }
 
 .home-btn:hover {
-  background-color: #145a4e;
+  color:#ef838a;
 }
 
 .home-img {
@@ -470,7 +491,7 @@ body {
   align-items: center;
   justify-content: center;
   width: 100%;
-  margin-bottom: 3%;
+  margin-bottom: 1%;
 }
 
 .library-name {
@@ -479,7 +500,7 @@ body {
 }
 
 .library-img {
-  width: 30%;
+  width: 45%;
   height: auto;
 }
 
@@ -499,19 +520,36 @@ body {
 .library-content {
   display: flex;
   justify-content: flex-start;
-  margin: 3%;
+  margin: 1.5%;
 }
 
 .library-table-content {
   display: flex;
   flex-direction: column;
   align-items: center;
+  width: 100%;
+}
+
+.flavor-cell {
+  width: 20%;
+}
+
+.report-btn {
+  font-size: 1em;
+  border: none;
+  cursor: pointer;
+  border-radius: 20px;
+  margin: 0 1% 0 1%;
+}
+
+.report-btn:hover {
+  background-color: #145a4e;
 }
 
 .book-stack-img {
   display: flex;
-  width: 30%;
-  height: auto;
+  width: 250px;
+  height: 100%;
 }
 
 .library-table-container {
@@ -570,23 +608,13 @@ body {
   font-size: 1.5em;
 }
 
-.edit-icon {
+.edit-icons {
   width: 25px;
   height: auto;
   cursor: pointer;
 }
 
-.edit-icon:hover {
-  color: #fff;
-}
-
-.delete-icon {
-  width: 25px;
-  height: auto;
-  cursor: pointer;
-}
-
-.delete-icon:hover {
+.edit-icons:hover {
   color: #fff;
 }
 
@@ -595,7 +623,7 @@ body {
 /*******************************************/
 
 .brain-food-gif {
-  width: 70%;
+  width: 60%;
   height: auto;
   display: flex;
 }
@@ -616,18 +644,18 @@ body {
 .brain-container {
   display: flex;
   justify-content: center;
-  margin-right: 3%;
 }
 
 .brain-footer {
   display: flex;
   flex-direction: column;
   align-items: center;
+  text-align: center;
 }
 
 .brain-btn-row {
   display: flex;
-  justify-content: centerf;
+  justify-content: center;
   width: 100%;
   margin: auto;
 }
@@ -642,10 +670,17 @@ body {
   border-radius: 30px;
   padding: 20px;
   color: white;
-  /* background-image: url('./assets/brain-food.gif');
-  background-size: 80%;
-  background-repeat: no-repeat;
-  height: 90vh; */
+  padding: 0;
+}
+
+.save-to-cortex-img {
+  width: 80%;
+  height: auto;
+}
+
+.save-img-container {
+  margin-top: 2%;
+  background-color: #fff;
 }
 
 .book-add-form-header {
@@ -692,11 +727,32 @@ body {
   height: 50%;
 }
 
+.next-btn-row {
+  width: 50%;
+}
+
 .next-btn {
   font-size: 1em;
   border: none;
   cursor: pointer;
   border-radius: 20px;
+  margin: 0 1% 0 1%;
+}
+
+.next-btn:hover {
+  background-color: #145a4e;
+}
+
+.consume-btn {
+  font-size: 1em;
+  border: none;
+  cursor: pointer;
+  border-radius: 20px;
+  margin-top: 2%;
+}
+
+.consume-btn:hover {
+  background-color: #145a4e;
 }
 
 .review-container {
@@ -900,6 +956,7 @@ label img {
 .edit-report-btn-row {
   display: flex;
   justify-content: center;
+  margin-bottom: 5%;
 }
 
 /*******************************************/
@@ -937,6 +994,18 @@ label img {
 }
 .form-report .form-control:focus {
   z-index: 2;
+}
+
+.preferences-btn {
+  font-size: 1em;
+  border: none;
+  cursor: pointer;
+  border-radius: 20px;
+  margin: 2% 0 10% 0%;
+}
+
+.preferences-btn:hover {
+  background-color: #145a4e;
 }
 
 /*******************************************/
